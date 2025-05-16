@@ -2,9 +2,7 @@
 import AppLogo from '@/components/AppLogo.vue';
 import AppLogoIcon from '@/components/AppLogoIcon.vue';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -14,8 +12,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import UserMenuContent from '@/components/UserMenuContent.vue';
-import { getInitials } from '@/composables/useInitials';
+import AuthDropdownMenu from '@/layouts/app/AuthDropdownMenu.vue';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Github, Home, Linkedin, Menu } from 'lucide-vue-next';
@@ -135,15 +132,17 @@ const rightNavItems: NavItem[] = [
                     </NavigationMenu>
                 </div>
 
-                <div class="ml-auto flex items-center space-x-2">
+                <div class="ml-auto flex items-center space-x-3">
                     <div class="relative flex items-center space-x-2">
                         <ThemeSelector />
+                        <AuthDropdownMenu />
                         <a href="https://github.com/EslamKamel89" target="_blank">
-                            <Github class="h-4 w-4" />
+                            <Github class="h-4 w-4 hover:scale-110" />
                         </a>
                         <a href="https://www.linkedin.com/in/eslamkamel89/" target="_blank">
-                            <Linkedin class="h-4 w-4" />
+                            <Linkedin class="h-4 w-4 hover:scale-110" />
                         </a>
+
                         <div class="hidden space-x-1 lg:flex">
                             <template v-for="item in rightNavItems" :key="item.title">
                                 <TooltipProvider :delay-duration="0">
@@ -164,29 +163,6 @@ const rightNavItems: NavItem[] = [
                             </template>
                         </div>
                     </div>
-                    <template v-if="page.props.auth.user">
-                        <DropdownMenu>
-                            <DropdownMenuTrigger :as-child="true">
-                                <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    class="focus-within:ring-primary relative size-10 w-auto rounded-full p-1 focus-within:ring-2"
-                                >
-                                    <Avatar class="size-8 overflow-hidden rounded-full">
-                                        <AvatarImage v-if="auth.user.avatar" :src="auth.user.avatar" :alt="auth.user.name" />
-                                        <AvatarFallback
-                                            class="rounded-lg bg-neutral-200 font-semibold text-black dark:bg-neutral-700 dark:text-white"
-                                        >
-                                            {{ getInitials(auth.user?.name) }}
-                                        </AvatarFallback>
-                                    </Avatar>
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" class="w-56">
-                                <UserMenuContent :user="auth.user" />
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </template>
                 </div>
             </div>
         </div>

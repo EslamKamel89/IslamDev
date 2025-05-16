@@ -17,7 +17,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="space-y-6">
+    <div class="cursor-pointer space-y-6 hover:scale-110">
         <component :is="appearance == 'dark' ? Sun : Moon" class="-ml-1 h-4 w-4" @click="toggleApperance" />
     </div>
 </template>
