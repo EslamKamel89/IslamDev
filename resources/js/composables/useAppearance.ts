@@ -1,7 +1,7 @@
 import { onMounted, ref } from 'vue';
 
 type Appearance = 'light' | 'dark' | 'system';
-const theme = ref<Appearance>();
+// const theme = ref<Appearance>();
 export function updateTheme(value: Appearance) {
     if (typeof window === 'undefined') {
         return;
@@ -62,9 +62,8 @@ export function initializeTheme() {
     mediaQuery()?.addEventListener('change', handleSystemThemeChange);
 }
 
+const appearance = ref<Appearance>('system');
 export function useAppearance() {
-    const appearance = ref<Appearance>('system');
-
     onMounted(() => {
         const savedAppearance = localStorage.getItem('appearance') as Appearance | null;
 
@@ -88,6 +87,6 @@ export function useAppearance() {
     return {
         appearance,
         updateAppearance,
-        theme,
+        // theme,
     };
 }

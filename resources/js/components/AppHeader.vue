@@ -15,7 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import AuthDropdownMenu from '@/layouts/app/AuthDropdownMenu.vue';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { Github, Home, Linkedin, Menu } from 'lucide-vue-next';
+import { Home, Menu } from 'lucide-vue-next';
 import { computed } from 'vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
 
@@ -133,15 +133,17 @@ const rightNavItems: NavItem[] = [
                 </div>
 
                 <div class="ml-auto flex items-center space-x-3">
-                    <div class="relative flex items-center space-x-2">
+                    <div class="relative flex items-center space-x-4">
                         <ThemeSelector />
                         <AuthDropdownMenu />
-                        <a href="https://github.com/EslamKamel89" target="_blank">
-                            <Github class="h-4 w-4 hover:scale-110" />
-                        </a>
-                        <a href="https://www.linkedin.com/in/eslamkamel89/" target="_blank">
-                            <Linkedin class="h-4 w-4 hover:scale-110" />
-                        </a>
+                        <!--
+                            <a href="https://github.com/EslamKamel89" target="_blank">
+                                <Github class="w-4 h-4 hover:scale-110" />
+                            </a>
+                            <a href="https://www.linkedin.com/in/eslamkamel89/" target="_blank">
+                                <Linkedin class="w-4 h-4 hover:scale-110" />
+                            </a>
+                        -->
 
                         <div class="hidden space-x-1 lg:flex">
                             <template v-for="item in rightNavItems" :key="item.title">
