@@ -6,15 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useLocale } from '@/composables/useLocale';
 import Button from '../ui/button/Button.vue';
 
-const { locale } = useI18n();
-
-function setLang(lang: string) {
-    locale.value = lang;
-    const htmlEl = document.documentElement;
-    htmlEl.setAttribute('lang', lang);
-    htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-}
+const { locale, setLang } = useLocale();
 </script>

@@ -5,12 +5,14 @@ const messages = {
         about: 'About Me',
         projects: 'Projects',
         contact: 'Contact',
+        home: 'Home',
     },
     ar: {
         greeting: 'مرحبا',
         about: 'عني',
         projects: 'مشاريعي',
         contact: 'اتصل بي',
+        home: 'الرئيسية',
     },
 };
 

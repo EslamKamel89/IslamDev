@@ -12,12 +12,12 @@ import {
 } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { useLocale } from '@/composables/useLocale';
 import AuthDropdownMenu from '@/layouts/app/AuthDropdownMenu.vue';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Home, Menu } from 'lucide-vue-next';
 import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
 import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
 
@@ -31,8 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const page = usePage<SharedData>();
 const auth = computed(() => page.props.auth);
-const { locale } = useI18n();
-
+const { isRtl, t } = useLocale();
 const isCurrentRoute = computed(() => (url: string) => page.url === url);
 
 const activeItemStyles = computed(
@@ -41,7 +40,7 @@ const activeItemStyles = computed(
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Home',
+        title: 'home',
         href: '/',
         icon: Home,
     },
@@ -73,7 +72,7 @@ const rightNavItems: NavItem[] = [
                                 <Menu class="h-5 w-5" />
                             </Button>
                         </SheetTrigger>
-                        <SheetContent :side="locale == 'en' ? 'left' : 'right'" class="w-[300px] p-6">
+                        <SheetContent :side="!isRtl() ? 'left' : 'right'" class="w-[300px] p-6">
                             <SheetTitle class="sr-only">Navigation Menu</SheetTitle>
                             <SheetHeader class="flex justify-start text-left">
                                 <AppLogoIcon class="size-6 fill-current text-black dark:text-white" />
@@ -115,7 +114,7 @@ const rightNavItems: NavItem[] = [
 
                 <!-- Desktop Menu -->
                 <div class="hidden h-full lg:flex lg:flex-1">
-                    <NavigationMenu class="ml-10 flex h-full items-stretch">
+                    <NavigationMenu class="mx-10 flex h-full items-stretch">
                         <NavigationMenuList class="flex h-full items-stretch space-x-2">
                             <NavigationMenuItem v-for="(item, index) in mainNavItems" :key="index" class="relative flex h-full items-center">
                                 <Link :href="item.href">
@@ -123,7 +122,7 @@ const rightNavItems: NavItem[] = [
                                         :class="[navigationMenuTriggerStyle(), activeItemStyles(item.href), 'h-9 cursor-pointer px-3']"
                                     >
                                         <component v-if="item.icon" :is="item.icon" class="mr-2 h-4 w-4" />
-                                        {{ item.title }}
+                                        {{ t(item.title) }}
                                     </NavigationMenuLink>
                                 </Link>
                                 <div
