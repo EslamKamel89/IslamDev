@@ -13,7 +13,7 @@ import {
 import { getInitials } from '@/composables/useInitials';
 import { SharedData } from '@/types';
 import { Link, router, usePage } from '@inertiajs/vue3';
-import { KeyRound, LogOut, Settings } from 'lucide-vue-next';
+import { KeyRound, LogIn, LogOut, Settings, UserRoundPlus } from 'lucide-vue-next';
 import { computed } from 'vue';
 const page = usePage<SharedData>();
 const user = computed(() => page.props.auth.user);
@@ -51,6 +51,20 @@ const handleLogout = () => {
                         <Link class="flex w-full space-x-2" method="post" :href="route('logout')" @click="handleLogout" as="button">
                             <LogOut />
                             <div>Logout</div>
+                        </Link>
+                    </DropdownMenuItem>
+                </template>
+                <template v-else>
+                    <DropdownMenuItem>
+                        <Link class="flex w-full space-x-2" :href="route('login')" prefetch as="button">
+                            <LogIn />
+                            <div>Login</div>
+                        </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <Link class="flex w-full space-x-2" :href="route('register')" prefetch as="button">
+                            <UserRoundPlus />
+                            <div>Register</div>
                         </Link>
                     </DropdownMenuItem>
                 </template>
