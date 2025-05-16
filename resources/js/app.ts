@@ -1,5 +1,6 @@
 import '../css/app.css';
 
+import i18n from '@/plugins/localization';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { DefineComponent } from 'vue';
@@ -29,6 +30,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(i18n)
             .mount(el);
     },
     progress: {

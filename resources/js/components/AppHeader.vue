@@ -17,6 +17,8 @@ import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Home, Menu } from 'lucide-vue-next';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
 
 interface Props {
@@ -29,6 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const page = usePage<SharedData>();
 const auth = computed(() => page.props.auth);
+const { locale } = useI18n();
 
 const isCurrentRoute = computed(() => (url: string) => page.url === url);
 
@@ -70,7 +73,7 @@ const rightNavItems: NavItem[] = [
                                 <Menu class="h-5 w-5" />
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="left" class="w-[300px] p-6">
+                        <SheetContent :side="locale == 'en' ? 'left' : 'right'" class="w-[300px] p-6">
                             <SheetTitle class="sr-only">Navigation Menu</SheetTitle>
                             <SheetHeader class="flex justify-start text-left">
                                 <AppLogoIcon class="size-6 fill-current text-black dark:text-white" />
@@ -132,10 +135,11 @@ const rightNavItems: NavItem[] = [
                     </NavigationMenu>
                 </div>
 
-                <div class="ml-auto flex items-center space-x-3">
+                <div class="ms-auto flex items-center space-x-3">
                     <div class="relative flex items-center space-x-4">
                         <ThemeSelector />
                         <AuthDropdownMenu />
+                        <LanguageSelector />
                         <!--
                             <a href="https://github.com/EslamKamel89" target="_blank">
                                 <Github class="w-4 h-4 hover:scale-110" />
