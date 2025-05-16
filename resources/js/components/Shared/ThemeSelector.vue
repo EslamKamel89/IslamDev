@@ -3,16 +3,20 @@ import { useAppearance } from '@/composables/useAppearance';
 import { Moon, Sun } from 'lucide-vue-next';
 import { onMounted } from 'vue';
 
-const { appearance, updateAppearance } = useAppearance();
+const { appearance, updateAppearance, theme } = useAppearance();
 const toggleApperance = () => {
     if (appearance.value == 'light') {
         updateAppearance('dark');
+        appearance.value = 'dark';
+        theme.value = 'dark';
     } else {
         updateAppearance('light');
+        appearance.value = 'light';
+        theme.value = 'light';
     }
 };
 onMounted(() => {
-    updateAppearance('dark');
+    // updateAppearance('dark');
 });
 </script>
 

@@ -1,7 +1,7 @@
 import { onMounted, ref } from 'vue';
 
 type Appearance = 'light' | 'dark' | 'system';
-
+const theme = ref<Appearance>();
 export function updateTheme(value: Appearance) {
     if (typeof window === 'undefined') {
         return;
@@ -88,5 +88,6 @@ export function useAppearance() {
     return {
         appearance,
         updateAppearance,
+        theme,
     };
 }
