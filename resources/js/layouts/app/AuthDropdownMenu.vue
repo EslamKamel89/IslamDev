@@ -46,13 +46,13 @@ const { t } = useLocale();
                     <DropdownMenuItem>
                         <Link class="flex w-full space-x-2" :href="route('profile.edit')" prefetch as="button">
                             <Settings />
-                            <div>Settings</div>
+                            <div>{{ t('SETTINGS') }}</div>
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link class="flex w-full space-x-2" method="post" :href="route('logout')" @click="handleLogout" as="button">
                             <LogOut />
-                            <div>Logout</div>
+                            <div>{{ t('LOGOUT') }}</div>
                         </Link>
                     </DropdownMenuItem>
                 </template>

@@ -21,6 +21,8 @@ const messages = {
         FULL_NAME: 'Full name',
         CONFIRM_PASSWORD: 'Confirm password',
         HAVE_ACCOUNT: 'Already have an account?',
+        SETTINGS: 'Settings',
+        LOGOUT: 'Logout',
     },
     ar: {
         greeting: 'مرحبا',
@@ -30,7 +32,6 @@ const messages = {
         home: 'الرئيسية',
         LOGIN: 'تسجيل الدخول',
         REGISTER: 'تسجيل حساب جديد',
-
         LOGIN_INTO_ACCOUNT: 'سجّل الدخول إلى حسابك',
         ENTER_EMAIL_PASSWORD: 'أدخل بريدك الإلكتروني وكلمة المرور للدخول',
         EMAIL_ADDRESS: 'البريد الإلكتروني',
@@ -44,6 +45,8 @@ const messages = {
         FULL_NAME: 'الاسم الكامل',
         CONFIRM_PASSWORD: 'تأكيد كلمة المرور',
         HAVE_ACCOUNT: 'هل لديك حساب بالفعل؟',
+        SETTINGS: 'الإعدادات',
+        LOGOUT: 'تسجيل الخروج',
     },
 };
 
