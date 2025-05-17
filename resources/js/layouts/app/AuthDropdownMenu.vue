@@ -11,6 +11,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { getInitials } from '@/composables/useInitials';
+import { useLocale } from '@/composables/useLocale';
 import { SharedData } from '@/types';
 import { Link, router, usePage } from '@inertiajs/vue3';
 import { KeyRound, LogIn, LogOut, Settings, UserRoundPlus } from 'lucide-vue-next';
@@ -20,6 +21,7 @@ const user = computed(() => page.props.auth.user);
 const handleLogout = () => {
     router.flushAll();
 };
+const { t } = useLocale();
 </script>
 <template>
     <div>
@@ -58,13 +60,13 @@ const handleLogout = () => {
                     <DropdownMenuItem>
                         <Link class="flex w-full space-x-2" :href="route('login')" prefetch as="button">
                             <LogIn />
-                            <div>Login</div>
+                            <div>{{ t('LOGIN') }}</div>
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link class="flex w-full space-x-2" :href="route('register')" prefetch as="button">
                             <UserRoundPlus />
-                            <div>Register</div>
+                            <div>{{ t('REGISTER') }}</div>
                         </Link>
                     </DropdownMenuItem>
                 </template>
