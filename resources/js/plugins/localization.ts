@@ -15,6 +15,12 @@ const messages = {
         REMEMBER_ME: 'Remember me',
         DONT_HAVE_ACCOUNT: "Don't have an account?",
         FORGET_PASSWORD: ' Forgot password?',
+        CREATE_ACCOUNT: 'Create an account',
+        ENTER_DETAILS: 'Enter your details below to create your account',
+        NAME: 'Name',
+        FULL_NAME: 'Full name',
+        CONFIRM_PASSWORD: 'Confirm password',
+        HAVE_ACCOUNT: 'Already have an account?',
     },
     ar: {
         greeting: 'مرحبا',
@@ -32,6 +38,12 @@ const messages = {
         REMEMBER_ME: 'تذكرني',
         DONT_HAVE_ACCOUNT: 'ليس لديك حساب؟',
         FORGET_PASSWORD: 'نسيت كلمة المرور؟',
+        CREATE_ACCOUNT: 'إنشاء حساب',
+        ENTER_DETAILS: 'أدخل بياناتك لإنشاء حسابك',
+        NAME: 'الاسم',
+        FULL_NAME: 'الاسم الكامل',
+        CONFIRM_PASSWORD: 'تأكيد كلمة المرور',
+        HAVE_ACCOUNT: 'هل لديك حساب بالفعل؟',
     },
 };
 
