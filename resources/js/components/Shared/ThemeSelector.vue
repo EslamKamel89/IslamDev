@@ -14,7 +14,8 @@ const toggleApperance = () => {
     }
 };
 onMounted(() => {
-    // updateAppearance('dark');
+    updateAppearance('dark');
+    appearance.value = 'dark';
 });
 </script>
 

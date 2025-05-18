@@ -23,6 +23,14 @@ const messages = {
         HAVE_ACCOUNT: 'Already have an account?',
         SETTINGS: 'Settings',
         LOGOUT: 'Logout',
+        VIEW_PROJECTS: 'View Projects',
+        DOWNLOAD_CV: 'Download CV',
+        CONTACT_ME: 'Contact Me',
+        HELLO_INTRO: "Hello, I'm",
+        MY_NAME: 'Eslam Kamel',
+        MY_TECH_STACK: 'My Tech Stack',
+        TECH_STACK_INTRO:
+            'As a Full-Stack Developer, I specialize in building robust web and mobile applications using modern technologies. My core stack includes Laravel, Livewire, Vue, Nuxt.js, and Flutter.',
     },
     ar: {
         greeting: 'مرحبا',
@@ -47,6 +55,14 @@ const messages = {
         HAVE_ACCOUNT: 'هل لديك حساب بالفعل؟',
         SETTINGS: 'الإعدادات',
         LOGOUT: 'تسجيل الخروج',
+        VIEW_PROJECTS: 'عرض المشاريع',
+        DOWNLOAD_CV: 'تحميل السيرة الذاتية',
+        CONTACT_ME: 'اتصل بي',
+        HELLO_INTRO: 'مرحبًا، أنا',
+        MY_NAME: 'إسلام كامل',
+        MY_TECH_STACK: 'أدواتي التقنية',
+        TECH_STACK_INTRO:
+            'كمطور Full-Stack، أتخصص في بناء تطبيقات الويب والجوال القوية باستخدام التقنيات الحديثة. تشمل أدواتي الأساسية Laravel، Livewire، Vue، Nuxt.js، وFlutter.',
     },
 };
 
