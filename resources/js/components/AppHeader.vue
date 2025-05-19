@@ -16,7 +16,7 @@ import { useLocale } from '@/composables/useLocale';
 import AuthDropdownMenu from '@/layouts/app/AuthDropdownMenu.vue';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { Home, Menu } from 'lucide-vue-next';
+import { Home, Menu, Zap } from 'lucide-vue-next';
 import { computed } from 'vue';
 import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
@@ -43,6 +43,11 @@ const mainNavItems: NavItem[] = [
         title: 'home',
         href: '/',
         icon: Home,
+    },
+    {
+        title: 'Skills',
+        href: '/skills',
+        icon: Zap,
     },
 ];
 
