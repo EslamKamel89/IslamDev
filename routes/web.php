@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Pages\HomeController;
+use App\Http\Controllers\Pages\ProjectsController;
 use App\Http\Controllers\Pages\SkillsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +11,7 @@ use Inertia\Inertia;
 // })->name('home');
 Route::get('/', HomeController::class)->name('home');
 Route::get('/skills', SkillsController::class);
+Route::get('/projects', ProjectsController::class);
 // Route::get('dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
