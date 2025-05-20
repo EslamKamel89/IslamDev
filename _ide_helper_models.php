@@ -15,13 +15,34 @@ namespace App\Models{
 /**
  * 
  *
- * @property-read \App\Models\SkillCategory|null $category
+ * @property int $id
+ * @property int $skill_category_id
+ * @property string $name
+ * @property string|null $slug
+ * @property string|null $emoji
+ * @property string|null $icon
+ * @property string|null $image
+ * @property int $proficiency
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\SkillCategory $category
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $descriptions
  * @property-read int|null $descriptions_count
  * @method static \Database\Factories\SkillFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereEmoji($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereProficiency($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSkillCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Skill extends \Eloquent {}
 }
@@ -30,6 +51,11 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $name
+ * @property string|null $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $descriptions
  * @property-read int|null $descriptions_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Skill> $skills
@@ -38,6 +64,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class SkillCategory extends \Eloquent {}
 }
@@ -46,11 +78,28 @@ namespace App\Models{
 /**
  * 
  *
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $model
+ * @property int $id
+ * @property string $locale
+ * @property string $model_type
+ * @property int $model_id
+ * @property string $key
+ * @property string|null $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read Model|\Eloquent $model
  * @method static \Database\Factories\TranslationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereLocale($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereModelType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Translation whereValue($value)
+ * @mixin \Eloquent
  */
 	class Translation extends \Eloquent {}
 }

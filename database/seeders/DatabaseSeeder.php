@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder {
             'name' => 'admin',
             'email' => 'admin@gmail.com',
         ]);
-        User::factory()->create([
-            'name' => 'selia',
-            'email' => 'selia@gmail.com',
+        $this->call([
+            SkillCategorySeeder::class,
+            SkillSeeder::class,
         ]);
     }
 }

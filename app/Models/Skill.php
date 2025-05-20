@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Observers\SkillObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $skill_category_id
@@ -39,6 +41,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereUpdatedAt($value)
  * @mixin \Eloquent
  */
+#[ObservedBy(SkillObserver::class)]
 class Skill extends Model {
     /** @use HasFactory<\Database\Factories\SkillFactory> */
     use HasFactory;
