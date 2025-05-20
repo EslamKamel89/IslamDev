@@ -61,6 +61,7 @@
 <script setup lang="ts">
 import ContactForm from '@/components/Contact/ContactForm.vue';
 import SocialLinks from '@/components/Contact/SocialLinks.vue';
+import Button from '@/components/ui/button/Button.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { ref } from 'vue';
 

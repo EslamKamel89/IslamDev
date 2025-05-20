@@ -2123,11 +2123,10 @@ namespace PHPSTORM_META {
 'tinker.alias','tinker.dont_alias',);
         registerArgumentsSet('middleware', 
 'web','api',);
-        registerArgumentsSet('routes', 'home','dashboard','profile.edit',
-'profile.update','profile.destroy','password.edit','password.update','appearance',
-'register','login','password.request',
-'password.email','password.reset','password.store','verification.notice','verification.verify',
-'verification.send','password.confirm','logout','storage.local',);
+        registerArgumentsSet('routes', 'home','profile.edit','profile.update','profile.destroy','password.edit',
+'password.update','appearance','register','login','password.request','password.email','password.reset','password.store',
+'verification.notice','verification.verify','verification.send','password.confirm',
+'logout','storage.local',);
         registerArgumentsSet('views', 
 'app','laravel-exceptions-renderer::components.card','laravel-exceptions-renderer::components.context','laravel-exceptions-renderer::components.editor','laravel-exceptions-renderer::components.header',
 'laravel-exceptions-renderer::components.icons.chevron-down','laravel-exceptions-renderer::components.icons.chevron-up','laravel-exceptions-renderer::components.icons.computer-desktop','laravel-exceptions-renderer::components.icons.moon','laravel-exceptions-renderer::components.icons.sun',

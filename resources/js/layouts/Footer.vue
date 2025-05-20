@@ -62,7 +62,7 @@
 
         <!-- Back to Top Button -->
         <div class="mt-8 flex justify-center">
-            <button
+            <Button
                 @click="scrollToTop"
                 class="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full p-2 shadow-md transition-colors"
                 aria-label="Scroll back to top"
@@ -80,12 +80,13 @@
                 >
                     <polyline points="18 15 12 9 6 15"></polyline>
                 </svg>
-            </button>
+            </Button>
         </div>
     </footer>
 </template>
 
 <script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue';
 import { ref } from 'vue';
 
 const logoUrl = ref('/logo.svg'); // You can change this path to your actual logo
