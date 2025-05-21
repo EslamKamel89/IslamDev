@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Frontend",
+        "slug": "1-frontend",
+        "description": [
+            {
+                "locale": "ar",
+                "key": "description",
+                "value": "أدوات تُستخدم في تطوير واجهات الويب."
+            },
+            {
+                "locale": "en",
+                "key": "description",
+                "value": "Tools used for client-side web development."
+            }
+        ],
+        "skills": [
+            {
+                "skill_category_id": 1,
+                "name": "Vue.js",
+                "slug": "1-vuejs",
+                "emoji": "🌀",
+                "icon": "logos:vue",
+                "image": null,
+                "proficiency": 90,
+                "description": [
+                    {
+                        "locale": "ar",
+                        "key": "description",
+                        "value": "إطار عمل جافا سكريبت تدريجي لبناء واجهات المستخدم"
+                    },
+                    {
+                        "locale": "en",
+                        "key": "description",
+                        "value": "Progressive JavaScript framework for building UIs"
+                    }
+                ]
+            }
+        ]
+    }
+]

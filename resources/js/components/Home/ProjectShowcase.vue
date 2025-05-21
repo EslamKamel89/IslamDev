@@ -28,7 +28,7 @@
             <!-- CTA -->
             <div class="mt-12 text-center">
                 <Button as-child variant="secondary" size="lg">
-                    <router-link to="/projects">View All Projects</router-link>
+                    <Link href="/projects">View All Projects</Link>
                 </Button>
             </div>
         </div>
@@ -36,10 +36,10 @@
 </template>
 
 <script setup lang="ts">
+import { Link } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import Button from '../ui/button/Button.vue';
 import ProjectCard from './ProjectCard.vue';
-
 export type Project = {
     id: number;
     title: string;

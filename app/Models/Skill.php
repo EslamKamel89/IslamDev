@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Observers\SkillObserver;
+use App\Traits\HasLoclaizedFields;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -44,7 +45,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 #[ObservedBy(SkillObserver::class)]
 class Skill extends Model {
     /** @use HasFactory<\Database\Factories\SkillFactory> */
-    use HasFactory;
+    use HasFactory, HasLoclaizedFields;
     protected $fillable = [
         "skill_category_id",
         "name",
@@ -57,7 +58,7 @@ class Skill extends Model {
     public function category(): BelongsTo {
         return $this->belongsTo(SkillCategory::class, 'skill_category_id');
     }
-    public function descriptions(): MorphMany {
+    public function description(): MorphMany {
         return $this->morphMany(Translation::class, 'model')
             ->where('key', 'description');
     }

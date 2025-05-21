@@ -43,6 +43,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
+ * @property-read int|null $description_count
  */
 	class Skill extends \Eloquent {}
 }
@@ -70,6 +72,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
+ * @property-read int|null $description_count
  */
 	class SkillCategory extends \Eloquent {}
 }

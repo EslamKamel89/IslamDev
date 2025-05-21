@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Observers\SkillCategoryObserver;
+use App\Traits\HasLoclaizedFields;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,7 +36,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 #[ObservedBy(SkillCategoryObserver::class)]
 class SkillCategory extends Model {
     /** @use HasFactory<\Database\Factories\SkillCategoryFactory> */
-    use HasFactory;
+    use HasFactory, HasLoclaizedFields;
     protected $fillable = [
         'name',
         'slug',
@@ -43,7 +44,7 @@ class SkillCategory extends Model {
     public function skills(): HasMany {
         return $this->hasMany(Skill::class);
     }
-    public function descriptions(): MorphMany {
+    public function description(): MorphMany {
         return $this->morphMany(Translation::class, 'model')
             ->where('key', 'description');
     }

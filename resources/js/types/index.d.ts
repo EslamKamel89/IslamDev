@@ -1,6 +1,7 @@
 import type { PageProps } from '@inertiajs/core';
 import type { LucideIcon } from 'lucide-vue-next';
 import type { Config } from 'ziggy-js';
+import { Category } from './custom';
 
 export interface Auth {
     user: User;
@@ -24,6 +25,7 @@ export interface SharedData extends PageProps {
     auth: Auth;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
+    categories: Category[];
 }
 
 export interface User {

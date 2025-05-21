@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useLocale } from '@/composables/useLocale';
 import { useI18n } from 'vue-i18n';
+import Button from '../ui/button/Button.vue';
 import SkillsSection from './SkillsSection.vue';
 
 const { locale } = useI18n();
