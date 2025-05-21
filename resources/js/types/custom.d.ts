@@ -2,11 +2,11 @@ export interface Category {
     id: number;
     name: string;
     slug: string;
-    description: Description[];
+    description: Localization[];
     skills: Skill[];
 }
 
-export interface Description {
+export interface Localization {
     locale: string;
     key: string;
     value: string;
@@ -21,4 +21,5 @@ export interface Skill {
     icon: string;
     image: any;
     proficiency: number;
+    description: Localization[];
 }
