@@ -1,9 +1,18 @@
+<script setup lang="ts">
+import { Skill } from '@/types/custom';
+import { defineProps } from 'vue';
+
+defineProps<{
+    skill: Skill;
+}>();
+</script>
+
 <template>
     <div class="group hover:bg-accent flex items-center gap-3 rounded-lg p-2 transition-colors">
         <!-- Emoji or Icon -->
         <div class="text-xl">
-            <span v-if="!icon">{{ skill.emoji }}</span>
-            <i v-else :data-icon="icon" class="inline-block align-middle text-xl"></i>
+            <span v-if="true">{{ skill.emoji }}</span>
+            <i v-else :data-icon="skill.icon" class="inline-block align-middle text-xl"></i>
         </div>
 
         <!-- Skill Name and Progress -->
@@ -16,16 +25,3 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import { defineProps } from 'vue';
-
-defineProps<{
-    skill: {
-        name: string;
-        emoji: string;
-        proficiency: number;
-    };
-    icon?: string;
-}>();
-</script>
