@@ -12,7 +12,7 @@ defineProps<{
                 <slot />
             </TooltipTrigger>
             <TooltipContent>
-                <p>{{ description }}</p>
+                <p class="max-w-sm text-center leading-loose text-white">{{ description }}</p>
             </TooltipContent>
         </Tooltip>
     </TooltipProvider>
