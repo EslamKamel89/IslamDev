@@ -15,6 +15,24 @@ namespace App\Models{
 /**
  * 
  *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
+ * @property-read int|null $description_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $features
+ * @property-read int|null $features_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Skill> $skills
+ * @property-read int|null $skills_count
+ * @method static \Database\Factories\ProjectFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project query()
+ */
+	class Project extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property int $skill_category_id
  * @property string $name
@@ -45,6 +63,8 @@ namespace App\Models{
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
  * @property-read int|null $description_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $projects
+ * @property-read int|null $projects_count
  */
 	class Skill extends \Eloquent {}
 }

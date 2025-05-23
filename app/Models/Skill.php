@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property int $skill_category_id
@@ -40,6 +41,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSkillCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
+ * @property-read int|null $description_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $projects
+ * @property-read int|null $projects_count
  * @mixin \Eloquent
  */
 #[ObservedBy(SkillObserver::class)]
@@ -61,5 +66,13 @@ class Skill extends Model {
     public function description(): MorphMany {
         return $this->morphMany(Translation::class, 'model')
             ->where('key', 'description');
+    }
+    public function projects(): BelongsToMany {
+        return $this->belongsToMany(
+            Project::class,
+            'project_skill',
+            'skill_id',
+            'project_id',
+        );
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('model_type');
             $table->unsignedBigInteger('model_id');
             $table->string('key');
-            $table->text('value')->nullable();
+            $table->longText('value')->nullable();
             $table->timestamps();
             $table->unique(['model_type', 'model_id', 'key', 'locale']);
         });

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $name
@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
+ * @property-read int|null $description_count
  * @mixin \Eloquent
  */
 #[ObservedBy(SkillCategoryObserver::class)]
