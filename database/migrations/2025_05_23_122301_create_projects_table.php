@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->boolean('is_featured')->default(false);
             $table->unsignedInteger('order')->default(0);
             $table->enum('status', ['draft', 'published'])->default('published');
+            $table->json('images')->default(json_encode([]));
+            $table->json('videos')->default(json_encode([]));
             $table->timestamps();
         });
     }

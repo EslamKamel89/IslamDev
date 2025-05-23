@@ -15,6 +15,19 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $title
+ * @property string|null $slug
+ * @property string|null $thumbnail
+ * @property string|null $live_url
+ * @property string|null $github_url
+ * @property string|null $start_date
+ * @property string|null $end_date
+ * @property int $is_featured
+ * @property int $order
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
  * @property-read int|null $description_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $features
@@ -25,6 +38,20 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereGithubUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereIsFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereLiveUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Project extends \Eloquent {}
 }
@@ -60,11 +87,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSkillCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Skill whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
  * @property-read int|null $description_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Project> $projects
  * @property-read int|null $projects_count
+ * @mixin \Eloquent
  */
 	class Skill extends \Eloquent {}
 }
@@ -91,9 +118,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SkillCategory whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $description
  * @property-read int|null $description_count
+ * @mixin \Eloquent
  */
 	class SkillCategory extends \Eloquent {}
 }

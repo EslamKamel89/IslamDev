@@ -49,6 +49,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereUpdatedAt($value)
+ * @property string $images
+ * @property string $videos
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereImages($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereVideos($value)
  * @mixin \Eloquent
  */
 class Project extends Model {
@@ -66,6 +70,8 @@ class Project extends Model {
         "is_featured",
         "order",
         "status",
+        'videos',
+        'images'
     ];
     public function description(): MorphMany {
         return $this->morphMany(Translation::class, 'model')
