@@ -1,41 +1,36 @@
-[
-    {
-        "name": "Frontend",
-        "slug": "1-frontend",
-        "description": [
-            {
-                "locale": "ar",
-                "key": "description",
-                "value": "أدوات تُستخدم في تطوير واجهات الويب."
-            },
-            {
-                "locale": "en",
-                "key": "description",
-                "value": "Tools used for client-side web development."
-            }
+{
+    "id": 1,
+    "title": "Vue E-commerce Dashboard",
+    "thumbnail": "/img/project1.jpg",
+    "description": {
+        "en": "...",
+        "ar": "..."
+    },
+    "features": {
+        "en": [
+            "...",
+            "...",
+            "..."
         ],
-        "skills": [
-            {
-                "skill_category_id": 1,
-                "name": "Vue.js",
-                "slug": "1-vuejs",
-                "emoji": "🌀",
-                "icon": "logos:vue",
-                "image": null,
-                "proficiency": 90,
-                "description": [
-                    {
-                        "locale": "ar",
-                        "key": "description",
-                        "value": "إطار عمل جافا سكريبت تدريجي لبناء واجهات المستخدم"
-                    },
-                    {
-                        "locale": "en",
-                        "key": "description",
-                        "value": "Progressive JavaScript framework for building UIs"
-                    }
-                ]
-            }
+        "ar": [
+            "...",
+            "...",
+            "..."
         ]
-    }
-]
+    },
+    "skills": [
+        {
+            "id": 1
+        },
+        {
+            "id": 4
+        }
+    ],
+    "images": [
+        "/img/1.jpg",
+        "/img/2.jpg"
+    ],
+    "videos": [
+        "https://youtube.com/watch?v=... "
+    ]
+}

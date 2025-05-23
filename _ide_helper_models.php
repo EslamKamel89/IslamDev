@@ -51,6 +51,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereUpdatedAt($value)
+ * @property string $images
+ * @property string $videos
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereImages($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereVideos($value)
  * @mixin \Eloquent
  */
 	class Project extends \Eloquent {}

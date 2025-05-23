@@ -62,7 +62,6 @@ class Project extends Model {
         "title",
         "slug",
         "thumbnail",
-        "thumbnail",
         "live_url",
         "github_url",
         "start_date",
