@@ -16,68 +16,115 @@ class ProjectSeeder extends Seeder {
             [
                 'title' => 'DevTalk a blog build by programmers to programmers',
                 // 'slug' => 'vue-ecommerce-dashboard',
-                'thumbnail' => '/img/project1.jpg',
-                'live_url' => 'https://demo.ecommerce.islamdev.com ',
-                'github_url' => 'https://github.com/eslamkamel89/vue-ecommerce-dashboard ',
-                'start_date' => '2024-03-01',
-                'end_date' => '2024-06-15',
+                'thumbnail' => '/storage/projects/devtalk_thumbnail.png',
+                'live_url' => 'https://devtalk.islamdev.com/',
+                'github_url' => 'https://github.com/EslamKamel89/DevTalk',
+                'start_date' => '17-04-2025',
+                'end_date' => '15-04-2025',
                 'is_featured' => true,
                 'order' => 1,
                 'status' => 'published',
-                'images' => ["/img/1.jpg", "/img/2.jpg"],
-                'videos' => ["https://youtube.com/watch?v=... "],
+                'images' => [
+                    "/storage/projects/devtalk_01.png",
+                    "/storage/projects/devtalk_02.png",
+                    "/storage/projects/devtalk_03.png",
+                    "/storage/projects/devtalk_04.png",
+                    "/storage/projects/devtalk_05.png",
+                ],
+                // 'videos' => ["https://youtube.com/watch?v=... "],
                 'description' => [
-                    'en' => 'A Vue-based admin panel integrated with Laravel backend.',
-                    'ar' => 'لوحة تحكم مبنية على فيو ومدمجة مع لارافل من الخلفية.'
+                    'en' => 'A powerful blog platform built with VILTS stack and shadcn-vue UI components. Designed for developers and writers who want a modern, customizable, and responsive discussion experience.',
+                    'ar' => 'منصة مدونات قوية مبنية على تكنولوجيا VILTS ومرفقة بواجهة shadcn-vue. صُمّمت لكُتّاب المحتوى والمطورين الذين يبحثون عن تجربة حديثة وقابلة للتخصيص في إدارة النقاشات.'
                 ],
                 'features' => [
                     'en' => [
-                        'Role-based access control',
-                        'Real-time data visualization',
-                        'Multi-language support'
+                        'Built using the VILTS stack for high performance and full-stack capabilities',
+                        'Modern UI powered by shadcn-vue components and Tailwind CSS',
+                        'Filter discussions by: All, Popular, No Replies, My Discussions, Participating, or Topics',
+                        'Beautiful drawer-style editor with Markdown support and live preview for new discussions',
+                        'Jump to last reply with deep linking and auto-scroll to exact position on page',
+                        'Pinned posts appear first, followed by most recently updated discussions',
+                        'User avatars displayed in discussion cards for better identity recognition',
+                        'Authenticated users can comment and reply to any discussion'
                     ],
                     'ar' => [
-                        'نظام تحكم بالوصول حسب الدور',
-                        'عرض بيانات زمنية حقيقية',
-                        'دعم متعدد اللغات'
+                        'تم بناء التطبيق باستخدام تكنولوجيا VILTS لضمان الأداء العالي والتكامل الكامل',
+                        'واجهة حديثة ومريحة باستخدام مكونات shadcn-vue وتايلويند سي إس إس',
+                        'يمكنك تصفية النقاشات حسب: الكل، الأكثر شيوعًا، بدون ردود، مناقشاتي، المشاركون، أو المواضيع',
+                        'محرر نقاش جميل مع دعم تنسيق Markdown ومعاينة مباشرة أثناء الكتابة',
+                        'التنقل الفوري إلى آخر رد مع ربط مباشر وتحريك الشاشة للوصول إليه بدقة',
+                        'المنشورات المثبتة تظهر أولاً، يتبعها أحدث المناقشات نشاطًا',
+                        'صور المستخدم تظهر في بطاقات المناقشات التي شاركت فيها',
+                        'يمكن للمستخدمين المسجلين إرسال تعليقات وإضافة ردود على أي مناقشة'
                     ]
                 ],
-                'skills' => [1, 4] // skill IDs (e.g., Vue.js, Laravel)
+                'skills' => [1, 3, 4, 6, 11]
             ],
             [
-                'title' => 'Vue E-commerce Dashboard',
+                'title' => 'VoltZone E-commerce website',
                 // 'slug' => 'vue-ecommerce-dashboard',
-                'thumbnail' => '/img/project1.jpg',
-                'live_url' => 'https://demo.ecommerce.islamdev.com ',
-                'github_url' => 'https://github.com/eslamkamel89/vue-ecommerce-dashboard ',
-                'start_date' => '2024-03-01',
-                'end_date' => '2024-06-15',
+                'thumbnail' => '/storage/projects/voltzone_thumbnail.png',
+                // 'live_url' => 'https://demo.ecommerce.islamdev.com ',
+                'github_url' => 'https://github.com/EslamKamel89/VoltZone',
+                'start_date' => '07-04-2025',
+                // 'end_date' => '2024-06-15',
                 'is_featured' => true,
-                'order' => 1,
-                'status' => 'published',
-                'images' => ["/img/1.jpg", "/img/2.jpg"],
-                'videos' => ["https://youtube.com/watch?v=... "],
+                'order' => 2,
+                'status' => 'draft',
+                'images' => [
+                    "/storage/projects/voltzone_01.png",
+                    "/storage/projects/voltzone_02.png",
+                    "/storage/projects/voltzone_03.png",
+                    "/storage/projects/voltzone_04.png",
+                    "/storage/projects/voltzone_05.png",
+                    "/storage/projects/voltzone_06.png",
+                    "/storage/projects/voltzone_07.png",
+                    "/storage/projects/voltzone_08.png",
+                    "/storage/projects/voltzone_09.png",
+                    "/storage/projects/voltzone_10.png",
+                    "/storage/projects/voltzone_11.png",
+                    "/storage/projects/voltzone_12.png",
+                    "/storage/projects/voltzone_13.png",
+                    "/storage/projects/voltzone_14.png",
+                    "/storage/projects/voltzone_15.png",
+                    "/storage/projects/voltzone_16.png",
+                    "/storage/projects/voltzone_17.png",
+                    "/storage/projects/voltzone_18.png",
+                    "/storage/projects/voltzone_19.png",
+                ],
+                // 'videos' => ["https://youtube.com/watch?v=... "],
                 'description' => [
-                    'en' => 'A Vue-based admin panel integrated with Laravel backend.',
-                    'ar' => 'لوحة تحكم مبنية على فيو ومدمجة مع لارافل من الخلفية.'
+                    'en' => 'A modern e-commerce platform built with the TALL stack, featuring Flux UI components and Livewire Volt for a fast, responsive admin experience. Integrated with Stripe for secure payments and powered by FilamentPHP for professional dashboard management.',
+                    'ar' => 'منصة تجارة إلكترونية حديثة مبنية على تكنولوجيا TALL، مع استخدام مكونات Flux UI ومحرك لارافل ليف واير فولت لإدارة الأداء والواجهة بسلاسة. تدعم الدفع عبر Stripe وتستخدم منصة FilamentPHP لإدارة لوحة التحكم الاحترافية.'
                 ],
                 'features' => [
                     'en' => [
-                        'Role-based access control',
-                        'Real-time data visualization',
-                        'Multi-language support'
+                        'Built using the latest TALL Stack (Tailwind CSS, Alpine.js, Laravel, Livewire)',
+                        'Uses Livewire Volt API for faster development and smoother interactions',
+                        'Modern and responsive UI powered by official Flux UI component library',
+                        'Fully integrated with Stripe for secure online payment processing',
+                        'Admin dashboard built with FilamentPHP – powerful, extensible, and beautiful',
+                        'Product catalog, cart, checkout, and order tracking system',
+                        'Live search and filtering with instant updates via Livewire',
+                        'User-friendly interface with accessibility and RTL support'
                     ],
                     'ar' => [
-                        'نظام تحكم بالوصول حسب الدور',
-                        'عرض بيانات زمنية حقيقية',
-                        'دعم متعدد اللغات'
+                        'تم بناء التطبيق باستخدام تكنولوجيا TALL Stack (تايلويند سي إس إس، ألبين جي إس، لارافل، ليف واير)',
+                        'استخدام محرك ليف واير فولت للتطوير السريع وتجربة تفاعلية أكثر سلاسة',
+                        'واجهة مستخدم عصرية ومستجيبة باستخدام مكتبة مكونات Flux الرسمية',
+                        'دمج كامل مع Stripe لمعالجة المدفوعات بأمان',
+                        'لوحة تحكم إدارية مبنية على FilamentPHP – قوية، قابلة للتوسيع، وجذابة بصريًا',
+                        'نظام كتالوج المنتجات، السلة، الدفع، ومتابعة الطلبات',
+                        'بحث وفلترة مباشر مع تحديثات فورية عبر ليف واير',
+                        'واجهة مرنة وسهلة الاستخدام مع دعم كامل للغات العربية (RTL) والإمكانية'
                     ]
                 ],
-                'skills' => [1, 4] // skill IDs (e.g., Vue.js, Laravel)
+                'skills' => [3, 4, 5, 6, 11]
             ],
 
         ];
         foreach ($projects as $i => $projectData) {
+            /** @var Project $project */
             $project =    Project::create([
                 "title" => $projectData['title'],
                 // "slug" => $projectData['slug'],
@@ -89,8 +136,8 @@ class ProjectSeeder extends Seeder {
                 "is_featured" => $projectData['is_featured'],
                 "order" => $projectData['order'],
                 "status" => $projectData['status'],
-                'videos' => json_encode($projectData['videos']),
-                'images' => json_encode($projectData['images'])
+                'videos' => json_encode($projectData['videos'] ?? []),
+                'images' => json_encode($projectData['images'] ?? [])
             ]);
             foreach (['description', 'features'] as $key) {
                 foreach (['ar', 'en'] as $locale) {
@@ -103,6 +150,7 @@ class ProjectSeeder extends Seeder {
                     ]);
                 }
             }
+            $project->skills()->sync($projectData['skills']);
         }
     }
 }

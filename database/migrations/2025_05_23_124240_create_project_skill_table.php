@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('project_id')->constrained()->cascadeOnDelete();
             $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
-            $table->unique(['project_id ', 'skill_id']);
+            // $table->unique(['project_id ', 'skill_id']);
         });
     }
 

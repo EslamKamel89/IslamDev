@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\SkillCategory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +22,8 @@ class SkillResource extends JsonResource {
             "icon" => $this->icon,
             "image" => $this->image,
             "proficiency" => $this->proficiency,
-            'description' => LocalizationResource::collection($this->whenLoaded('description'))
+            'description' => LocalizationResource::collection($this->whenLoaded('description')),
+            'category' => SkillCategoryResource::make($this->whenLoaded('category')),
         ];
     }
 }

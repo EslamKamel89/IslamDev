@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Observers\SkillObserver;
 use App\Traits\HasLoclaizedFields;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $skill_category_id
@@ -60,6 +61,11 @@ class Skill extends Model {
         "image",
         "proficiency",
     ];
+    protected static function booted(): void {
+        static::addGlobalScope('localization', function (Builder $builder) {
+            $builder->with(['description']);
+        });
+    }
     public function category(): BelongsTo {
         return $this->belongsTo(SkillCategory::class, 'skill_category_id');
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Observers\ProjectObserver;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 #[ObservedBy(ProjectObserver::class)]
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $title
@@ -72,6 +73,11 @@ class Project extends Model {
         'videos',
         'images'
     ];
+    protected static function booted(): void {
+        static::addGlobalScope('localization', function (Builder $builder) {
+            $builder->with(['description', 'features']);
+        });
+    }
     public function description(): MorphMany {
         return $this->morphMany(Translation::class, 'model')
             ->where('key', 'description');
