@@ -31,20 +31,26 @@ const handlePrevImage = () => {
         selectedImageIndex.value = images.value.length - 1;
     }
 };
+const handleMouseEnter = () => {
+    // showFullImage.value = fixFullHeight.value || true
+};
+const handleMouseLeave = () => {
+    // showFullImage.value = fixFullHeight.value || false;
+};
 const fixFullHeight = ref(false);
 </script>
 <template>
     <div
         class="group bg-card relative transform overflow-hidden rounded-lg border p-4 pt-16 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
-        <div class="relative" @mouseenter="showFullImage = fixFullHeight || true" @mouseleave="showFullImage = fixFullHeight || false">
+        <div class="relative" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <img
                 :src="images[selectedImageIndex]"
                 :alt="project.title"
                 class="mb-4 w-full rounded object-cover transition-all duration-700"
                 :class="{
-                    'h-40': !showFullImage,
-                    'shadow-primary mt-5 mb-10 rounded-lg border shadow-2xl': showFullImage,
+                    'h-40': !fixFullHeight,
+                    'shadow-primary mt-5 mb-10 rounded-lg border shadow-2xl': fixFullHeight,
                 }"
             />
             <div class="absolute inset-x-0 -top-10">
