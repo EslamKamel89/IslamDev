@@ -34,7 +34,7 @@ class ProjectSeeder extends Seeder {
                 // 'videos' => ["https://youtube.com/watch?v=... "],
                 'description' => [
                     'en' => 'A powerful blog platform built with VILTS stack and shadcn-vue UI components. Designed for developers and writers who want a modern, customizable, and responsive discussion experience.',
-                    'ar' => 'منصة مدونات قوية مبنية على تكنولوجيا VILTS ومرفقة بواجهة shadcn-vue. صُمّمت لكُتّاب المحتوى والمطورين الذين يبحثون عن تجربة حديثة وقابلة للتخصيص في إدارة النقاشات.'
+                    'ar' => " منصة مدونات قوية مبنية على تكنولوجيا VILTS ومرفقة بواجهة shadcn-vue. صُمّمت لكُتّاب المحتوى والمطورين الذين يبحثون عن تجربة حديثة وقابلة للتخصيص في إدارة النقاشات.",
                 ],
                 'features' => [
                     'en' => [
@@ -95,7 +95,7 @@ class ProjectSeeder extends Seeder {
                 // 'videos' => ["https://youtube.com/watch?v=... "],
                 'description' => [
                     'en' => 'A modern e-commerce platform built with the TALL stack, featuring Flux UI components and Livewire Volt for a fast, responsive admin experience. Integrated with Stripe for secure payments and powered by FilamentPHP for professional dashboard management.',
-                    'ar' => 'منصة تجارة إلكترونية حديثة مبنية على تكنولوجيا TALL، مع استخدام مكونات Flux UI ومحرك لارافل ليف واير فولت لإدارة الأداء والواجهة بسلاسة. تدعم الدفع عبر Stripe وتستخدم منصة FilamentPHP لإدارة لوحة التحكم الاحترافية.'
+                    'ar' => "منصة تجارة إلكترونية حديثة مبنية على تكنولوجيا TALL، مع استخدام مكونات Flux UI ومحرك لارافل ليف واير فولت لإدارة الأداء والواجهة بسلاسة. تدعم الدفع عبر Stripe وتستخدم منصة FilamentPHP لإدارة لوحة التحكم الاحترافية."
                 ],
                 'features' => [
                     'en' => [
@@ -146,7 +146,7 @@ class ProjectSeeder extends Seeder {
                         "model_id" => $project->id,
                         "locale" => $locale,
                         "key" => $key,
-                        "value" => json_encode($projectData[$key][$locale]),
+                        "value" => $key == 'features' ? json_encode($projectData[$key][$locale]) : $projectData[$key][$locale],
                     ]);
                 }
             }

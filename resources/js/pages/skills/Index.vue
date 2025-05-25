@@ -19,7 +19,7 @@ const categories = computed(() => {
 
             <!-- Categories -->
             <div class="space-y-12">
-                <SkillCategoryCard v-for="category in categories" :key="category.id" :title="category.name" :skills="category.skills" />
+                <SkillCategoryCard v-for="category in categories" :key="category.id" :title="category.name" :skills="category.skills ?? []" />
             </div>
         </section>
     </AppLayout>
