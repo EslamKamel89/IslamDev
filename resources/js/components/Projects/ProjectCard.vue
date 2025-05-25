@@ -3,6 +3,7 @@ import { useLocale } from '@/composables/useLocale';
 import { Project } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
 import { getRandomIcon } from '@/utils/randomIcon';
+import { Maximize2, Minimize2, StepBack, StepForward } from 'lucide-vue-next';
 import { computed, defineProps, ref } from 'vue';
 import SkillBadge from '../Shared/SkillBadge.vue';
 import Button from '../ui/button/Button.vue';
@@ -14,27 +15,74 @@ const features = computed(() => {
     return JSON.parse(getLocalization(props.project.features, locale.value)) as string[];
 });
 const showFullImage = ref(false);
+const images = computed<string[]>(() => {
+    return [props.project.thumbnail, ...props.project.images];
+});
+const selectedImageIndex = ref(0);
+const handleNextImage = () => {
+    selectedImageIndex.value++;
+    if (selectedImageIndex.value >= images.value.length) {
+        selectedImageIndex.value = 0;
+    }
+};
+const handlePrevImage = () => {
+    selectedImageIndex.value--;
+    if (selectedImageIndex.value <= 0) {
+        selectedImageIndex.value = images.value.length - 1;
+    }
+};
+const fixFullHeight = ref(false);
 </script>
 <template>
     <div
-        class="group bg-card relative transform overflow-hidden rounded-lg border p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+        class="group bg-card relative transform overflow-hidden rounded-lg border p-4 pt-16 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
-        <img
-            @mouseenter="showFullImage = true"
-            @mouseleave="showFullImage = false"
-            :src="project.thumbnail"
-            :alt="project.title"
-            class="mb-4 w-full rounded object-cover transition-all duration-700"
-            :class="{
-                'h-40': !showFullImage,
-                'shadow-primary mt-5 mb-10 scale-105 rounded-lg border shadow-2xl': showFullImage,
-            }"
-        />
+        <div class="relative" @mouseenter="showFullImage = fixFullHeight || true" @mouseleave="showFullImage = fixFullHeight || false">
+            <img
+                :src="images[selectedImageIndex]"
+                :alt="project.title"
+                class="mb-4 w-full rounded object-cover transition-all duration-700"
+                :class="{
+                    'h-40': !showFullImage,
+                    'shadow-primary mt-5 mb-10 rounded-lg border shadow-2xl': showFullImage,
+                }"
+            />
+            <div class="absolute inset-x-0 -top-10">
+                <div class="flex w-full justify-start">
+                    <component
+                        :is="fixFullHeight ? Minimize2 : Maximize2"
+                        class="h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
+                        :class="{
+                            'bg-primary shadow-primary scale-105 shadow-lg': fixFullHeight,
+                            'bg-primary/60': !fixFullHeight,
+                        }"
+                        @click="fixFullHeight = !fixFullHeight"
+                    />
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-16">
+                <div class="flex w-full justify-between">
+                    <StepBack
+                        class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                        @click="handlePrevImage"
+                    />
+                    <StepForward
+                        class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                        @click="handleNextImage"
+                    />
+                </div>
+            </div>
+        </div>
         <h3 class="mb-2 text-xl font-bold">{{ project.title }}</h3>
         <p class="mb-4 text-gray-800 dark:text-gray-100">{{ getLocalization(project.description, locale) }}</p>
+
         <ul class="my-4 space-y-2">
-            <li v-for="feature in features" :key="feature" class="text-muted-foreground flex items-center space-x-2 text-sm">
-                <component :is="getRandomIcon()" class="text-primary border-primary h-6 w-6" />
+            <li
+                v-for="feature in features"
+                :key="feature"
+                class="text-muted-foreground hover:bg-primary flex w-fit cursor-pointer items-center space-x-2 rounded-lg px-2 py-1 text-sm transition-all duration-700 hover:py-4 hover:!text-white"
+            >
+                <component :is="getRandomIcon()" class="border-primary h-6 w-6" />
                 <div>{{ feature }}</div>
             </li>
         </ul>

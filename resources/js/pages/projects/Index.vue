@@ -4,7 +4,7 @@ import Button from '@/components/ui/button/Button.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { SharedData } from '@/types';
 import { Category, Project } from '@/types/custom';
-import { Link, usePage } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 
 const { projects, categories } = usePage<SharedData & { projects: Project[] }>().props;
@@ -38,17 +38,11 @@ const filteredProjects = computed(() => {
                         {{ category.name }}
                     </Button>
                 </div>
-                <div class="grid grid-cols-1 gap-6 lg:grid-cols-2" v-if="filteredProjects.length">
+                <div class="grid grid-cols-1 gap-6" v-if="filteredProjects.length">
                     <ProjectCard v-for="project in filteredProjects" :key="project.id" :project="project" />
                 </div>
                 <div v-else>
                     <div class="text-muted-foreground text-center text-sm">There are no projects yet</div>
-                </div>
-
-                <div class="mt-12 text-center">
-                    <Button as-child variant="secondary" size="lg">
-                        <Link href="/projects"> View All Projects </Link>
-                    </Button>
                 </div>
             </div>
         </section>

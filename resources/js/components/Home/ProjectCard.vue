@@ -2,7 +2,6 @@
 import { useLocale } from '@/composables/useLocale';
 import { Project } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
-import { getRandomIcon } from '@/utils/randomIcon';
 import { computed, defineProps, ref } from 'vue';
 import SkillBadge from '../Shared/SkillBadge.vue';
 import Button from '../ui/button/Button.vue';
@@ -32,12 +31,14 @@ const showFullImage = ref(false);
         />
         <h3 class="mb-2 text-xl font-bold">{{ project.title }}</h3>
         <p class="mb-4 text-gray-800 dark:text-gray-100">{{ getLocalization(project.description, locale) }}</p>
-        <ul class="my-4 space-y-2">
-            <li v-for="feature in features" :key="feature" class="text-muted-foreground flex items-center space-x-2 text-sm">
-                <component :is="getRandomIcon()" class="text-primary border-primary h-6 w-6" />
-                <div>{{ feature }}</div>
-            </li>
-        </ul>
+        <!--
+            <ul class="my-4 space-y-2">
+                <li v-for="feature in features" :key="feature" class="flex items-center space-x-2 text-sm text-muted-foreground">
+                    <component :is="getRandomIcon()" class="w-6 h-6 text-primary border-primary" />
+                    <div>{{ feature }}</div>
+                </li>
+            </ul>
+        -->
         <div class="mb-4 flex flex-wrap gap-2">
             <span v-for="skill in project.skills" :key="skill.id">
                 <SkillBadge :skill="skill" />
