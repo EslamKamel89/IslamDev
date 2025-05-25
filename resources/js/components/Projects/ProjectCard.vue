@@ -47,14 +47,14 @@ const fixFullHeight = ref(false);
             <img
                 :src="images[selectedImageIndex]"
                 :alt="project.title"
-                class="mb-4 w-full rounded object-cover transition-all duration-700"
+                class="mb-4 w-full rounded-lg object-cover transition-all duration-700"
                 :class="{
                     'h-40': !fixFullHeight,
-                    'shadow-primary mt-5 mb-10 rounded-lg border shadow-2xl': fixFullHeight,
+                    'shadow-primary mt-5 mb-10 border shadow-2xl': fixFullHeight,
                 }"
             />
             <div class="absolute inset-x-0 -top-10">
-                <div class="flex w-full justify-start">
+                <div class="flex h-full w-full items-center justify-start">
                     <component
                         :is="fixFullHeight ? Minimize2 : Maximize2"
                         class="h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
@@ -66,16 +66,24 @@ const fixFullHeight = ref(false);
                     />
                 </div>
             </div>
-            <div class="absolute inset-x-0 top-16">
-                <div class="flex w-full justify-between">
-                    <StepBack
-                        class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+            <div class="absolute inset-x-0 inset-y-0">
+                <div class="flex h-full w-full items-center justify-between">
+                    <div
+                        class="bg-primary/10 hover:bg-primary/30 flex h-full cursor-pointer items-center justify-center rounded-s-lg px-1 transition-all duration-700"
                         @click="handlePrevImage"
-                    />
-                    <StepForward
-                        class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                    >
+                        <StepBack
+                            class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                        />
+                    </div>
+                    <div
+                        class="bg-primary/5 hover:bg-primary/30 flex h-full cursor-pointer items-center justify-center rounded-e-lg px-1 transition-all duration-700"
                         @click="handleNextImage"
-                    />
+                    >
+                        <StepForward
+                            class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
