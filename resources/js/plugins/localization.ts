@@ -31,6 +31,10 @@ const messages = {
         MY_TECH_STACK: 'My Tech Stack',
         TECH_STACK_INTRO:
             'As a Full-Stack Developer, I specialize in building robust web and mobile applications using modern technologies. My core stack includes Laravel, Livewire, Vue, Nuxt.js, and Flutter.',
+        EXPLORE_PROJECTS: 'Explore some of my featured worK',
+        VIEW_ALL_PROJECTS: 'View All Projects',
+        CLIENT_FEEDBACK: 'Client Feedback',
+        WHAT_PEOPLE_SAY: 'What people say about working with me',
     },
     ar: {
         greeting: 'مرحبا',
@@ -63,6 +67,10 @@ const messages = {
         MY_TECH_STACK: 'أدواتي التقنية',
         TECH_STACK_INTRO:
             'كمطور Full-Stack، أتخصص في بناء تطبيقات الويب والجوال القوية باستخدام التقنيات الحديثة. تشمل أدواتي الأساسية Laravel، Livewire، Vue، Nuxt.js، وFlutter.',
+        EXPLORE_PROJECTS: 'استكشف بعضًا من أعمالي المميزة',
+        VIEW_ALL_PROJECTS: 'عرض جميع المشاريع',
+        CLIENT_FEEDBACK: 'تعليقات العملاء',
+        WHAT_PEOPLE_SAY: 'ما يقوله الناس عن العمل معي',
     },
 };
 

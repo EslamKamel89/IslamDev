@@ -14,7 +14,6 @@ class ProjectResource extends JsonResource {
     public function toArray(Request $request): array {
         return [
             "id" => $this->id,
-            "title" => $this->title,
             "slug" => $this->slug,
             "thumbnail" => $this->thumbnail,
             "live_url" => $this->live_url,
@@ -26,6 +25,7 @@ class ProjectResource extends JsonResource {
             "status" => $this->status,
             'videos' => $this->videos ? json_decode($this->videos) : [],
             'images' => $this->images ? json_decode($this->images) : [],
+            "title" =>  LocalizationResource::collection($this->whenLoaded('title')),
             'description' => LocalizationResource::collection($this->whenLoaded('description')),
             'features' => LocalizationResource::collection($this->whenLoaded('features')),
             'skills' => SkillResource::collection($this->whenLoaded('skills')),

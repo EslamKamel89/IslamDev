@@ -22,14 +22,14 @@ const showFullImage = ref(false);
             @mouseenter="showFullImage = true"
             @mouseleave="showFullImage = false"
             :src="project.thumbnail"
-            :alt="project.title"
+            alt="project image"
             class="mb-4 w-full rounded object-cover transition-all duration-700"
             :class="{
                 'h-40': !showFullImage,
                 'shadow-primary mt-5 mb-10 scale-105 rounded-lg border shadow-2xl': showFullImage,
             }"
         />
-        <h3 class="mb-2 text-xl font-bold">{{ project.title }}</h3>
+        <h3 class="mb-2 text-lg font-bold">{{ getLocalization(project.title, locale) }}</h3>
         <p class="mb-4 text-gray-800 dark:text-gray-100">{{ getLocalization(project.description, locale) }}</p>
         <!--
             <ul class="my-4 space-y-2">

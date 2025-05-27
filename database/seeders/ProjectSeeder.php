@@ -14,7 +14,7 @@ class ProjectSeeder extends Seeder {
     public function run(): void {
         $projects = [
             [
-                'title' => 'DevTalk a blog build by programmers to programmers',
+                // 'title' => 'DevTalk a blog build by programmers to programmers',
                 // 'slug' => 'vue-ecommerce-dashboard',
                 'thumbnail' => '/storage/projects/devtalk_thumbnail.png',
                 'live_url' => 'https://devtalk.islamdev.com/',
@@ -32,6 +32,10 @@ class ProjectSeeder extends Seeder {
                     "/storage/projects/devtalk_05.png",
                 ],
                 // 'videos' => ["https://youtube.com/watch?v=... "],
+                'title' => [
+                    'en' => 'DevTalk – A Developer-Centric Blog Built by Programmers, for Programmers',
+                    'ar' => 'ديف توك – منصة مدونات موجهة للمطورين، بُنيت على يد مبرمجين، لمجتمع المبرمجين'
+                ],
                 'description' => [
                     'en' => 'A powerful blog platform built with VILTS stack and shadcn-vue UI components. Designed for developers and writers who want a modern, customizable, and responsive discussion experience.',
                     'ar' => " منصة مدونات قوية مبنية على تكنولوجيا VILTS ومرفقة بواجهة shadcn-vue. صُمّمت لكُتّاب المحتوى والمطورين الذين يبحثون عن تجربة حديثة وقابلة للتخصيص في إدارة النقاشات.",
@@ -61,7 +65,7 @@ class ProjectSeeder extends Seeder {
                 'skills' => [1, 3, 4, 6, 11]
             ],
             [
-                'title' => 'VoltZone E-commerce website',
+                // 'title' => 'VoltZone E-commerce website',
                 // 'slug' => 'vue-ecommerce-dashboard',
                 'thumbnail' => '/storage/projects/voltzone_thumbnail.png',
                 // 'live_url' => 'https://demo.ecommerce.islamdev.com ',
@@ -93,6 +97,10 @@ class ProjectSeeder extends Seeder {
                     "/storage/projects/voltzone_19.png",
                 ],
                 // 'videos' => ["https://youtube.com/watch?v=... "],
+                'title' => [
+                    'en' => 'VoltZone – A TALL Stack-Powered E-Commerce Platform for Modern Businesses',
+                    'ar' => 'فولت زون – منصة تجارة إلكترونية مبنية على تكنولوجيا TALL Stack لتجار الأعمال الحديثة'
+                ],
                 'description' => [
                     'en' => 'A modern e-commerce platform built with the TALL stack, featuring Flux UI components and Livewire Volt for a fast, responsive admin experience. Integrated with Stripe for secure payments and powered by FilamentPHP for professional dashboard management.',
                     'ar' => "منصة تجارة إلكترونية حديثة مبنية على تكنولوجيا TALL، مع استخدام مكونات Flux UI ومحرك لارافل ليف واير فولت لإدارة الأداء والواجهة بسلاسة. تدعم الدفع عبر Stripe وتستخدم منصة FilamentPHP لإدارة لوحة التحكم الاحترافية."
@@ -126,7 +134,7 @@ class ProjectSeeder extends Seeder {
         foreach ($projects as $i => $projectData) {
             /** @var Project $project */
             $project =    Project::create([
-                "title" => $projectData['title'],
+                // "title" => $projectData['title'],
                 // "slug" => $projectData['slug'],
                 "thumbnail" => $projectData['thumbnail'] ?? null,
                 "live_url" => $projectData['live_url'] ?? null,
@@ -139,7 +147,7 @@ class ProjectSeeder extends Seeder {
                 'videos' => json_encode($projectData['videos'] ?? []),
                 'images' => json_encode($projectData['images'] ?? [])
             ]);
-            foreach (['description', 'features'] as $key) {
+            foreach (['description', 'features', 'title'] as $key) {
                 foreach (['ar', 'en'] as $locale) {
                     Translation::create([
                         "model_type" => Project::class,

@@ -27,7 +27,6 @@ export interface Skill {
 
 export interface Project {
     id: number;
-    title: string;
     slug: string;
     thumbnail: string;
     live_url: string;
@@ -39,6 +38,7 @@ export interface Project {
     status: string;
     videos: string[];
     images: string[];
+    title: Localization[];
     description: Localization[];
     features: Localization[];
     skills: Skill[];

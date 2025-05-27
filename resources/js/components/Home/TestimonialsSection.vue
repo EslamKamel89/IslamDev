@@ -1,8 +1,69 @@
+<script setup lang="ts">
+import { useLocale } from '@/composables/useLocale';
+import { onMounted, ref } from 'vue';
+export type Testimonial = {
+    id: number;
+    quote: string;
+    name: string;
+    title: string;
+    rating: number;
+    contactInfo?: string;
+};
+
+const testimonials = [
+    {
+        id: 1,
+        quote: 'Islam is an exceptional developer who delivered our project ahead of schedule. His attention to detail and communication were top-notch.',
+        name: 'Ahmed Mohamed',
+        title: 'CTO @ TechNova',
+        rating: 5,
+    },
+    {
+        id: 2,
+        quote: 'Working with Islam was a pleasure. He understood our needs quickly and built a scalable Laravel backend that integrates seamlessly with our frontend.',
+        name: 'Fatima Al-Sayed',
+        title: 'Project Manager @ DevEdge',
+        rating: 5,
+    },
+    {
+        id: 3,
+        quote: 'Highly recommend Islam for any full-stack or mobile development work. He’s reliable, skilled, and always delivers quality code.',
+        name: 'Youssef Karim',
+        title: 'Co-founder @ Appify',
+        rating: 4,
+    },
+];
+const { locale, isRtl, t } = useLocale();
+const currentIndex = ref(0);
+const currentTestimonial = ref(testimonials[0]);
+const interval = ref<number | null>(null);
+
+const goTo = (index: number) => {
+    currentIndex.value = index;
+    currentTestimonial.value = testimonials[index];
+};
+
+const next = () => {
+    currentIndex.value = (currentIndex.value + 1) % testimonials.length;
+    currentTestimonial.value = testimonials[currentIndex.value];
+};
+
+const prev = () => {
+    currentIndex.value = (currentIndex.value - 1 + testimonials.length) % testimonials.length;
+    currentTestimonial.value = testimonials[currentIndex.value];
+};
+
+// Auto-play
+onMounted(() => {
+    interval.value = window.setInterval(next, 5000);
+});
+</script>
+
 <template>
     <section class="bg-background text-foreground px-6 py-16">
         <div class="mx-auto mb-12 max-w-5xl text-center">
-            <h2 class="text-3xl font-bold sm:text-4xl">Client Feedback</h2>
-            <p class="text-muted-foreground mt-2">What people say about working with me</p>
+            <h2 class="text-3xl font-bold sm:text-4xl">{{ t('CLIENT_FEEDBACK') }}</h2>
+            <p class="text-muted-foreground mt-2">{{ t('WHAT_PEOPLE_SAY') }}</p>
         </div>
 
         <!-- Testimonial Slider -->
@@ -93,64 +154,6 @@
         </div>
     </section>
 </template>
-
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-export type Testimonial = {
-    id: number;
-    quote: string;
-    name: string;
-    title: string; // e.g., "CEO @ Company"
-    rating: number; // out of 5
-};
-
-const testimonials = [
-    {
-        id: 1,
-        quote: 'Islam is an exceptional developer who delivered our project ahead of schedule. His attention to detail and communication were top-notch.',
-        name: 'Ahmed Mohamed',
-        title: 'CTO @ TechNova',
-        rating: 5,
-    },
-    {
-        id: 2,
-        quote: 'Working with Islam was a pleasure. He understood our needs quickly and built a scalable Laravel backend that integrates seamlessly with our frontend.',
-        name: 'Fatima Al-Sayed',
-        title: 'Project Manager @ DevEdge',
-        rating: 5,
-    },
-    {
-        id: 3,
-        quote: 'Highly recommend Islam for any full-stack or mobile development work. He’s reliable, skilled, and always delivers quality code.',
-        name: 'Youssef Karim',
-        title: 'Co-founder @ Appify',
-        rating: 4,
-    },
-];
-const currentIndex = ref(0);
-const currentTestimonial = ref(testimonials[0]);
-const interval = ref<number | null>(null);
-
-const goTo = (index: number) => {
-    currentIndex.value = index;
-    currentTestimonial.value = testimonials[index];
-};
-
-const next = () => {
-    currentIndex.value = (currentIndex.value + 1) % testimonials.length;
-    currentTestimonial.value = testimonials[currentIndex.value];
-};
-
-const prev = () => {
-    currentIndex.value = (currentIndex.value - 1 + testimonials.length) % testimonials.length;
-    currentTestimonial.value = testimonials[currentIndex.value];
-};
-
-// Auto-play
-onMounted(() => {
-    interval.value = window.setInterval(next, 5000);
-});
-</script>
 
 <style scoped>
 .fade-enter-active,

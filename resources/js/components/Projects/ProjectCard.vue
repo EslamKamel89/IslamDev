@@ -46,7 +46,7 @@ const fixFullHeight = ref(false);
         <div class="relative" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <img
                 :src="images[selectedImageIndex]"
-                :alt="project.title"
+                alt="project image"
                 class="mb-4 w-full rounded-lg object-cover transition-all duration-700"
                 :class="{
                     'h-40': !fixFullHeight,
@@ -87,7 +87,7 @@ const fixFullHeight = ref(false);
                 </div>
             </div>
         </div>
-        <h3 class="mb-2 text-xl font-bold">{{ project.title }}</h3>
+        <h3 class="mb-2 text-lg font-bold">{{ getLocalization(project.title, locale) }}</h3>
         <p class="mb-4 text-gray-800 dark:text-gray-100">{{ getLocalization(project.description, locale) }}</p>
 
         <ul class="my-4 space-y-2">

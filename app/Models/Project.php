@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 #[ObservedBy(ProjectObserver::class)]
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $title
@@ -54,13 +54,14 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property string $videos
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereImages($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereVideos($value)
+ * @property-read int|null $title_count
  * @mixin \Eloquent
  */
 class Project extends Model {
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
     protected $fillable = [
-        "title",
+        // "title",
         "slug",
         "thumbnail",
         "live_url",
@@ -75,8 +76,12 @@ class Project extends Model {
     ];
     protected static function booted(): void {
         static::addGlobalScope('localization', function (Builder $builder) {
-            $builder->with(['description', 'features']);
+            $builder->with(['description', 'features', 'title']);
         });
+    }
+    public function title(): MorphMany {
+        return $this->morphMany(Translation::class, 'model')
+            ->where('key', 'title');
     }
     public function description(): MorphMany {
         return $this->morphMany(Translation::class, 'model')

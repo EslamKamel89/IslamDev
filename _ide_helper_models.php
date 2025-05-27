@@ -56,6 +56,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereImages($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereVideos($value)
  * @mixin \Eloquent
+ * @property-read int|null $title_count
  */
 	class Project extends \Eloquent {}
 }
