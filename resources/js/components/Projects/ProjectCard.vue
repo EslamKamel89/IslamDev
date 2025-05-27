@@ -53,11 +53,12 @@ const fixFullHeight = ref(false);
                     'shadow-primary mt-5 mb-10 border shadow-2xl': fixFullHeight,
                 }"
             />
-            <div class="absolute inset-x-0 -top-10">
-                <div class="flex h-full w-full items-center justify-start">
+            <!--
+            <div class="absolute inset-x-0 inset-y-0 left-0 right-0 w-full">
+                <div class="flex items-center justify-center w-full h-full">
                     <component
                         :is="fixFullHeight ? Minimize2 : Maximize2"
-                        class="h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
+                        class="w-12 h-12 p-2 text-white transition-all duration-700 border rounded-full cursor-pointer"
                         :class="{
                             'bg-primary shadow-primary scale-105 shadow-lg': fixFullHeight,
                             'bg-primary/60': !fixFullHeight,
@@ -66,6 +67,7 @@ const fixFullHeight = ref(false);
                     />
                 </div>
             </div>
+            -->
             <div class="absolute inset-x-0 inset-y-0">
                 <div class="flex h-full w-full items-center justify-between">
                     <div
@@ -76,6 +78,15 @@ const fixFullHeight = ref(false);
                             class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
                         />
                     </div>
+                    <component
+                        :is="fixFullHeight ? Minimize2 : Maximize2"
+                        class="cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
+                        :class="{
+                            'bg-primary shadow-primary absolute end-0 top-0 h-12 w-12 scale-105 shadow-lg': fixFullHeight,
+                            'bg-primary/30 h-24 w-24': !fixFullHeight,
+                        }"
+                        @click="fixFullHeight = !fixFullHeight"
+                    />
                     <div
                         class="bg-primary/5 hover:bg-primary/30 flex h-full cursor-pointer items-center justify-center rounded-e-lg px-1 transition-all duration-700"
                         @click="handleNextImage"

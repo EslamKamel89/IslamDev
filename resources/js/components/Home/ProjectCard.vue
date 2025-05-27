@@ -2,6 +2,7 @@
 import { useLocale } from '@/composables/useLocale';
 import { Project } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
+import { Maximize2, Minimize2 } from 'lucide-vue-next';
 import { computed, defineProps, ref } from 'vue';
 import SkillBadge from '../Shared/SkillBadge.vue';
 import Button from '../ui/button/Button.vue';
@@ -13,22 +14,36 @@ const features = computed(() => {
     return JSON.parse(getLocalization(props.project.features, locale.value)) as string[];
 });
 const showFullImage = ref(false);
+const fixFullHeight = ref(false);
 </script>
 <template>
     <div
         class="group bg-card relative transform overflow-hidden rounded-lg border p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
-        <img
-            @mouseenter="showFullImage = true"
-            @mouseleave="showFullImage = false"
-            :src="project.thumbnail"
-            alt="project image"
-            class="mb-4 w-full rounded object-cover transition-all duration-700"
-            :class="{
-                'h-40': !showFullImage,
-                'shadow-primary mt-5 mb-10 scale-105 rounded-lg border shadow-2xl': showFullImage,
-            }"
-        />
+        <div class="relative w-full">
+            <img
+                :src="project.thumbnail"
+                alt="project image"
+                class="mb-4 w-full rounded object-cover transition-all duration-700"
+                :class="{
+                    'h-40': !fixFullHeight,
+                    'shadow-primary mt-5 mb-10 scale-105 rounded-lg border shadow-2xl': fixFullHeight,
+                }"
+            />
+            <div class="absolute inset-x-0 inset-y-0">
+                <div class="flex h-full w-full items-center justify-center">
+                    <component
+                        :is="fixFullHeight ? Minimize2 : Maximize2"
+                        class="cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
+                        :class="{
+                            'bg-primary shadow-primary absolute end-0 top-0 h-12 w-12 scale-105 shadow-lg': fixFullHeight,
+                            'bg-primary/30 h-24 w-24': !fixFullHeight,
+                        }"
+                        @click="fixFullHeight = !fixFullHeight"
+                    />
+                </div>
+            </div>
+        </div>
         <h3 class="mb-2 text-lg font-bold">{{ getLocalization(project.title, locale) }}</h3>
         <p class="mb-4 text-gray-800 dark:text-gray-100">{{ getLocalization(project.description, locale) }}</p>
         <!--
