@@ -16,6 +16,34 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $rating
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $contact
+ * @property-read int|null $contact_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $name
+ * @property-read int|null $name_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $quote
+ * @property-read int|null $quote_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $title
+ * @property-read int|null $title_count
+ * @method static \Database\Factories\FeedbackFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereRating($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUpdatedAt($value)
+ */
+	class Feedback extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $title
  * @property string|null $slug
  * @property string|null $thumbnail
@@ -55,8 +83,8 @@ namespace App\Models{
  * @property string $videos
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereImages($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereVideos($value)
- * @mixin \Eloquent
  * @property-read int|null $title_count
+ * @mixin \Eloquent
  */
 	class Project extends \Eloquent {}
 }
