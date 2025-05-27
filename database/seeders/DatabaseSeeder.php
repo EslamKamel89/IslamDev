@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder {
             SkillCategorySeeder::class,
             SkillSeeder::class,
             ProjectSeeder::class,
+            FeedbackSeeder::class,
         ]);
     }
 }
