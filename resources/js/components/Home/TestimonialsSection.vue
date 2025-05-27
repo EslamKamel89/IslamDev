@@ -1,56 +1,30 @@
 <script setup lang="ts">
 import { useLocale } from '@/composables/useLocale';
-import { onMounted, ref } from 'vue';
-export type Testimonial = {
-    id: number;
-    quote: string;
-    name: string;
-    title: string;
-    rating: number;
-    contactInfo?: string;
-};
-
-const testimonials = [
-    {
-        id: 1,
-        quote: 'Islam is an exceptional developer who delivered our project ahead of schedule. His attention to detail and communication were top-notch.',
-        name: 'Ahmed Mohamed',
-        title: 'CTO @ TechNova',
-        rating: 5,
-    },
-    {
-        id: 2,
-        quote: 'Working with Islam was a pleasure. He understood our needs quickly and built a scalable Laravel backend that integrates seamlessly with our frontend.',
-        name: 'Fatima Al-Sayed',
-        title: 'Project Manager @ DevEdge',
-        rating: 5,
-    },
-    {
-        id: 3,
-        quote: 'Highly recommend Islam for any full-stack or mobile development work. He’s reliable, skilled, and always delivers quality code.',
-        name: 'Youssef Karim',
-        title: 'Co-founder @ Appify',
-        rating: 4,
-    },
-];
+import { SharedData } from '@/types';
+import type { Feedback } from '@/types/custom';
+import { getLocalization } from '@/utils/getLocalization';
+import { usePage } from '@inertiajs/vue3';
+import { computed, onMounted, ref } from 'vue';
+const page = usePage<SharedData & { feedbacks: Feedback[] }>();
+const feedbacks = computed(() => page.props.feedbacks);
 const { locale, isRtl, t } = useLocale();
 const currentIndex = ref(0);
-const currentTestimonial = ref(testimonials[0]);
+const currentTestimonial = ref(feedbacks.value[0]);
 const interval = ref<number | null>(null);
 
 const goTo = (index: number) => {
     currentIndex.value = index;
-    currentTestimonial.value = testimonials[index];
+    currentTestimonial.value = feedbacks.value[index];
 };
 
 const next = () => {
-    currentIndex.value = (currentIndex.value + 1) % testimonials.length;
-    currentTestimonial.value = testimonials[currentIndex.value];
+    currentIndex.value = (currentIndex.value + 1) % feedbacks.value.length;
+    currentTestimonial.value = feedbacks.value[currentIndex.value];
 };
 
 const prev = () => {
-    currentIndex.value = (currentIndex.value - 1 + testimonials.length) % testimonials.length;
-    currentTestimonial.value = testimonials[currentIndex.value];
+    currentIndex.value = (currentIndex.value - 1 + feedbacks.value.length) % feedbacks.value.length;
+    currentTestimonial.value = feedbacks.value[currentIndex.value];
 };
 
 // Auto-play
@@ -83,13 +57,13 @@ onMounted(() => {
                     <!-- Avatar -->
                     <div class="mb-4 flex items-center gap-4">
                         <img
-                            :src="`https://ui-avatars.com/api/?name= ${encodeURIComponent(currentTestimonial.name)}&background=random`"
+                            :src="`https://ui-avatars.com/api/?name= ${encodeURIComponent(getLocalization(currentTestimonial.name, locale))}&background=random`"
                             alt="Avatar"
                             class="h-12 w-12 rounded-full object-cover"
                         />
                         <div class="text-left">
-                            <h4 class="font-semibold">{{ currentTestimonial.name }}</h4>
-                            <p class="text-muted-foreground text-sm">{{ currentTestimonial.title }}</p>
+                            <h4 class="font-semibold">{{ getLocalization(currentTestimonial.name, locale) }}</h4>
+                            <p class="text-muted-foreground text-sm">{{ getLocalization(currentTestimonial.title, locale) }}</p>
                         </div>
                     </div>
 
@@ -122,7 +96,7 @@ onMounted(() => {
                     </div>
 
                     <!-- Quote Text -->
-                    <blockquote class="text-lg italic">"{{ currentTestimonial.quote }}"</blockquote>
+                    <blockquote class="text-lg italic">"{{ getLocalization(currentTestimonial.quote, locale) }}"</blockquote>
                 </div>
             </transition>
 
@@ -136,8 +110,8 @@ onMounted(() => {
 
                 <div class="flex space-x-2">
                     <button
-                        v-for="(testimonial, index) in testimonials"
-                        :key="testimonial.id"
+                        v-for="(feedback, index) in feedbacks"
+                        :key="feedback.id"
                         @click="goTo(index)"
                         class="h-3 w-3 rounded-full transition-all"
                         :class="currentIndex === index ? 'bg-primary w-6' : 'bg-muted'"

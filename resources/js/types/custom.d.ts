@@ -43,3 +43,12 @@ export interface Project {
     features: Localization[];
     skills: Skill[];
 }
+
+export interface Feedback {
+    id: number;
+    rating: number;
+    quote: Localization[];
+    name: Localization[];
+    title: Localization[];
+    contact: Localization[];
+}

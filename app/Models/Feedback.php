@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property int $rating
@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Feedback extends Model {
     /** @use HasFactory<\Database\Factories\FeedbackFactory> */
     use HasFactory;
+    protected $table = 'feedbacks';
+
     protected $fillable = [
         'rating',
     ];

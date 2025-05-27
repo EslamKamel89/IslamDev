@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FeedbackResource;
 use App\Http\Resources\ProjectResource;
+use App\Models\Feedback;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -19,8 +21,10 @@ class HomeController extends Controller {
                 ['skills.category']
             )->get()
         );
+        $feedbacks = FeedbackResource::collection(Feedback::all());
         return Inertia::render('home/Index', [
             'projects' => $projects,
+            'feedbacks' => $feedbacks,
         ]);
     }
 }

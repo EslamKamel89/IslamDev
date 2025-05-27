@@ -28,13 +28,14 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Translation> $title
  * @property-read int|null $title_count
  * @method static \Database\Factories\FeedbackFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereRating($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUpdatedAt($value)
+ * @method static Builder<static>|Feedback newModelQuery()
+ * @method static Builder<static>|Feedback newQuery()
+ * @method static Builder<static>|Feedback query()
+ * @method static Builder<static>|Feedback whereCreatedAt($value)
+ * @method static Builder<static>|Feedback whereId($value)
+ * @method static Builder<static>|Feedback whereRating($value)
+ * @method static Builder<static>|Feedback whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 	class Feedback extends \Eloquent {}
 }
