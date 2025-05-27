@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import QuoteSvg from '@/components/Home/QuoteSvg.vue';
 import { useLocale } from '@/composables/useLocale';
 import { SharedData } from '@/types';
 import type { Feedback } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
 import { usePage } from '@inertiajs/vue3';
+import { StepBack, StepForward } from 'lucide-vue-next';
 import { computed, onMounted, ref } from 'vue';
+import Button from '../ui/button/Button.vue';
+import Rating from './Rating.vue';
+import TestimonialHeader from './TestimonialHeader.vue';
 const page = usePage<SharedData & { feedbacks: Feedback[] }>();
 const feedbacks = computed(() => page.props.feedbacks);
 const { locale, isRtl, t } = useLocale();
@@ -26,8 +31,10 @@ const prev = () => {
     currentIndex.value = (currentIndex.value - 1 + feedbacks.value.length) % feedbacks.value.length;
     currentTestimonial.value = feedbacks.value[currentIndex.value];
 };
+const contactDetails = computed(() => {
+    return JSON.parse(getLocalization(currentTestimonial.value.contact, locale.value)) as Record<string, string>;
+});
 
-// Auto-play
 onMounted(() => {
     interval.value = window.setInterval(next, 5000);
 });
@@ -35,78 +42,42 @@ onMounted(() => {
 
 <template>
     <section class="bg-background text-foreground px-6 py-16">
-        <div class="mx-auto mb-12 max-w-5xl text-center">
-            <h2 class="text-3xl font-bold sm:text-4xl">{{ t('CLIENT_FEEDBACK') }}</h2>
-            <p class="text-muted-foreground mt-2">{{ t('WHAT_PEOPLE_SAY') }}</p>
-        </div>
-
-        <!-- Testimonial Slider -->
+        <TestimonialHeader />
         <div class="relative mx-auto max-w-3xl">
-            <!-- Quote Icon Background -->
-            <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="text-primary h-32 w-32">
-                    <path
-                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-                    />
-                </svg>
-            </div>
-
-            <!-- Slider Content -->
+            <QuoteSvg />
             <transition name="fade" mode="out-in">
                 <div :key="currentTestimonial.id" class="bg-card relative z-10 rounded-lg p-8 shadow-md">
-                    <!-- Avatar -->
-                    <div class="mb-4 flex items-center gap-4">
-                        <img
-                            :src="`https://ui-avatars.com/api/?name= ${encodeURIComponent(getLocalization(currentTestimonial.name, locale))}&background=random`"
-                            alt="Avatar"
-                            class="h-12 w-12 rounded-full object-cover"
-                        />
-                        <div class="text-left">
-                            <h4 class="font-semibold">{{ getLocalization(currentTestimonial.name, locale) }}</h4>
-                            <p class="text-muted-foreground text-sm">{{ getLocalization(currentTestimonial.title, locale) }}</p>
+                    <div class="flex w-full justify-between">
+                        <div>
+                            <div class="mb-4 flex items-center gap-4">
+                                <img
+                                    :src="`https://ui-avatars.com/api/?name= ${encodeURIComponent(getLocalization(currentTestimonial.name, locale))}&background=random`"
+                                    alt="Avatar"
+                                    class="h-12 w-12 rounded-full object-cover"
+                                />
+                                <div class="text-start">
+                                    <h4 class="font-semibold">{{ getLocalization(currentTestimonial.name, locale) }}</h4>
+                                    <p class="text-muted-foreground text-sm">{{ getLocalization(currentTestimonial.title, locale) }}</p>
+                                </div>
+                            </div>
+                            <Rating :rating="currentTestimonial.rating" />
                         </div>
                     </div>
 
-                    <!-- Stars -->
-                    <div class="mb-4 flex gap-1">
-                        <span v-for="n in 5" :key="n" class="text-yellow-400">
-                            <svg
-                                v-if="n <= currentTestimonial.rating"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                class="h-5 w-5"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
-                            <svg
-                                v-else
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                class="text-muted-foreground h-5 w-5"
-                            >
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                />
-                            </svg>
-                        </span>
-                    </div>
-
-                    <!-- Quote Text -->
                     <blockquote class="text-lg italic">"{{ getLocalization(currentTestimonial.quote, locale) }}"</blockquote>
+                    <div class="text-muted-foreground mt-4 w-full border-t pt-2 text-sm">
+                        <div v-for="(contactDetail, index) in contactDetails" :key="index">
+                            <span v-if="contactDetail" class="text-bold">{{ index }}:</span> {{ contactDetail }}
+                        </div>
+                    </div>
                 </div>
             </transition>
 
-            <!-- Slider Controls -->
             <div class="mt-6 flex items-center justify-between">
-                <button @click="prev" class="hover:bg-muted rounded-full p-2 transition-colors" aria-label="Previous testimonial">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
-                        <path fill-rule="evenodd" d="M12 22l-10-10 10-10L13.414 3.414 6.828 10H22v4H6.828l6.586 6.586L12 22z" clip-rule="evenodd" />
-                    </svg>
-                </button>
+                <Button @click="prev" variant="ghost" size="icon" class="" aria-label="Previous testimonial">
+                    <StepBack v-if="!isRtl()" class="!h-9 !w-9 p-1" />
+                    <StepForward v-else class="!h-9 !w-9 p-1" :size="9" />
+                </Button>
 
                 <div class="flex space-x-2">
                     <button
@@ -119,11 +90,10 @@ onMounted(() => {
                     ></button>
                 </div>
 
-                <button @click="next" class="hover:bg-muted rounded-full p-2 transition-colors" aria-label="Next testimonial">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
-                        <path fill-rule="evenodd" d="M12 2l10 10-10 10-1.414-1.414L17.172 14H2V10h15.172l-6.586-6.586L12 2z" clip-rule="evenodd" />
-                    </svg>
-                </button>
+                <Button @click="next" variant="ghost" size="icon" class="" aria-label="Next testimonial">
+                    <StepForward v-if="!isRtl()" class="!h-9 !w-9 p-1" :size="9" />
+                    <StepBack v-else class="!h-9 !w-9 p-1" />
+                </Button>
             </div>
         </div>
     </section>
