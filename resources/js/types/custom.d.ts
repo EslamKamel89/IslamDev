@@ -54,3 +54,87 @@ export interface Feedback {
     title: Localization[];
     contact: Localization[];
 }
+
+export type ResumeData = {
+    personal: {
+        name: string;
+        phone: string;
+        email: string;
+        website: string;
+        links: {
+            label: string;
+            url: string;
+            icon?: string; // Optional emoji or SVG name
+        }[];
+    };
+
+    sections: {
+        id: string;
+        title: Record<string, string>; // { en: "...", ar: "..." }
+        items: ResumeSectionItem[];
+    }[];
+};
+
+type ResumeSectionItem =
+    | ResumeWorkExperience
+    | ResumeEducation
+    | ResumeSkillGroup
+    | ResumeProject
+    | ResumeCertification
+    | ResumeLanguage
+    | ResumeAdditionalInfo;
+
+// Example Section Items
+
+interface ResumeWorkExperience {
+    company: string;
+    location?: string;
+    role: Record<string, string>;
+    dates: {
+        start: string;
+        end?: string;
+    };
+    description: Record<string, string>;
+    tools: string[];
+}
+
+interface ResumeEducation {
+    institution: string;
+    degree: string;
+    dates: {
+        start: string;
+        end?: string;
+    };
+    description?: Record<string, string>;
+}
+
+interface ResumeSkillGroup {
+    category: string;
+    skills: string[];
+}
+
+interface ResumeProject {
+    title: Record<string, string>;
+    role: string;
+    year: string;
+    liveUrl?: string;
+    githubUrl?: string;
+    description: Record<string, string>;
+}
+
+interface ResumeCertification {
+    issuer: string;
+    issueDate: string;
+    expiryDate?: string;
+    title: Record<string, string>;
+}
+
+interface ResumeLanguage {
+    name: string;
+    level: string;
+}
+
+interface ResumeAdditionalInfo {
+    key: string;
+    value: string;
+}
