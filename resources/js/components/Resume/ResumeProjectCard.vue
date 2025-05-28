@@ -11,8 +11,10 @@
 </template>
 
 <script setup lang="ts">
+import { RProject } from '@/types/custom';
+
 defineProps<{
-    item: any;
+    item: RProject;
     lang: string;
 }>();
 </script>

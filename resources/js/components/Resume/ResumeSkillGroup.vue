@@ -10,8 +10,10 @@
 </template>
 
 <script setup lang="ts">
+import { RSkillGroup } from '@/types/custom';
+
 defineProps<{
-    item: any;
+    item: RSkillGroup;
     lang: string;
 }>();
 </script>

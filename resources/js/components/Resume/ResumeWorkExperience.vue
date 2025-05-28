@@ -15,10 +15,11 @@
 </template>
 
 <script setup lang="ts">
+import { RWorkExperience } from '@/types/custom';
 import { defineProps } from 'vue';
 
 const props = defineProps<{
-    item: any;
+    item: RWorkExperience;
     lang: string;
 }>();
 
