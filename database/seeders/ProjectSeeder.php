@@ -12,6 +12,7 @@ class ProjectSeeder extends Seeder {
      * Run the database seeds.
      */
     public function run(): void {
+
         $projects = [
             [
                 // 'title' => 'DevTalk a blog build by programmers to programmers',

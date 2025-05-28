@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->string('thumbnail')->nullable();
             $table->string('live_url')->nullable();
             $table->string('github_url')->nullable();
+            $table->string('playstore_url')->nullable();
+            $table->string('applestore_url')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('is_featured')->default(false);

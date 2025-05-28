@@ -18,6 +18,8 @@ class ProjectResource extends JsonResource {
             "thumbnail" => $this->thumbnail,
             "live_url" => $this->live_url,
             "github_url" => $this->github_url,
+            "playstore_url" => $this->playstore_url,
+            "applestore_url" => $this->applestore_url,
             "start_date" => $this->start_date,
             "end_date" => $this->end_date,
             "is_featured" => (bool)$this->is_featured,

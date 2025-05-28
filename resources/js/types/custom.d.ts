@@ -31,6 +31,8 @@ export interface Project {
     thumbnail: string;
     live_url: string;
     github_url: string;
+    playstore_url: string;
+    applestore_url: string;
     start_date: string;
     end_date: string;
     is_featured: boolean;

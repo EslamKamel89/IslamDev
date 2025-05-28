@@ -11,9 +11,9 @@ use Inertia\Inertia;
 //     return Inertia::render('Welcome');
 // })->name('home');
 Route::get('/', HomeController::class)->name('home');
-Route::get('/skills', SkillsController::class);
-Route::get('/projects', ProjectsController::class);
-Route::get('/contact', ContactController::class);
+Route::get('/skills', SkillsController::class)->name('skills.index');
+Route::get('/projects', ProjectsController::class)->name('projects.index');
+Route::get('/contact', ContactController::class)->name('contact');
 // Route::get('dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

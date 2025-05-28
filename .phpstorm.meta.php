@@ -2123,7 +2123,7 @@ namespace PHPSTORM_META {
 'tinker.alias','tinker.dont_alias',);
         registerArgumentsSet('middleware', 
 'web','api',);
-        registerArgumentsSet('routes', 'home','profile.edit','profile.update','profile.destroy','password.edit',
+        registerArgumentsSet('routes', 'home','skills.index','projects.index','contact','profile.edit','profile.update','profile.destroy','password.edit',
 'password.update','appearance','register','login','password.request','password.email','password.reset','password.store',
 'verification.notice','verification.verify','verification.send','password.confirm',
 'logout','storage.local',);

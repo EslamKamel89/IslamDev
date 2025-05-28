@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useLocale } from '@/composables/useLocale';
+import { Link } from '@inertiajs/vue3';
 import { useI18n } from 'vue-i18n';
 import Button from '../ui/button/Button.vue';
 import SkillsSection from './SkillsSection.vue';
@@ -30,15 +31,19 @@ const { t, isRtl } = useLocale();
 
             <!-- Call to Action Buttons -->
             <div class="mt-6 flex flex-wrap justify-center gap-4">
-                <Button size="lg" class="transition-transform duration-200 hover:scale-105">
-                    {{ t('VIEW_PROJECTS') }}
-                </Button>
+                <Link :href="route('projects.index')">
+                    <Button size="lg" class="transition-transform duration-200 hover:scale-105">
+                        {{ t('VIEW_PROJECTS') }}
+                    </Button>
+                </Link>
                 <Button size="lg" variant="outline" class="transition-transform duration-200 hover:scale-105">
                     {{ t('DOWNLOAD_CV') }}
                 </Button>
-                <Button size="lg" variant="secondary" class="transition-transform duration-200 hover:scale-105">
-                    {{ t('CONTACT_ME') }}
-                </Button>
+                <Link :href="route('contact')">
+                    <Button size="lg" variant="secondary" class="transition-transform duration-200 hover:scale-105">
+                        {{ t('CONTACT_ME') }}
+                    </Button>
+                </Link>
             </div>
         </div>
     </section>

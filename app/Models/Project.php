@@ -55,6 +55,10 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereImages($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereVideos($value)
  * @property-read int|null $title_count
+ * @property string|null $playstore_url
+ * @property string|null $applestore_url
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereApplestoreUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project wherePlaystoreUrl($value)
  * @mixin \Eloquent
  */
 class Project extends Model {
@@ -66,6 +70,8 @@ class Project extends Model {
         "thumbnail",
         "live_url",
         "github_url",
+        "playstore_url",
+        "applestore_url",
         "start_date",
         "end_date",
         "is_featured",
