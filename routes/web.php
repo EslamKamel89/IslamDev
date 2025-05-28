@@ -4,6 +4,7 @@ use App\Http\Controllers\Pages\ContactController;
 use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Pages\ProjectsController;
 use App\Http\Controllers\Pages\SkillsController;
+use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,7 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/skills', SkillsController::class)->name('skills.index');
 Route::get('/projects', ProjectsController::class)->name('projects.index');
 Route::get('/contact', ContactController::class)->name('contact');
+Route::get('/resume', ResumeController::class)->name('resume');
 // Route::get('dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

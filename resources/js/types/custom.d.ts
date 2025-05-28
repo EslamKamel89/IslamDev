@@ -75,18 +75,11 @@ export type ResumeData = {
     }[];
 };
 
-type ResumeSectionItem =
-    | ResumeWorkExperience
-    | ResumeEducation
-    | ResumeSkillGroup
-    | ResumeProject
-    | ResumeCertification
-    | ResumeLanguage
-    | ResumeAdditionalInfo;
+type ResumeSectionItem = RWorkExperience | REducation | RSkillGroup | RProject | RCertification | RLanguage | RAdditionalInfo;
 
 // Example Section Items
 
-interface ResumeWorkExperience {
+interface RWorkExperience {
     company: string;
     location?: string;
     role: Record<string, string>;
@@ -98,7 +91,7 @@ interface ResumeWorkExperience {
     tools: string[];
 }
 
-interface ResumeEducation {
+interface REducation {
     institution: string;
     degree: string;
     dates: {
@@ -108,12 +101,12 @@ interface ResumeEducation {
     description?: Record<string, string>;
 }
 
-interface ResumeSkillGroup {
+interface RSkillGroup {
     category: string;
     skills: string[];
 }
 
-interface ResumeProject {
+interface RProject {
     title: Record<string, string>;
     role: string;
     year: string;
@@ -122,19 +115,19 @@ interface ResumeProject {
     description: Record<string, string>;
 }
 
-interface ResumeCertification {
+interface RCertification {
     issuer: string;
     issueDate: string;
     expiryDate?: string;
     title: Record<string, string>;
 }
 
-interface ResumeLanguage {
+interface RLanguage {
     name: string;
     level: string;
 }
 
-interface ResumeAdditionalInfo {
+interface RAdditionalInfo {
     key: string;
     value: string;
 }

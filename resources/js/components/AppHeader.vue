@@ -16,7 +16,7 @@ import { useLocale } from '@/composables/useLocale';
 import AuthDropdownMenu from '@/layouts/app/AuthDropdownMenu.vue';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { AtSign, Home, Lightbulb, Menu, Zap } from 'lucide-vue-next';
+import { AtSign, BookOpenText, Home, Lightbulb, Menu, Zap } from 'lucide-vue-next';
 import { computed } from 'vue';
 import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
@@ -53,6 +53,11 @@ const mainNavItems: NavItem[] = [
         title: 'Projects',
         href: '/projects',
         icon: Lightbulb,
+    },
+    {
+        title: 'CV',
+        href: '/resume',
+        icon: BookOpenText,
     },
     {
         title: 'Contact Me',
