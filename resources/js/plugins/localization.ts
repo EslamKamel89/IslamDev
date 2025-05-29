@@ -35,6 +35,10 @@ const messages = {
         VIEW_ALL_PROJECTS: 'View All Projects',
         CLIENT_FEEDBACK: 'Client Feedback',
         WHAT_PEOPLE_SAY: 'What people say about working with me',
+        SKILLS: 'Skills',
+        PROJECTS: 'Projects',
+        CV: 'CV',
+        CONTACT: 'Contact me',
     },
     ar: {
         greeting: 'مرحبا',
@@ -71,6 +75,10 @@ const messages = {
         VIEW_ALL_PROJECTS: 'عرض جميع المشاريع',
         CLIENT_FEEDBACK: 'تعليقات العملاء',
         WHAT_PEOPLE_SAY: 'ما يقوله الناس عن العمل معي',
+        SKILLS: 'المهارات',
+        PROJECTS: 'المشاريع',
+        CV: 'السيرة الذاتية',
+        CONTACT: 'تواصل معي',
     },
 };
 

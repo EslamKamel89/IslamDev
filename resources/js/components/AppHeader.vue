@@ -45,12 +45,12 @@ const mainNavItems: NavItem[] = [
         icon: Home,
     },
     {
-        title: 'Skills',
+        title: 'SKILLS',
         href: '/skills',
         icon: Zap,
     },
     {
-        title: 'Projects',
+        title: 'PROJECTS',
         href: '/projects',
         icon: Lightbulb,
     },
@@ -60,7 +60,7 @@ const mainNavItems: NavItem[] = [
         icon: BookOpenText,
     },
     {
-        title: 'Contact Me',
+        title: 'CONTACT',
         href: '/contact',
         icon: AtSign,
     },
@@ -78,6 +78,9 @@ const rightNavItems: NavItem[] = [
     //     icon: BookOpen,
     // },
 ];
+const navItemsDirectional = computed(() => {
+    return isRtl() ? [...mainNavItems].reverse() : mainNavItems;
+});
 </script>
 
 <template>
@@ -136,7 +139,7 @@ const rightNavItems: NavItem[] = [
                 <div class="hidden h-full lg:flex lg:flex-1">
                     <NavigationMenu class="mx-10 flex h-full items-stretch">
                         <NavigationMenuList class="flex h-full items-stretch space-x-2">
-                            <NavigationMenuItem v-for="(item, index) in mainNavItems" :key="index" class="relative flex h-full items-center">
+                            <NavigationMenuItem v-for="(item, index) in navItemsDirectional" :key="index" class="relative flex h-full items-center">
                                 <Link :href="item.href">
                                     <NavigationMenuLink
                                         :class="[navigationMenuTriggerStyle(), activeItemStyles(item.href), 'h-9 cursor-pointer px-3']"
