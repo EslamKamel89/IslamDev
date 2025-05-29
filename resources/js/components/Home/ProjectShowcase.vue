@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { useLocale } from '@/composables/useLocale';
 import type { SharedData } from '@/types';
-import { Category, Project } from '@/types/custom';
+import { Project } from '@/types/custom';
 import { getKey, getValue } from '@/utils/helpers';
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import Button from '../ui/button/Button.vue';
 import ProjectCard from './ProjectCard.vue';
 const { projects, categories, projectFilters } = usePage<SharedData & { projects: Project[] }>().props;
-const allCategories = computed<Category[]>(() => {
-    return [{ name: 'All' }, ...categories].filter((category) => !(category.name == 'Databases' || category.name == 'DevOps / Tools'));
-});
+
 const selectedFilter = ref(getKey(projectFilters[0]));
 const filteredProjects = computed(() => {
     // if (filter.value == 'All') return projects.slice(0, 2);

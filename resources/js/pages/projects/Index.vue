@@ -3,18 +3,16 @@ import ProjectCard from '@/components/Projects/ProjectCard.vue';
 import Button from '@/components/ui/button/Button.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { SharedData } from '@/types';
-import { Category, Project } from '@/types/custom';
+import { Project } from '@/types/custom';
+import { getKey, getValue } from '@/utils/helpers';
 import { usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 
-const { projects, categories } = usePage<SharedData & { projects: Project[] }>().props;
-const allCategories = computed<Category[]>(() => {
-    return [{ name: 'All' }, ...categories].filter((category) => !(category.name == 'Databases' || category.name == 'DevOps / Tools'));
-});
-const filter = ref(allCategories.value[0].name);
+const { projects, categories, projectFilters } = usePage<SharedData & { projects: Project[] }>().props;
+
+const selectedFilter = ref(getKey(projectFilters[0]));
 const filteredProjects = computed(() => {
-    if (filter.value == 'All') return projects;
-    return projects.filter((project) => project.skills.findIndex((skill) => skill.category?.name == filter.value) != -1);
+    return projects.filter((project) => project.filter == selectedFilter.value).slice(0, 2);
 });
 </script>
 
@@ -29,13 +27,13 @@ const filteredProjects = computed(() => {
 
                 <div class="mb-8 flex flex-wrap justify-center gap-2">
                     <Button
-                        v-for="category in allCategories"
-                        :key="category.id"
-                        :variant="filter === category.name ? 'default' : 'outline'"
-                        @click="filter = category.name"
+                        v-for="filter in projectFilters"
+                        :variant="getKey(filter) === selectedFilter ? 'default' : 'outline'"
+                        @click="selectedFilter = getKey(filter)"
+                        :key="getKey(filter)"
                         size="sm"
                     >
-                        {{ category.name }}
+                        {{ getValue(filter) }}
                     </Button>
                 </div>
                 <div class="grid grid-cols-1 gap-6" v-if="filteredProjects.length">
