@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\FilterEnum;
 use App\Models\Project;
 use App\Models\Translation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,6 +24,7 @@ class ProjectSeeder extends Seeder {
                 'start_date' => '17-04-2025',
                 'end_date' => '15-04-2025',
                 'is_featured' => true,
+                'filter' => FilterEnum::WEB->value,
                 'order' => 1,
                 'status' => 'published',
                 'images' => [
@@ -74,6 +76,7 @@ class ProjectSeeder extends Seeder {
                 'start_date' => '07-04-2025',
                 // 'end_date' => '2024-06-15',
                 'is_featured' => true,
+                'filter' => FilterEnum::WEB->value,
                 'order' => 2,
                 'status' => 'draft',
                 'images' => [
@@ -145,6 +148,7 @@ class ProjectSeeder extends Seeder {
                 "is_featured" => $projectData['is_featured'],
                 "order" => $projectData['order'],
                 "status" => $projectData['status'],
+                'filter' => $projectData['filter'],
                 'videos' => json_encode($projectData['videos'] ?? []),
                 'images' => json_encode($projectData['images'] ?? [])
             ]);

@@ -36,6 +36,7 @@ export interface Project {
     start_date: string;
     end_date: string;
     is_featured: boolean;
+    filter: string;
     order: number;
     status: string;
     videos: string[];

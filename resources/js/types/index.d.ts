@@ -26,6 +26,7 @@ export interface SharedData extends PageProps {
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
     categories: Category[];
+    projectFilters: Record<string, string>[];
 }
 
 export interface User {

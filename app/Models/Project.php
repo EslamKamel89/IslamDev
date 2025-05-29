@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\FilterEnum;
 use App\Observers\ProjectObserver;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 #[ObservedBy(ProjectObserver::class)]
 /**
- * 
+ *
  *
  * @property int $id
  * @property string $title
@@ -75,10 +76,14 @@ class Project extends Model {
         "start_date",
         "end_date",
         "is_featured",
+        "filter",
         "order",
         "status",
         'videos',
         'images'
+    ];
+    protected $casts = [
+        'filter' => FilterEnum::class,
     ];
     protected static function booted(): void {
         static::addGlobalScope('localization', function (Builder $builder) {

@@ -23,6 +23,7 @@ class ProjectResource extends JsonResource {
             "start_date" => $this->start_date,
             "end_date" => $this->end_date,
             "is_featured" => (bool)$this->is_featured,
+            'filter' => $this->filter->value,
             "order" => $this->order,
             "status" => $this->status,
             'videos' => $this->videos ? json_decode($this->videos) : [],

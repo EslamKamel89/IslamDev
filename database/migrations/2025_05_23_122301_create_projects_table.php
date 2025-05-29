@@ -1,5 +1,6 @@
 <?php
 
+use App\FilterEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,7 @@ return new class extends Migration {
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('is_featured')->default(false);
+            $table->enum('filter', FilterEnum::values());
             $table->unsignedInteger('order')->default(0);
             $table->enum('status', ['draft', 'published'])->default('published');
             $table->json('images')->default(json_encode([]));
