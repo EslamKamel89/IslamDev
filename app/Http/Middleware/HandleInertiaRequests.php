@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\FilterEnum;
+use App\Helpers\pr;
 use App\Http\Resources\SkillCategoryResource;
 use App\Models\SkillCategory;
 use Illuminate\Foundation\Inspiring;
@@ -49,7 +50,12 @@ class HandleInertiaRequests extends Middleware {
             'categories' => SkillCategoryResource::collection(
                 SkillCategory::with(['skills.description', 'description'])->get()
             ),
-            'projectFilters' => FilterEnum::options(),
+            'projectFilters' => collect(
+                FilterEnum::options()
+            )->filter(
+                fn($filter) =>
+                collect($filter)->keys()->first() != FilterEnum::WEB_AND_MOBILE->value
+            )->values(),
             'ziggy' => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),

@@ -16,8 +16,6 @@ class ProjectSeeder extends Seeder {
 
         $projects = [
             [
-                // 'title' => 'DevTalk a blog build by programmers to programmers',
-                // 'slug' => 'vue-ecommerce-dashboard',
                 'thumbnail' => '/storage/projects/devtalk_thumbnail.png',
                 'live_url' => 'https://devtalk.islamdev.com/',
                 'github_url' => 'https://github.com/EslamKamel89/DevTalk',
@@ -133,6 +131,101 @@ class ProjectSeeder extends Seeder {
                 ],
                 'skills' => [3, 4, 5, 6, 11]
             ],
+            [
+                'thumbnail' => '/storage/projects/chatloom_thumbnail.png',
+                'live_url' => null, // No live demo yet
+                'github_url' => 'https://github.com/EslamKamel89/ChatLoom',  // Replace with actual repo URL
+                'start_date' => '2024-10-01',
+                'end_date' => '2025-03-31',
+                'is_featured' => true,
+                'filter' => FilterEnum::WEB->value,
+                'order' => 3,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/chatloom_01.png",
+                    "/storage/projects/chatloom_02.png",
+                ],
+                // 'videos' => ["https://youtube.com/watch?v=..."],
+                'title' => [
+                    'en' => 'ChatLoom – A Real-Time Chat Application Built with VILT Stack & Shadcn UI',
+                    'ar' => 'تشات لوم – تطبيق دردشة زمنية حقيقية مبني على تكنولوجيا VILT وواجهة Shadcn'
+                ],
+                'description' => [
+                    'en' => 'A real-time chat application built using the VILT stack (Vue, Inertia.js, Laravel, Tailwind CSS) and styled with shadcn-vue components. Designed for developers who want a seamless, reactive messaging experience.',
+                    'ar' => 'تطبيق دردشة زمني حقيقي مبني باستخدام تكنولوجيا VILT (فيو، إنيرتيا جي إس، لارافل، تايلويند سي إس إس) ومرفق بواجهة مستندة إلى shadcn-vue. صُمم للمطورين الذين يبحثون عن تجربة رسائل سلسة وتفاعلية.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Built with Laravel 12 using the latest VILT starter kit and Shadcn UI',
+                        'Global state management handled by Pinia for reactive architecture',
+                        'Laravel Reverb powers real-time features via WebSockets',
+                        'Presence Channels to show online users in each chat room',
+                        'Supports multiline message input with Shift + Enter',
+                        'Seamless infinite scrolling in chat view for smooth UX',
+                        'Frontend built with Vue 3, Composition API, TypeScript, and Setup syntax',
+                        'All messages and states updated in real time without page refreshes'
+                    ],
+                    'ar' => [
+                        'تم بناء التطبيق باستخدام Laravel 12 مع أحدث كيت VILT وواجهة Shadcn UI',
+                        'إدارة الحالة العالمية عبر Pinia للحصول على هيكل تفاعلي',
+                        'يدعم Laravel Reverb الميزات الزمنية الحقيقية عبر WebSockets',
+                        'قنوات الحضور تُظهر من هو متصل في كل غرفة دردشة',
+                        'يدعم إدخال الرسائل متعددة الأسطر باستخدام Shift + Enter',
+                        'تجربة لا نهائية في عرض الدردشة لتجربة مستخدم سلسة',
+                        'الواجهة الأمامية بنيت باستخدام فيو 3، واجهة التكوين، TypeScript، وSetup Syntax',
+                        'تحديثات الرسائل والأوضاع تتم فورًا دون إعادة تحميل الصفحة'
+                    ]
+                ],
+                'skills' => [1, 3, 4, 6, 7, 11]
+            ],
+            [
+                'thumbnail' => '/storage/projects/socialx_thumbnail.png',
+                'live_url' => null, // No live demo yet
+                'github_url' => 'https://github.com/EslamKamel89/SocialX',  // From linkedin post
+                'start_date' => '2024-11-01',
+                'end_date' => '2025-02-28',
+                'is_featured' => true,
+                'filter' => FilterEnum::WEB->value,
+                'order' => 4,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/socialx_01.png",
+                    "/storage/projects/socialx_02.png",
+                    // "/storage/projects/socialx_03.png"
+                ],
+                'videos' => ["https://youtube.com/watch?v=..."],
+                'title' => [
+                    'en' => 'SocialX – A Real-Time Blog App Built with TALL Stack + Livewire Volt API',
+                    'ar' => 'سوشل إكس – تطبيق مدونات زمني حقيقي مبني على تكنولوجيا TALL ومحرك ليف واير فولت'
+                ],
+                'description' => [
+                    'en' => 'A high-performance real-time blog platform built using the TALL stack and Livewire Volt API. Proves that Livewire can be fast and scalable when used correctly.',
+                    'ar' => 'منصة مدونات عالية الأداء زمنية حقيقية مبنية على تكنولوجيا TALL ومحرك ليف واير فولت. تثبت أن ليف واير يمكنه أن يكون سريعًا وقابلًا للتوسيع إذا استُخدم بشكل صحيح.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Built with Laravel, Alpine.js, Livewire, Tailwind CSS (TALL Stack)',
+                        'Infinite Scroll – Smooth loading without page refreshes',
+                        'Real-Time Posts – New & updated posts appear instantly across users via Pusher WebSocket',
+                        'Authorization Layer – Only owners can edit or delete their posts, changes sync in real time',
+                        'Live Like Counter – Likes update across all users instantly',
+                        'Uses Livewire Volt API for cleaner, simpler component logic',
+                        'Fully responsive and mobile-friendly UI',
+                        'Open source and MIT licensed for reuse'
+                    ],
+                    'ar' => [
+                        'تم بناء التطبيق باستخدام Laravel، ألبين جي إس، ليف واير، وتايلويند سي إس إس (تكنولوجيا TALL)',
+                        'تجربة لا نهائية في التنقل دون إعادة تحميل الصفحة',
+                        'مشاركات مباشرة – تظهر المنشورات الجديدة والمحررة فورًا عبر المستخدمين عبر Pusher WebSocket',
+                        'نظام مصادقة – فقط المؤلفون يقدرون على التعديل أو الحذف مع تحديثات فورية',
+                        'عداد الإعجابات الزمني الحقيقي – يتم التحديث الفوري لكل المستخدمين',
+                        'استخدام محرك ليف واير فولت للحصول على شيفرة أنظف وأبسط',
+                        'واجهة مستجوبة ومناسبة للهواتف',
+                        'مصدر مفتوح ومُرخص تحت رخصة MIT'
+                    ]
+                ],
+                'skills' => [1, 4, 5, 6, 11] // e.g., Laravel, Livewire, Vue (for comparison), TypeScript, GitHub Actions
+            ]
 
         ];
         foreach ($projects as $i => $projectData) {

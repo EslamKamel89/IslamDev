@@ -3,9 +3,9 @@
 namespace App;
 
 enum FilterEnum: string {
-    case WEB_AND_MOBILE = 'WEB_AND_MOBILE';
-    case MOBILE = 'MOBILE';
     case WEB = 'WEB';
+    case MOBILE = 'MOBILE';
+    case WEB_AND_MOBILE = 'WEB_AND_MOBILE';
     public static function labels() {
         return collect(self::cases())->map(function ($case) {
             return $case->label();

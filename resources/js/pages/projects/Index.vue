@@ -12,7 +12,7 @@ const { projects, categories, projectFilters } = usePage<SharedData & { projects
 
 const selectedFilter = ref(getKey(projectFilters[0]));
 const filteredProjects = computed(() => {
-    return projects.filter((project) => project.filter == selectedFilter.value).slice(0, 2);
+    return projects.filter((project) => project.filter == selectedFilter.value);
 });
 </script>
 

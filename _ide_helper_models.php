@@ -91,6 +91,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project wherePlaystoreUrl($value)
  * @mixin \Eloquent
  * @property \App\FilterEnum $filter
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereFilter($value)
  */
 	class Project extends \Eloquent {}
 }
