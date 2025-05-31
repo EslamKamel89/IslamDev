@@ -27,6 +27,10 @@ export interface SharedData extends PageProps {
     sidebarOpen: boolean;
     categories: Category[];
     projectFilters: Record<string, string>[];
+    flash?: {
+        success?: { title: string | null; content: string | null };
+        error?: { title: string | null; content: string | null };
+    };
 }
 
 export interface User {

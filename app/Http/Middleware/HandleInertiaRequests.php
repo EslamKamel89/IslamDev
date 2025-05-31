@@ -53,6 +53,10 @@ class HandleInertiaRequests extends Middleware {
             'projectFilters' => collect(
                 FilterEnum::options()
             )->filter(fn($filter) => true)->values(),
+            // 'flash' => [
+            //     'success' => fn() => $request->session()->get('success'),
+            //     'error' => fn() => $request->session()->get('error'),
+            // ],
             'ziggy' => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),

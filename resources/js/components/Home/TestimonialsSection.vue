@@ -6,12 +6,12 @@ import type { Feedback } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
 import { usePage } from '@inertiajs/vue3';
 import { StepBack, StepForward } from 'lucide-vue-next';
-import { computed, onMounted, ref } from 'vue';
+import { computed, onDeactivated, onMounted, ref } from 'vue';
 import Button from '../ui/button/Button.vue';
 import Rating from './Rating.vue';
 import TestimonialHeader from './TestimonialHeader.vue';
 const page = usePage<SharedData & { feedbacks: Feedback[] }>();
-const feedbacks = computed(() => page.props.feedbacks);
+const feedbacks = computed(() => page.props.feedbacks ?? []);
 const { locale, isRtl, t } = useLocale();
 const currentIndex = ref(0);
 const currentTestimonial = ref(feedbacks.value[0]);
@@ -23,7 +23,7 @@ const goTo = (index: number) => {
 };
 
 const next = () => {
-    currentIndex.value = (currentIndex.value + 1) % feedbacks.value.length;
+    currentIndex.value = (currentIndex.value + 1) % feedbacks.value?.length;
     currentTestimonial.value = feedbacks.value[currentIndex.value];
 };
 
@@ -37,6 +37,9 @@ const contactDetails = computed(() => {
 
 onMounted(() => {
     interval.value = window.setInterval(next, 5000);
+});
+onDeactivated(() => {
+    clearInterval(interval.value!);
 });
 </script>
 
