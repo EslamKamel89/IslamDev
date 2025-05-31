@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('content');
+            $table->longText('content');
             $table->string('ip_address')->nullable();
             $table->string('user_agent')->nullable();
             $table->boolean('is_read')->default(false);
