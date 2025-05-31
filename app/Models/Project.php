@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 #[ObservedBy(ProjectObserver::class)]
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $title
@@ -60,6 +60,8 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property string|null $applestore_url
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereApplestoreUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Project wherePlaystoreUrl($value)
+ * @property FilterEnum $filter
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Project whereFilter($value)
  * @mixin \Eloquent
  */
 class Project extends Model {

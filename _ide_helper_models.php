@@ -44,6 +44,18 @@ namespace App\Models{
 /**
  * 
  *
+ * @method static \Database\Factories\MessageFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Message newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Message newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Message query()
+ */
+	class Message extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property string $title
  * @property string|null $slug
