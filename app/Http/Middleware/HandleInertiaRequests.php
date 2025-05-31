@@ -52,10 +52,7 @@ class HandleInertiaRequests extends Middleware {
             ),
             'projectFilters' => collect(
                 FilterEnum::options()
-            )->filter(
-                fn($filter) =>
-                collect($filter)->keys()->first() != FilterEnum::WEB_AND_MOBILE->value
-            )->values(),
+            )->filter(fn($filter) => true)->values(),
             'ziggy' => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),

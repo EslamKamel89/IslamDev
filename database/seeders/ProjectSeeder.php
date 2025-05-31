@@ -22,7 +22,7 @@ class ProjectSeeder extends Seeder {
                 'start_date' => '17-04-2025',
                 'end_date' => '15-04-2025',
                 'is_featured' => true,
-                'filter' => FilterEnum::WEB->value,
+                'filter' => FilterEnum::VILT->value,
                 'order' => 1,
                 'status' => 'published',
                 'images' => [
@@ -74,7 +74,7 @@ class ProjectSeeder extends Seeder {
                 'start_date' => '07-04-2025',
                 // 'end_date' => '2024-06-15',
                 'is_featured' => true,
-                'filter' => FilterEnum::WEB->value,
+                'filter' => FilterEnum::LIVEWIRE->value,
                 'order' => 2,
                 'status' => 'draft',
                 'images' => [
@@ -138,7 +138,7 @@ class ProjectSeeder extends Seeder {
                 'start_date' => '2024-10-01',
                 'end_date' => '2025-03-31',
                 'is_featured' => true,
-                'filter' => FilterEnum::WEB->value,
+                'filter' => FilterEnum::VILT->value,
                 'order' => 3,
                 'status' => 'published',
                 'images' => [
@@ -185,7 +185,7 @@ class ProjectSeeder extends Seeder {
                 'start_date' => '2024-11-01',
                 'end_date' => '2025-02-28',
                 'is_featured' => true,
-                'filter' => FilterEnum::WEB->value,
+                'filter' => FilterEnum::LIVEWIRE->value,
                 'order' => 4,
                 'status' => 'published',
                 'images' => [
@@ -225,6 +225,67 @@ class ProjectSeeder extends Seeder {
                     ]
                 ],
                 'skills' => [1, 4, 5, 6, 11] // e.g., Laravel, Livewire, Vue (for comparison), TypeScript, GitHub Actions
+            ],
+            [
+                'thumbnail' => '/storage/projects/chinashop_thumbnail.png',
+                // 'live_url' => 'https://demo.islamdev.com',  // Replace with real URL later
+                'github_url' => 'https://github.com/EslamKamel89/ChinaShop',
+                'start_date' => '2024-03-01',
+                'end_date' => '2024-06-15',
+                'is_featured' => true,
+                'filter' => FilterEnum::NUXT->value,
+                'order' => 5,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/chinashop_01.png",
+                    "/storage/projects/chinashop_02.png",
+                    "/storage/projects/chinashop_03.png",
+                    "/storage/projects/chinashop_04.png",
+                    "/storage/projects/chinashop_05.png",
+                    "/storage/projects/chinashop_06.png",
+                    "/storage/projects/chinashop_07.png",
+                    "/storage/projects/chinashop_08.png",
+                    "/storage/projects/chinashop_09.png",
+                    "/storage/projects/chinashop_10.png",
+                    "/storage/projects/chinashop_11.png",
+                    "/storage/projects/chinashop_12.png",
+                    "/storage/projects/chinashop_13.png",
+                    "/storage/projects/chinashop_14.png",
+                ],
+                // 'videos' => ["https://youtube.com/watch?v=..."],
+                'title' => [
+                    'en' => 'Vue E-commerce Dashboard – Built with Nuxt.js, Shadcn-Vue, and Stripe Integration',
+                    'ar' => 'لوحة تحكم التجارة الإلكترونية – مبنية على فيو جي إس، نوكست جي إس، ودمجت مع نظام دفع Stripe'
+                ],
+                'description' => [
+                    'en' => 'A feature-rich e-commerce admin dashboard built with Vue.js, Nuxt.js, and Tailwind CSS. Includes category-based filtering, product management, and integrates with Stripe for secure payment processing.',
+                    'ar' => 'لوحة تحكم تجارية قوية مبنية على فيو جي إس ونوكست جي إس وتايلويند سي إس إس. تشمل التصفية حسب الفئة وإدارة المنتجات والدمج مع Stripe للمدفوعات الآمنة.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Feature-rich products page with filtering by category, size, or color',
+                        'Beautiful and responsive intro screen with featured products section',
+                        'Built with Nuxt.js and shadcn-vue components for a modern UI',
+                        'Authentication handled via nuxt-auth-utils including GitHub login',
+                        'Fully functional and secure payment system powered by Stripe integration',
+                        'Admin dashboard built with @tanstack/vue-table for advanced data handling',
+                        'Custom image upload using H3\'s readMultipartFormData (no external service)',
+                        'Responsive design with mobile-first approach',
+                        'Open source and ready for reuse'
+                    ],
+                    'ar' => [
+                        'صفحة منتجات غنية بالميزات مع خاصية الفلترة حسب الفئة أو الحجم أو اللون',
+                        'شاشة ترحيبية جميلة ومستجيبة مع عرض المنتجات المميزة',
+                        'بني التطبيق باستخدام نوكست جي إس ومكونات shadcn-vue لواجهة حديثة وجذابة',
+                        'تم التعامل مع المصادقة عبر nuxt-auth-utils بما في ذلك تسجيل الدخول عبر GitHub',
+                        'نظام مدفوعات آمن وفعال عبر Stripe',
+                        'لوحة تحكم إدارية بنيت باستخدام @tanstack/vue-table لإدارة البيانات المتقدمة',
+                        'رفع الصور عبر استخدام readMultipartFormData من H3 بدون خدمات خارجية',
+                        'تصميم مستجيب يدعم الهواتف أولاً',
+                        'مصدر مفتوح ويمكن إعادة الاستخدام'
+                    ]
+                ],
+                'skills' => [1, 2, 3, 14] // Example skill IDs: Nuxt.js, Vue, TypeScript, MongoDB, Stripe
             ]
 
         ];
