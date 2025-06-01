@@ -6,6 +6,7 @@ use App\Http\Controllers\Pages\MessageCreateController;
 use App\Http\Controllers\Pages\ProjectsController;
 use App\Http\Controllers\Pages\ResumeController;
 use App\Http\Controllers\Pages\SkillsController;
+use App\Mail\MessageRecieved;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -21,6 +22,8 @@ Route::get('/resume', ResumeController::class)->name('resume');
 // Route::get('dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/test', function () {
+    echo (new MessageRecieved('Eslam kamel', 'some text'))->render();
+});
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

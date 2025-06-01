@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MessageRequest;
+use App\Mail\MessageRecieved;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageCreateController extends Controller {
     /**
@@ -14,6 +16,7 @@ class MessageCreateController extends Controller {
     public function __invoke(MessageRequest $request) {
         $validated = $request->validated();
         $message = Message::create($validated);
+        Mail::to($request->email)->send(new MessageRecieved($request->name, $request->content));
         if ($request->has('to')) {
             return redirect()->route($request->get('to'));
         }
