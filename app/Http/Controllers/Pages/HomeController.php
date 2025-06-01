@@ -26,7 +26,7 @@ class HomeController extends Controller {
         return Inertia::render('home/Index', [
             'projects' => $projects,
             'feedbacks' => $feedbacks,
-            'flash' => ['success' => ['title' => 'Welcome', 'content' => 'Glad to have you here! Take a look around, and I hope you like what you see.']]
+            // 'flash' => ['success' => ['title' => 'Welcome', 'content' => 'Glad to have you here! Take a look around, and I hope you like what you see.']]
         ]);
     }
 }

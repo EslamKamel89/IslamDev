@@ -39,6 +39,8 @@ const messages = {
         PROJECTS: 'Projects',
         CV: 'CV',
         CONTACT: 'Contact me',
+        MESSAGE_SEND: 'Message Sent!',
+        MESSAGE_SEND_DESCRIPTION: 'Your message has been successfully delivered! We’ll get back to you as soon as possible. 😊',
     },
     ar: {
         greeting: 'مرحبا',
@@ -79,6 +81,8 @@ const messages = {
         PROJECTS: 'المشاريع',
         CV: 'السيرة الذاتية',
         CONTACT: 'تواصل معي',
+        MESSAGE_SEND: 'تم إرسال الرسالة!',
+        MESSAGE_SEND_DESCRIPTION: 'تم تسليم رسالتك بنجاح! سنرد عليك في أقرب وقت ممكن. 😊',
     },
 };
 

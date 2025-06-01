@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Pages\ContactController;
 use App\Http\Controllers\Pages\HomeController;
+use App\Http\Controllers\Pages\MessageCreateController;
 use App\Http\Controllers\Pages\ProjectsController;
 use App\Http\Controllers\Pages\ResumeController;
 use App\Http\Controllers\Pages\SkillsController;
@@ -15,6 +16,7 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/skills', SkillsController::class)->name('skills.index');
 Route::get('/projects', ProjectsController::class)->name('projects.index');
 Route::get('/contact', ContactController::class)->name('contact');
+Route::post('/contact', MessageCreateController::class)->name('contact.store');
 Route::get('/resume', ResumeController::class)->name('resume');
 // Route::get('dashboard', function () {
 //     return Inertia::render('Dashboard');

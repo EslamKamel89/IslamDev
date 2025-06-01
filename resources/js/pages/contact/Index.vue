@@ -6,7 +6,7 @@
             <!-- Right Column - Contact Form -->
             <div class="bg-card rounded-lg border p-6 shadow-md">
                 <h3 class="mb-4 text-xl font-semibold">Send Me a Message</h3>
-                <ContactForm />
+                <ContactForm to="contact" />
             </div>
         </div>
     </AppLayout>

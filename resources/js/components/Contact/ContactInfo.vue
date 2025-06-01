@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Button from '../ui/button/Button.vue';
 import SocialLinks from './SocialLinks.vue';
 
 const illustrationUrl = ref('/assets/images/contact.png');
@@ -19,24 +18,6 @@ const illustrationUrl = ref('/assets/images/contact.png');
             />
         </div>
 
-        <div class="space-y-6">
-            <!--
-                <div class="flex items-start gap-4">
-                    <Mail />
-                    <div>
-                        <p class="font-medium">Email</p>
-                        <a href="mailto:eslamkamelforex@gmail.com" class="text-primary hover:underline">eslamkamelforex@gmail.com</a>
-                    </div>
-                </div>
-            -->
-
-            <SocialLinks />
-
-            <div class="mt-6">
-                <Button variant="outline" size="lg" as-child>
-                    <a href="/resume.pdf" download>Download Resume</a>
-                </Button>
-            </div>
-        </div>
+        <SocialLinks />
     </div>
 </template>
