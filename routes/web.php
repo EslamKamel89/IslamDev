@@ -3,8 +3,8 @@
 use App\Http\Controllers\Pages\ContactController;
 use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Pages\ProjectsController;
+use App\Http\Controllers\Pages\ResumeController;
 use App\Http\Controllers\Pages\SkillsController;
-use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 

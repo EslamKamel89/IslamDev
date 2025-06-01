@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pages;
 
+use App\Helpers\Flash;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FeedbackResource;
 use App\Http\Resources\ProjectResource;

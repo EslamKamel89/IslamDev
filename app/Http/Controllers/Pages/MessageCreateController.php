@@ -12,9 +12,11 @@ class MessageCreateController extends Controller {
      * Handle the incoming request.
      */
     public function __invoke(MessageRequest $request) {
-
         $validated = $request->validated();
         $message = Message::create($validated);
-        return redirect()->intended()->with('success', 'All set! Your message is on its way. 🚀|كل شيء جاهز! رسالتك في طريقها الآن. 🚀');
+        if ($request->has('to')) {
+            return redirect()->route($request->get('to'));
+        }
+        return redirect()->route('contact');
     }
 }
