@@ -39,7 +39,7 @@
         </div>
         <div class="mt-6">
             <Button variant="outline" size="lg" as-child>
-                <a href="/resume.pdf" download>Download Resume</a>
+                <a href="/assets/files/cv.pdf" target="_blank">Download Resume</a>
             </Button>
         </div>
     </div>

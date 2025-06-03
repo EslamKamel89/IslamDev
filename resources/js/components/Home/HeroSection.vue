@@ -36,9 +36,11 @@ const { t, isRtl } = useLocale();
                         {{ t('VIEW_PROJECTS') }}
                     </Button>
                 </Link>
-                <Button size="lg" variant="outline" class="transition-transform duration-200 hover:scale-105">
-                    {{ t('DOWNLOAD_CV') }}
-                </Button>
+                <a href="/assets/files/cv.pdf" target="_blank">
+                    <Button size="lg" variant="outline" class="transition-transform duration-200 hover:scale-105">
+                        {{ t('DOWNLOAD_CV') }}
+                    </Button>
+                </a>
                 <Link :href="route('contact')">
                     <Button size="lg" variant="secondary" class="transition-transform duration-200 hover:scale-105">
                         {{ t('CONTACT_ME') }}

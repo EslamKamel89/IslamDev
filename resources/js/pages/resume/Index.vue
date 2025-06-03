@@ -29,8 +29,8 @@ const resume = computed(() => page.props.resumeData);
             <!-- Download Button -->
             <div class="mb-8 text-right">
                 <a
-                    href="/Islam_Ahmed_Resume.docx"
-                    download
+                    href="/assets/files/cv.pdf"
+                    target="_blank"
                     class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-4 py-2 transition-colors"
                 >
                     <FileHeart />

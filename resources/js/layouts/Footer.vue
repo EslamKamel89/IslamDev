@@ -44,7 +44,7 @@
             <div>
                 <h4 class="mb-4 font-semibold">About</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="/resume.pdf" download class="hover:text-primary transition-colors">Download Resume</a></li>
+                    <li><a href="/assets/files/cv.pdf" target="_blank" class="hover:text-primary transition-colors">Download Resume</a></li>
                     <li><a href="/skills" class="hover:text-primary transition-colors">Skills</a></li>
                     <li><a href="/testimonials" class="hover:text-primary transition-colors">Testimonials</a></li>
                 </ul>
