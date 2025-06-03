@@ -76,9 +76,13 @@ export type ResumeData = {
     }[];
 };
 
-type ResumeSectionItem = RWorkExperience | REducation | RSkillGroup | RProject | RCertification | RLanguage | RAdditionalInfo;
+type ResumeSectionItem = RSummary | RWorkExperience | REducation | RSkillGroup | RProject | RCertification | RLanguage | RAdditionalInfo;
 
-// Example Section Items
+export interface RSummary {
+    id: string;
+    title: Record<string, string>;
+    items: { description: Record<string, string> }[];
+}
 
 interface RWorkExperience {
     company: string;

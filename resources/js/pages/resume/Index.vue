@@ -11,6 +11,7 @@ import { ResumeData } from '@/types/custom';
 import { usePage } from '@inertiajs/vue3';
 import { FileHeart } from 'lucide-vue-next';
 import { computed } from 'vue';
+const castRSummaryDescription = (value: any) => value as { description: Record<string, string> }[];
 const castRWorkExperience = (value: any) => value as RWorkExperience[];
 const castREducation = (value: any) => value as REducation[];
 const castRSkillGroup = (value: any) => value as RSkillGroup[];
@@ -60,6 +61,11 @@ const resume = computed(() => page.props.resumeData);
             <!-- Sections -->
             <div v-for="section in resume.sections" :key="section.id" class="mb-10">
                 <ResumeSection :title="section.title[lang]" :id="section.id">
+                    <div v-if="section.id === 'summary'" class="space-y-6">
+                        <div v-for="(item, index) in castRSummaryDescription(section.items)" :key="index">
+                            <div>{{ item.description[lang] }}</div>
+                        </div>
+                    </div>
                     <div v-if="section.id === 'experience'" class="space-y-6">
                         <ResumeWorkExperience v-for="item in castRWorkExperience(section.items)" :key="item.company" :item="item" :lang="lang" />
                     </div>
