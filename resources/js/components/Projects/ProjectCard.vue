@@ -75,15 +75,15 @@ const fixFullHeight = ref(false);
                         @click="handlePrevImage"
                     >
                         <StepBack
-                            class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                            class="bg-primary/60 hover:bg-primary hover:shadow-primary h-9 w-9 rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg lg:h-12 lg:w-12"
                         />
                     </div>
                     <component
                         :is="fixFullHeight ? Minimize2 : Maximize2"
                         class="cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
                         :class="{
-                            'bg-primary shadow-primary absolute end-0 top-0 h-12 w-12 scale-105 shadow-lg': fixFullHeight,
-                            'bg-primary/30 h-24 w-24': !fixFullHeight,
+                            'bg-primary shadow-primary absolute end-0 top-0 h-9 w-9 scale-105 shadow-lg lg:h-12 lg:w-12': fixFullHeight,
+                            'bg-primary/30 h-16 w-16 lg:h-24 lg:w-24': !fixFullHeight,
                         }"
                         @click="fixFullHeight = !fixFullHeight"
                     />
@@ -92,7 +92,7 @@ const fixFullHeight = ref(false);
                         @click="handleNextImage"
                     >
                         <StepForward
-                            class="bg-primary/60 hover:bg-primary hover:shadow-primary h-12 w-12 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg"
+                            class="bg-primary/60 hover:bg-primary hover:shadow-primary h-9 w-9 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg lg:h-12 lg:w-12"
                         />
                     </div>
                 </div>

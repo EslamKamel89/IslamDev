@@ -36,8 +36,8 @@ const fixFullHeight = ref(false);
                         :is="fixFullHeight ? Minimize2 : Maximize2"
                         class="cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
                         :class="{
-                            'bg-primary shadow-primary absolute end-0 top-0 h-12 w-12 scale-105 shadow-lg': fixFullHeight,
-                            'bg-primary/30 h-24 w-24': !fixFullHeight,
+                            'bg-primary shadow-primary absolute end-0 top-0 h-9 w-9 scale-105 shadow-lg lg:h-12 lg:w-12': fixFullHeight,
+                            'bg-primary/30 h-16 w-16 lg:h-24 lg:w-24': !fixFullHeight,
                         }"
                         @click="fixFullHeight = !fixFullHeight"
                     />
