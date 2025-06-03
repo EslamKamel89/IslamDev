@@ -1,11 +1,27 @@
+<script setup lang="ts">
+import Button from '@/components/ui/button/Button.vue';
+import { useAppearance } from '@/composables/useAppearance';
+import { Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
+
+const logoUrl = ref('/logo.svg'); // You can change this path to your actual logo
+const { appearance, updateAppearance } = useAppearance();
+
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+};
+</script>
 <template>
     <footer class="bg-background text-foreground border-t px-6 py-12">
         <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-4">
             <!-- Column 1: Brand & Logo -->
             <div class="space-y-4">
                 <div class="flex items-center space-x-2">
-                    <img :src="logoUrl" alt="IslamDev Logo" class="h-8 w-8" />
-                    <h3 class="text-xl font-bold">IslamDev</h3>
+                    <img :src="appearance == 'dark' ? '/assets/images/logo_dark.png' : '/assets/images/logo.png'" alt="IslamDev Logo" class="w-32" />
+                    <h3 class="text-xl font-bold"></h3>
                 </div>
                 <p class="text-muted-foreground text-sm">Full Stack Developer crafting modern web & mobile applications.</p>
                 <p class="text-muted-foreground text-xs">&copy; {{ new Date().getFullYear() }} Islam Ahmed. All rights reserved.</p>
@@ -33,10 +49,10 @@
             <div>
                 <h4 class="mb-4 font-semibold">Quick Links</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
-                    <li><a href="/about" class="hover:text-primary transition-colors">About Me</a></li>
-                    <li><a href="/projects" class="hover:text-primary transition-colors">Projects</a></li>
-                    <li><a href="/contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><Link href="/" class="hover:text-primary transition-colors">Home</Link></li>
+                    <li><Link href="/resume" class="hover:text-primary transition-colors">CV</Link></li>
+                    <li><Link href="/projects" class="hover:text-primary transition-colors">Projects</Link></li>
+                    <li><Link href="/contact" class="hover:text-primary transition-colors">Contact</Link></li>
                 </ul>
             </div>
 
@@ -45,8 +61,7 @@
                 <h4 class="mb-4 font-semibold">About</h4>
                 <ul class="space-y-2 text-sm">
                     <li><a href="/assets/files/cv.pdf" target="_blank" class="hover:text-primary transition-colors">Download Resume</a></li>
-                    <li><a href="/skills" class="hover:text-primary transition-colors">Skills</a></li>
-                    <li><a href="/testimonials" class="hover:text-primary transition-colors">Testimonials</a></li>
+                    <li><Link href="/skills" class="hover:text-primary transition-colors">Skills</Link></li>
                 </ul>
             </div>
 
@@ -55,7 +70,7 @@
                 <h4 class="mb-4 font-semibold">Stay Connected</h4>
                 <p class="text-muted-foreground mb-4 text-sm">Get in touch for freelance opportunities or collaborations.</p>
                 <Button variant="outline" as-child class="w-full">
-                    <a href="/contact">Contact Me</a>
+                    <Link href="/contact">Contact Me</Link>
                 </Button>
             </div>
         </div>
@@ -84,17 +99,3 @@
         </div>
     </footer>
 </template>
-
-<script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue';
-import { ref } from 'vue';
-
-const logoUrl = ref('/logo.svg'); // You can change this path to your actual logo
-
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-    });
-};
-</script>
