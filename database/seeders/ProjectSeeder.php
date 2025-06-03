@@ -364,6 +364,8 @@ class ProjectSeeder extends Seeder {
                     "/storage/projects/quran_11.png",
                     "/storage/projects/quran_12.png",
                 ],
+                'playstore_url' => 'https://play.google.com/store/apps/details?id=com.dubdev.dallalat',
+                'applestore_url' => 'https://apps.apple.com/us/app/%D8%AF%D9%84%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D9%82%D8%B1%D8%A3%D9%86/id6736754081',
                 // 'videos' => ["https://youtube.com/watch?v=..."],
                 'title' => [
                     'en' => 'Dalalat Al-Qur’an – Flutter-Based Islamic App for Deep Quranic Study',
@@ -421,6 +423,9 @@ class ProjectSeeder extends Seeder {
                     "/storage/projects/cal_7.png",
                 ],
                 // 'videos' => ["https://youtube.com/watch?v=..."],
+                'playstore_url' => 'https://play.google.com/store/apps/details?id=com.gaztec.islamic_calander',
+                'applestore_url' => 'https://apps.apple.com/us/app/eternal-islamic-calendar/id6738862001?platform=ipad',
+
                 'title' => [
                     'en' => 'Islamic Calendar & Prayer Times – A Beautiful, Dual-Language Mobile App Built with Flutter',
                     'ar' => 'التقويم الإسلامي وأوقات الصلاة – تطبيق جوال بلغتين مبني على فليتر'
@@ -540,6 +545,8 @@ class ProjectSeeder extends Seeder {
                 "thumbnail" => $projectData['thumbnail'] ?? null,
                 "live_url" => $projectData['live_url'] ?? null,
                 "github_url" => $projectData['github_url'] ?? null,
+                'playstore_url' => $projectData['playstore_url'] ?? null,
+                'applestore_url' => $projectData['applestore_url'] ?? null,
                 "start_date" => $projectData['start_date'] ?? null,
                 "end_date" => $projectData['end_date'] ?? null,
                 "is_featured" => $projectData['is_featured'],

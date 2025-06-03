@@ -3,7 +3,7 @@ import { useLocale } from '@/composables/useLocale';
 import { Project } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
 import { getRandomIcon } from '@/utils/randomIcon';
-import { Maximize2, Minimize2, StepBack, StepForward } from 'lucide-vue-next';
+import { Apple, Maximize2, Minimize2, Smartphone, StepBack, StepForward } from 'lucide-vue-next';
 import { computed, defineProps, ref } from 'vue';
 import SkillBadge from '../Shared/SkillBadge.vue';
 import Button from '../ui/button/Button.vue';
@@ -123,6 +123,20 @@ const fixFullHeight = ref(false);
             </Button>
             <Button v-if="project.github_url" variant="secondary" size="sm" as-child>
                 <a :href="project.github_url" target="_blank">GitHub</a>
+            </Button>
+
+            <Button v-if="project.playstore_url" variant="secondary" size="sm" as-child class="flex items-center gap-2">
+                <a :href="project.playstore_url" target="_blank" class="inline-flex items-center gap-2">
+                    <Smartphone class="h-4 w-4"></Smartphone>
+                    <span>Play Store</span>
+                </a>
+            </Button>
+
+            <Button v-if="project.applestore_url" variant="secondary" size="sm" as-child class="flex items-center gap-2">
+                <a :href="project.applestore_url" target="_blank" class="inline-flex items-center gap-2">
+                    <Apple class="h-4 w-4"></Apple>
+                    <span>App Store</span>
+                </a>
             </Button>
         </div>
     </div>
