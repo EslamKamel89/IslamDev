@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import { useLocale } from '@/composables/useLocale';
 import { ref } from 'vue';
 import SocialLinks from './SocialLinks.vue';
 
 const illustrationUrl = ref('/assets/images/contact.png');
+const { t } = useLocale();
 </script>
 <template>
     <div class="space-y-2">
-        <h2 class="text-3xl font-bold sm:text-4xl">Get in Touch</h2>
-        <p class="text-muted-foreground text-lg">Whether you're looking to collaborate, hire me, or just want to say hi — feel free to reach out!</p>
+        <h2 class="text-3xl font-bold sm:text-4xl">{{ t('GET_IN_TOUCH') }}</h2>
+        <p class="text-muted-foreground text-lg">{{ t('CONTACT_ME_DESCRIPTION') }}</p>
 
         <!-- Illustration / Avatar -->
         <div class="mt-2 flex justify-center md:justify-start">

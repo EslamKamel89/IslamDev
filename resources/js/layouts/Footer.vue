@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue';
 import { useAppearance } from '@/composables/useAppearance';
+import { useLocale } from '@/composables/useLocale';
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -13,6 +14,7 @@ const scrollToTop = () => {
         behavior: 'smooth',
     });
 };
+const { t } = useLocale();
 </script>
 <template>
     <footer class="bg-background text-foreground border-t px-6 py-12">
@@ -23,8 +25,8 @@ const scrollToTop = () => {
                     <img :src="appearance == 'dark' ? '/assets/images/logo_dark.png' : '/assets/images/logo.png'" alt="IslamDev Logo" class="w-32" />
                     <h3 class="text-xl font-bold"></h3>
                 </div>
-                <p class="text-muted-foreground text-sm">Full Stack Developer crafting modern web & mobile applications.</p>
-                <p class="text-muted-foreground text-xs">&copy; {{ new Date().getFullYear() }} Islam Ahmed. All rights reserved.</p>
+                <p class="text-muted-foreground text-sm">{{ t('FOOTER_INTRO') }}</p>
+                <p class="text-muted-foreground text-xs">{{ `&copy; ${new Date().getFullYear()} Islam Ahmed. ${t('ALL_RIGHT_RESERVED')}` }}</p>
 
                 <!-- Social Media Icons -->
                 <div class="mt-2 flex gap-4">
@@ -47,30 +49,42 @@ const scrollToTop = () => {
 
             <!-- Column 2: Quick Links -->
             <div>
-                <h4 class="mb-4 font-semibold">Quick Links</h4>
+                <h4 class="mb-4 font-semibold">{{ t('QUICK_LINKS') }}</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><Link href="/" class="hover:text-primary transition-colors">Home</Link></li>
-                    <li><Link href="/resume" class="hover:text-primary transition-colors">CV</Link></li>
-                    <li><Link href="/projects" class="hover:text-primary transition-colors">Projects</Link></li>
-                    <li><Link href="/contact" class="hover:text-primary transition-colors">Contact</Link></li>
+                    <li>
+                        <Link href="/" class="hover:text-primary transition-colors">{{ t('home') }}</Link>
+                    </li>
+                    <li>
+                        <Link href="/resume" class="hover:text-primary transition-colors">{{ t('CV') }}</Link>
+                    </li>
+                    <li>
+                        <Link href="/projects" class="hover:text-primary transition-colors">{{ t('PROJECTS') }}</Link>
+                    </li>
+                    <li>
+                        <Link href="/contact" class="hover:text-primary transition-colors">{{ t('CONTACT') }}</Link>
+                    </li>
                 </ul>
             </div>
 
             <!-- Column 3: About -->
             <div>
-                <h4 class="mb-4 font-semibold">About</h4>
+                <h4 class="mb-4 font-semibold">{{ t('ABOUT') }}</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="/assets/files/cv.pdf" target="_blank" class="hover:text-primary transition-colors">Download Resume</a></li>
-                    <li><Link href="/skills" class="hover:text-primary transition-colors">Skills</Link></li>
+                    <li>
+                        <a href="/assets/files/cv.pdf" target="_blank" class="hover:text-primary transition-colors">{{ t('DOWNLOAD_RESUME') }}</a>
+                    </li>
+                    <li>
+                        <Link href="/skills" class="hover:text-primary transition-colors">{{ t('SKILLS') }}</Link>
+                    </li>
                 </ul>
             </div>
 
             <!-- Column 4: Contact / Newsletter -->
             <div>
-                <h4 class="mb-4 font-semibold">Stay Connected</h4>
-                <p class="text-muted-foreground mb-4 text-sm">Get in touch for freelance opportunities or collaborations.</p>
+                <h4 class="mb-4 font-semibold">{{ t('STAY_CONNECTED') }}</h4>
+                <p class="text-muted-foreground mb-4 text-sm">{{ t('GET_IN_TOUCH_2') }}</p>
                 <Button variant="outline" as-child class="w-full">
-                    <Link href="/contact">Contact Me</Link>
+                    <Link href="/contact">{{ t('CONTACT') }}</Link>
                 </Button>
             </div>
         </div>

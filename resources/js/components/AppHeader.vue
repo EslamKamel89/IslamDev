@@ -15,7 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { useLocale } from '@/composables/useLocale';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { AtSign, BookOpenText, Github, Home, Lightbulb, Linkedin, Menu, Zap } from 'lucide-vue-next';
+import { AtSign, BookOpenText, ChartArea, Github, Home, Lightbulb, Linkedin, Menu, MessageSquareHeart, Zap } from 'lucide-vue-next';
 import { computed } from 'vue';
 import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
@@ -63,6 +63,11 @@ const mainNavItems: NavItem[] = [
         href: '/contact',
         icon: AtSign,
     },
+    {
+        title: 'BLOG',
+        href: 'https://devtalk.islamdev.com/',
+        icon: MessageSquareHeart,
+    },
 ];
 
 const rightNavItems: NavItem[] = [
@@ -101,16 +106,27 @@ const navItemsDirectional = computed(() => {
                             </SheetHeader>
                             <div class="flex h-full flex-1 flex-col justify-between space-y-4 py-6">
                                 <nav class="-mx-3 space-y-1">
-                                    <Link
-                                        v-for="item in mainNavItems"
-                                        :key="item.title"
-                                        :href="item.href"
-                                        class="hover:bg-accent flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium"
-                                        :class="activeItemStyles(item.href)"
-                                    >
-                                        <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
-                                        {{ item.title }}
-                                    </Link>
+                                    <div class="" v-for="item in mainNavItems" :key="item.title">
+                                        <Link
+                                            v-if="item.title != 'BLOG'"
+                                            :href="item.href"
+                                            class="hover:bg-accent flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium"
+                                            :class="activeItemStyles(item.href)"
+                                        >
+                                            <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
+                                            {{ t(item.title) }}
+                                        </Link>
+                                        <a
+                                            v-else
+                                            :href="item.href"
+                                            class="hover:bg-accent flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium"
+                                            :class="activeItemStyles(item.href)"
+                                            target="_blank"
+                                        >
+                                            <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
+                                            {{ t(item.title) }}
+                                        </a>
+                                    </div>
                                 </nav>
                                 <div class="flex flex-col space-y-4">
                                     <a
@@ -139,18 +155,27 @@ const navItemsDirectional = computed(() => {
                     <NavigationMenu class="mx-10 flex h-full items-stretch">
                         <NavigationMenuList class="flex h-full items-stretch space-x-2">
                             <NavigationMenuItem v-for="(item, index) in navItemsDirectional" :key="index" class="relative flex h-full items-center">
-                                <Link :href="item.href">
-                                    <NavigationMenuLink
-                                        :class="[navigationMenuTriggerStyle(), activeItemStyles(item.href), 'h-9 cursor-pointer px-3']"
-                                    >
-                                        <component v-if="item.icon" :is="item.icon" class="mr-2 h-4 w-4" />
-                                        {{ t(item.title) }}
+                                <template v-if="item.title !== 'BLOG'">
+                                    <Link :href="item.href">
+                                        <NavigationMenuLink
+                                            :class="[navigationMenuTriggerStyle(), activeItemStyles(item.href), 'h-9 cursor-pointer px-3']"
+                                        >
+                                            <component v-if="item.icon" :is="item.icon" class="mr-2 h-4 w-4" />
+                                            {{ t(item.title) }}
+                                        </NavigationMenuLink>
+                                    </Link>
+                                    <div
+                                        v-if="isCurrentRoute(item.href)"
+                                        class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
+                                    ></div>
+                                </template>
+
+                                <a v-else href="https://devtalk.islamdev.com/" target="_blank">
+                                    <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'h-9 cursor-pointer px-3']">
+                                        <ChartArea class="mr-2 h-4 w-4" />
+                                        {{ t('BLOG') }}
                                     </NavigationMenuLink>
-                                </Link>
-                                <div
-                                    v-if="isCurrentRoute(item.href)"
-                                    class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
-                                ></div>
+                                </a>
                             </NavigationMenuItem>
                         </NavigationMenuList>
                     </NavigationMenu>

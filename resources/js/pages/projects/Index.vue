@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProjectCard from '@/components/Projects/ProjectCard.vue';
 import Button from '@/components/ui/button/Button.vue';
+import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { SharedData } from '@/types';
 import { Project } from '@/types/custom';
@@ -14,6 +15,7 @@ const selectedFilter = ref(getKey(projectFilters[0]));
 const filteredProjects = computed(() => {
     return projects.filter((project) => project.filter == selectedFilter.value);
 });
+const { t } = useLocale();
 </script>
 
 <template>
@@ -21,8 +23,8 @@ const filteredProjects = computed(() => {
         <section class="bg-background text-foreground px-6 py-16">
             <div class="mx-auto max-w-6xl">
                 <div class="mb-12 text-center">
-                    <h2 class="text-3xl font-bold sm:text-4xl">Projects</h2>
-                    <p class="text-muted-foreground mt-2">Explore some of my featured work</p>
+                    <h2 class="text-3xl font-bold sm:text-4xl">{{ t('PROJECTS') }}</h2>
+                    <p class="text-muted-foreground mt-2">{{ t('EXPLORE_PROJECTS') }}</p>
                 </div>
 
                 <div class="mb-8 flex flex-wrap justify-center gap-2">

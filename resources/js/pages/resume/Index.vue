@@ -23,6 +23,7 @@ const { locale: lang } = useLocale();
 
 const page = usePage<SharedData & { resumeData: ResumeData }>();
 const resume = computed(() => page.props.resumeData);
+const { t } = useLocale();
 </script>
 <template>
     <AppLayout>
@@ -35,7 +36,7 @@ const resume = computed(() => page.props.resumeData);
                     class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-4 py-2 transition-colors"
                 >
                     <FileHeart />
-                    <span>Download Resume</span>
+                    <span>{{ t('DOWNLOAD_RESUME') }}</span>
                 </a>
             </div>
 

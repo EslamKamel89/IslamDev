@@ -41,6 +41,22 @@ const messages = {
         CONTACT: 'Contact me',
         MESSAGE_SEND: 'Message Sent!',
         MESSAGE_SEND_DESCRIPTION: 'Your message has been successfully delivered! We’ll get back to you as soon as possible. 😊',
+        WORK_TOGETHER: 'Let’s Work Together',
+        CONTACT_ME_DESCRIPTION: " Whether you're looking to build a product, feature, or just want to say hi – feel free to reach out!",
+        DOWNLOAD_RESUME: 'Download Resume',
+        YOUR_NAME: 'Your name',
+        EMAIL: 'Email',
+        MESSAGE: 'Message',
+        HOW_CAN_HELP: 'Tell me how I can help...',
+        SEND_MESSAGE: 'Send Message',
+        GET_IN_TOUCH: 'Get in Touch',
+        FOOTER_INTRO: 'Full Stack Developer crafting modern web & mobile applications.',
+        ALL_RIGHT_RESERVED: 'All rights reserved.',
+        QUICK_LINKS: 'Quick Links',
+        ABOUT: 'About Me',
+        STAY_CONNECTED: 'Stay Connected',
+        GET_IN_TOUCH_2: 'Get in touch for freelance opportunities or collaborations.',
+        BLOG: 'Blog',
     },
     ar: {
         greeting: 'مرحبا',
@@ -83,6 +99,22 @@ const messages = {
         CONTACT: 'تواصل معي',
         MESSAGE_SEND: 'تم إرسال الرسالة!',
         MESSAGE_SEND_DESCRIPTION: 'تم تسليم رسالتك بنجاح! سنرد عليك في أقرب وقت ممكن. 😊',
+        WORK_TOGETHER: 'لنعمل معًا',
+        CONTACT_ME_DESCRIPTION: 'سواء كنت تريد بناء منتج أو ميزة، أو فقط تريد أن تقول مرحبًا - لا تتردد في التواصل!',
+        DOWNLOAD_RESUME: 'تحميل السيرة الذاتية',
+        YOUR_NAME: 'اسمك',
+        EMAIL: 'البريد الإلكتروني',
+        MESSAGE: 'الرسالة',
+        HOW_CAN_HELP: 'أخبرني كيف يمكنني مساعدتك...',
+        SEND_MESSAGE: 'إرسال الرسالة',
+        GET_IN_TOUCH: 'ابقى على تواصل',
+        FOOTER_INTRO: 'مطور Full Stack متخصص في بناء تطبيقات الويب والجوال الحديثة.',
+        ALL_RIGHT_RESERVED: ' جميع الحقوق محفوظة.',
+        QUICK_LINKS: 'روابط سريعة',
+        ABOUT: 'معلومات عني',
+        STAY_CONNECTED: 'ابق على اتصال',
+        GET_IN_TOUCH_2: 'تواصل معي لفرص العمل الحر أو التعاون.',
+        BLOG: 'المدونة',
     },
 };
 

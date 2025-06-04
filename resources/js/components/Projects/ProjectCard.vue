@@ -43,7 +43,7 @@ const fixFullHeight = ref(false);
     <div
         class="group bg-card relative transform overflow-hidden rounded-lg border p-4 pt-16 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
-        <div class="relative" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+        <div dir="ltr" class="relative" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <img
                 :src="images[selectedImageIndex]"
                 alt="project image"
