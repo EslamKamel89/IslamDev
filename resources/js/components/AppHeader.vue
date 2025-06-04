@@ -13,10 +13,9 @@ import {
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useLocale } from '@/composables/useLocale';
-import AuthDropdownMenu from '@/layouts/app/AuthDropdownMenu.vue';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { AtSign, BookOpenText, Home, Lightbulb, Menu, Zap } from 'lucide-vue-next';
+import { AtSign, BookOpenText, Github, Home, Lightbulb, Linkedin, Menu, Zap } from 'lucide-vue-next';
 import { computed } from 'vue';
 import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
@@ -159,17 +158,17 @@ const navItemsDirectional = computed(() => {
 
                 <div class="ms-auto flex items-center space-x-3">
                     <div class="relative flex items-center space-x-4">
+                        <a href="https://github.com/EslamKamel89" target="_blank">
+                            <Github class="h-4 w-4 hover:scale-110" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/eslamkamel89/" target="_blank">
+                            <Linkedin class="h-4 w-4 hover:scale-110" />
+                        </a>
                         <ThemeSelector />
-                        <AuthDropdownMenu />
-                        <LanguageSelector />
                         <!--
-                            <a href="https://github.com/EslamKamel89" target="_blank">
-                                <Github class="w-4 h-4 hover:scale-110" />
-                            </a>
-                            <a href="https://www.linkedin.com/in/eslamkamel89/" target="_blank">
-                                <Linkedin class="w-4 h-4 hover:scale-110" />
-                            </a>
+                            <AuthDropdownMenu />
                         -->
+                        <LanguageSelector />
 
                         <div class="hidden space-x-1 lg:flex">
                             <template v-for="item in rightNavItems" :key="item.title">

@@ -424,7 +424,7 @@ class ProjectSeeder extends Seeder {
                 ],
                 // 'videos' => ["https://youtube.com/watch?v=..."],
                 'playstore_url' => 'https://play.google.com/store/apps/details?id=com.gaztec.islamic_calander',
-                'applestore_url' => 'https://apps.apple.com/us/app/eternal-islamic-calendar/id6738862001?platform=ipad',
+                'applestore_url' => 'https://apps.apple.com/us/app/eternal-islamic-calendar/id6738862001',
 
                 'title' => [
                     'en' => 'Islamic Calendar & Prayer Times – A Beautiful, Dual-Language Mobile App Built with Flutter',
@@ -473,6 +473,68 @@ class ProjectSeeder extends Seeder {
                     ]
                 ],
                 'skills' => [7, 11, 13]
+            ],
+            [
+                'thumbnail' => '/storage/projects/money_thumbnail.png',
+                'live_url' => null,
+                'github_url' => null,
+                'playstore_url' => 'https://play.google.com/store/apps/details?id=com.moneymaker.bundleId',
+                'applestore_url' => null,
+                'start_date' => '2024-10-01',
+                'end_date' => '2025-03-31',
+                'is_featured' => true,
+                'filter' => FilterEnum::FLUTTER->value,
+                'order' => 9,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/money_01.png",
+                    "/storage/projects/money_02.png",
+                    "/storage/projects/money_03.png",
+                    "/storage/projects/money_04.png",
+                    "/storage/projects/money_05.png",
+                    "/storage/projects/money_06.png",
+                    "/storage/projects/money_07.png",
+                ],
+                // 'videos' => ["https://youtube.com/watch?v=..."],
+                'title' => [
+                    'en' => 'MoneyMaker – Investment Tracking & Trading Platform for Stocks, Crypto & Forex',
+                    'ar' => 'موني ميكر – منصة تتبع الاستثمار والتجارة لأسهم، العملات الرقمية، وفوركس'
+                ],
+                'description' => [
+                    'en' => 'A mobile investment platform built with Flutter and powered by Laravel backend. Designed for a financial agency to track profits, manage deposits/withdrawals, and communicate securely with admins and other users.',
+                    'ar' => 'منصة جوال للاستثمار بُنيت باستخدام فليتر ولارافل من الخلفية. صُمّمت لهيئة مالية لتتبع الأرباح وإدارة الإيداعات والسحوبات مع إمكانية التواصل الآمن مع الإدارة أو المستخدمين.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Secure authentication system via Laravel Sanctum API',
+                        'Animated intro screen with live profit charts and user stats',
+                        'Daily profit visualization with total account balance and referral earnings shown around chart',
+                        'Direct chat with administration for customer support',
+                        'Group chat with real-time updates and modern UI',
+                        'User profile management: view info, change password, delete account',
+                        'Deposit page integrated with major e-wallets (PayPal, Skrill, Neteller)',
+                        'Withdrawal section with multiple withdrawal options',
+                        'Complete transaction history with deposit & withdrawal details',
+                        'Latest financial news and market updates section',
+                        'Licenses and certifications section for transparency and trust',
+                        'Available on Google Play – Coming soon to App Store'
+                    ],
+                    'ar' => [
+                        'نظام مصادقة آمن عبر واجهة لارافل سانتوم',
+                        'شاشة ترحيبية متحركة مع رسوم بيانية مباشرة للأرباح والإحصائيات',
+                        'عرض يومي للأرباح مع رؤية واضحة للرصيد الكلي وأرباح الإحالات',
+                        'دردشة مباشرة مع الإدارة لمتابعة الطلبات والدعم',
+                        'غرفة دردشة جماعية ذات تحديثات فورية وواجهة حديثة',
+                        'إدارة الملف الشخصي: عرض البيانات، تغيير كلمة المرور، حذف الحساب',
+                        'صفحة إيداع متصلة بأكثر المحافظ الإلكترونية استخدامًا',
+                        'سحب الأرباح عبر خيارات متعددة ومريحة',
+                        'سجل كامل للمعاملات (إيداع وسحب) مع التفاصيل الكاملة',
+                        'قسم أخبار السوق المالية وتحديثاته اليومية',
+                        'قسم الشهادات والتراخيص الخاصة بالوكالة',
+                        'متاحة على متجر جوجل بلاي – قادمة إلى متجر أبل قريبًا'
+                    ]
+                ],
+                'skills' => [7, 4, 11, 13] // Flutter
             ],
             [
                 'thumbnail' => '/storage/projects/locum_thumbnail.png',
