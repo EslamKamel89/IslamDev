@@ -4,19 +4,6 @@ import { SharedData } from '@/types';
 import { usePage } from '@inertiajs/vue3';
 import SkillBadge from '../Shared/SkillBadge.vue';
 
-// const skills: Skill[] = [
-//     { name: 'PHP', icon: '🐘', category: 'Backend' },
-//     { name: 'Laravel', icon: '🔌', category: 'Backend' },
-//     { name: 'Livewire', icon: '⚡', category: 'Backend' },
-//     { name: 'Vue.js', icon: '🌀', category: 'Frontend' },
-//     { name: 'Nuxt.js', icon: '🔷', category: 'Frontend' },
-//     { name: 'Tailwind CSS', icon: '📘', category: 'Frontend' },
-//     { name: 'Flutter', icon: '📱', category: 'Mobile' },
-//     { name: 'Firebase', icon: '🔥', category: 'Mobile' },
-//     { name: 'Git / GitHub', icon: '🐙', category: 'DevOps' },
-//     { name: 'Docker', icon: '🐋', category: 'DevOps' },
-//     { name: 'Linux', icon: '🐧', category: 'DevOps' },
-// ];
 const categories = usePage<SharedData>().props.categories;
 
 const { t } = useLocale();
@@ -35,11 +22,11 @@ const { t } = useLocale();
             <div
                 v-for="(category, index) in categories"
                 :key="category.id"
-                class="animate-fade-in-up"
+                class="animate-fade-in-up w-full"
                 :style="{ animationDelay: `${index * 100}ms` }"
             >
                 <h3 class="mb-4 text-xl font-semibold capitalize">{{ category.name }}</h3>
-                <div class="mx-auto flex w-fit flex-wrap gap-3">
+                <div class="mx-auto flex w-fit flex-col items-center gap-3 lg:flex-row lg:flex-wrap">
                     <SkillBadge v-for="skill in category.skills" :key="skill.name" :skill="skill" />
                 </div>
             </div>

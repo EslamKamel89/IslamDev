@@ -2,6 +2,7 @@ import '../css/app.css';
 
 import i18n from '@/plugins/localization';
 import { createInertiaApp } from '@inertiajs/vue3';
+import { createHead } from '@unhead/vue/client';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
@@ -22,7 +23,7 @@ declare module 'vite/client' {
 }
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-
+const head = createHead();
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./pages/${name}.vue`, import.meta.glob<DefineComponent>('./pages/**/*.vue')),
@@ -30,6 +31,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(head)
             .use(i18n)
             .mount(el);
     },
