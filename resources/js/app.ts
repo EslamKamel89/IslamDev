@@ -3,6 +3,7 @@ import '../css/app.css';
 import i18n from '@/plugins/localization';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { createHead } from '@unhead/vue/client';
+import { MotionPlugin } from '@vueuse/motion';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
@@ -32,6 +33,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue)
             .use(head)
+            .use(MotionPlugin)
             .use(i18n)
             .mount(el);
     },
