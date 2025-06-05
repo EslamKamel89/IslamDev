@@ -3,6 +3,7 @@ import ContactSection from '@/components/Home/ContactSection.vue';
 import HeroSection from '@/components/Home/HeroSection.vue';
 import ProjectShowcase from '@/components/Home/ProjectShowcase.vue';
 import TestimonialsSection from '@/components/Home/TestimonialsSection.vue';
+import VisibleAnimation from '@/components/Shared/VisibleAnimation.vue';
 import AppLayout from '@/layouts/app/AppHeaderLayout.vue';
 import useSeoHome from '@/seo/home';
 import SeoHead from '@/seo/SeoHead.vue';
@@ -21,9 +22,18 @@ const baseUrl = page.props.ziggy.url;
             :url="`${baseUrl}/`"
             :image="`${baseUrl}/assets/seo/images/logo.png`"
         />
-        <HeroSection />
-        <ProjectShowcase />
-        <TestimonialsSection />
-        <ContactSection />
+        <VisibleAnimation>
+            <HeroSection />
+        </VisibleAnimation>
+
+        <VisibleAnimation>
+            <ProjectShowcase />
+        </VisibleAnimation>
+        <VisibleAnimation>
+            <TestimonialsSection />
+        </VisibleAnimation>
+        <VisibleAnimation>
+            <ContactSection />
+        </VisibleAnimation>
     </AppLayout>
 </template>

@@ -15,22 +15,7 @@ const { t, isRtl } = useLocale();
         <div class="z-10 mx-auto max-w-4xl space-y-8 rounded-3xl border border-white/20 bg-white/10 p-8 text-center shadow-xl backdrop-blur-lg">
             <!-- Avatar -->
             <div class="flex justify-center">
-                <div
-                    v-motion
-                    :initial="{
-                        scale: 0,
-                    }"
-                    :delay="200"
-                    :duration="1200"
-                    :visible="{
-                        scale: 1,
-                        transition: {
-                            type: 'spring',
-                            stiffness: '100',
-                        },
-                    }"
-                    class="border-primary h-28 w-28 overflow-hidden rounded-full border-4 shadow-md sm:h-32 sm:w-32"
-                >
+                <div class="border-primary h-28 w-28 overflow-hidden rounded-full border-4 shadow-md sm:h-32 sm:w-32">
                     <img src="/assets/images/avatar.png" alt="Islam Ahmed" class="h-full w-full object-cover" />
                 </div>
             </div>

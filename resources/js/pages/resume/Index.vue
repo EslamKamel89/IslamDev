@@ -3,6 +3,7 @@ import ResumeProjectCard from '@/components/Resume/ResumeProjectCard.vue';
 import ResumeSection from '@/components/Resume/ResumeSection.vue';
 import ResumeSkillGroup from '@/components/Resume/ResumeSkillGroup.vue';
 import ResumeWorkExperience from '@/components/Resume/ResumeWorkExperience.vue';
+import VisibleAnimation from '@/components/Shared/VisibleAnimation.vue';
 import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
 import useSeoCv from '@/seo/contact';
@@ -52,88 +53,93 @@ useSeoCv();
             </div>
 
             <!-- Personal Info -->
-            <div class="border-border mb-10 border-b pb-6 text-center">
-                <h1 class="text-3xl font-bold">{{ resume.personal.name }}</h1>
-                <div class="text-muted-foreground mt-2 flex flex-wrap justify-center gap-6 text-sm">
-                    <a :href="`tel:${resume.personal.phone}`" class="flex items-center gap-1">
-                        {{ resume.personal.phone }}
-                    </a>
-                    <a :href="`mailto:${resume.personal.email}`" class="flex items-center gap-1">
-                        {{ resume.personal.email }}
-                    </a>
-                    <a :href="resume.personal.website" target="_blank" class="flex items-center gap-1">
-                        {{ resume.personal.website }}
-                    </a>
-                    <div v-for="link in resume.personal.links" :key="link.label" class="flex items-center gap-1">
-                        <a :href="link.url" target="_blank">{{ link.label }}</a>
+            <VisibleAnimation>
+                <div class="border-border mb-10 border-b pb-6 text-center">
+                    <h1 class="text-3xl font-bold">{{ resume.personal.name }}</h1>
+                    <div class="text-muted-foreground mt-2 flex flex-wrap justify-center gap-6 text-sm">
+                        <a :href="`tel:${resume.personal.phone}`" class="flex items-center gap-1">
+                            {{ resume.personal.phone }}
+                        </a>
+                        <a :href="`mailto:${resume.personal.email}`" class="flex items-center gap-1">
+                            {{ resume.personal.email }}
+                        </a>
+                        <a :href="resume.personal.website" target="_blank" class="flex items-center gap-1">
+                            {{ resume.personal.website }}
+                        </a>
+                        <div v-for="link in resume.personal.links" :key="link.label" class="flex items-center gap-1">
+                            <a :href="link.url" target="_blank">{{ link.label }}</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </VisibleAnimation>
 
             <!-- Sections -->
             <div v-for="section in resume.sections" :key="section.id" class="mb-10">
-                <ResumeSection :title="section.title[lang]" :id="section.id">
-                    <div v-if="section.id === 'summary'" class="space-y-6">
-                        <div v-for="(item, index) in castRSummaryDescription(section.items)" :key="index">
-                            <div>{{ item.description[lang] }}</div>
-                        </div>
-                    </div>
-                    <div v-if="section.id === 'experience'" class="space-y-6">
-                        <ResumeWorkExperience v-for="item in castRWorkExperience(section.items)" :key="item.company" :item="item" :lang="lang" />
-                    </div>
-                    <div v-else-if="section.id === 'skills'" class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                        <ResumeSkillGroup v-for="item in castRSkillGroup(section.items)" :key="item.category" :item="item" :lang="lang" />
-                    </div>
-                    <div v-else-if="section.id === 'projects'" class="grid grid-cols-1 gap-6">
-                        <ResumeProjectCard v-for="item in castRProject(section.items)" :key="item.title.en" :item="item" :lang="lang" />
-                    </div>
-                    <template v-else-if="section.id == 'education'">
-                        <div class="space-y-4">
-                            <div v-for="item in castREducation(section.items)" :key="item.degree" class="text-sm">
-                                <!-- Education -->
-                                <div>
-                                    <p class="font-medium">{{ item.institution }}</p>
-                                    <p class="text-muted-foreground">{{ item.degree }}</p>
-                                    <p class="mt-1">{{ item.dates.start }} – {{ item.dates.end || 'Present' }}</p>
-                                    <p class="mt-2" v-if="item.description">{{ item.description[lang] }}</p>
-                                </div>
+                <VisibleAnimation>
+                    <ResumeSection :title="section.title[lang]" :id="section.id">
+                        <div v-if="section.id === 'summary'" class="space-y-6">
+                            <div v-for="(item, index) in castRSummaryDescription(section.items)" :key="index">
+                                <div>{{ item.description[lang] }}</div>
                             </div>
                         </div>
-                    </template>
-                    <template v-else-if="section.id == 'certifications'">
-                        <div class="space-y-4">
-                            <div v-for="item in castRCertification(section.items)" :key="item.title?.en" class="text-sm">
-                                <!-- Certifications -->
-                                <div>
-                                    <p class="font-medium">{{ item.title[lang] }}</p>
-                                    <p class="text-muted-foreground">Issued by {{ item.issuer }} • {{ item.issueDate }}</p>
+                        <div v-if="section.id === 'experience'" class="space-y-6">
+                            <ResumeWorkExperience v-for="item in castRWorkExperience(section.items)" :key="item.company" :item="item" :lang="lang" />
+                        </div>
+                        <div v-else-if="section.id === 'skills'" class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                            <ResumeSkillGroup v-for="item in castRSkillGroup(section.items)" :key="item.category" :item="item" :lang="lang" />
+                        </div>
+                        <div v-else-if="section.id === 'projects'" class="grid grid-cols-1 gap-6">
+                            <ResumeProjectCard v-for="item in castRProject(section.items)" :key="item.title.en" :item="item" :lang="lang" />
+                        </div>
+                        <template v-else-if="section.id == 'education'">
+                            <div class="space-y-4">
+                                <div v-for="item in castREducation(section.items)" :key="item.degree" class="text-sm">
+                                    <!-- Education -->
+                                    <div>
+                                        <p class="font-medium">{{ item.institution }}</p>
+                                        <p class="text-muted-foreground">{{ item.degree }}</p>
+                                        <p class="mt-1">{{ item.dates.start }} – {{ item.dates.end || 'Present' }}</p>
+                                        <p class="mt-2" v-if="item.description">{{ item.description[lang] }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </template>
-                    <template v-else-if="section.id == 'languages'">
-                        <div class="space-y-4">
-                            <div v-for="item in castRLanguage(section.items)" :key="item.name" class="text-sm">
-                                <!-- Languages -->
-                                <div>
-                                    <p class="font-medium">{{ item.name }} – {{ item.level }}</p>
+                        </template>
+                        <template v-else-if="section.id == 'certifications'">
+                            <div class="space-y-4">
+                                <div v-for="item in castRCertification(section.items)" :key="item.title?.en" class="text-sm">
+                                    <!-- Certifications -->
+                                    <div>
+                                        <p class="font-medium">{{ item.title[lang] }}</p>
+                                        <p class="text-muted-foreground">Issued by {{ item.issuer }} • {{ item.issueDate }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </template>
-                    <template v-else-if="section.id == 'additional'">
-                        <div class="space-y-4">
-                            <div v-for="item in castRAdditionalInfo(section.items)" :key="item.key" class="text-sm">
-                                <!-- Additional Info -->
-                                <div v-if="section.id === 'additional'">
-                                    <p>
-                                        <strong>{{ item.key }}:</strong> <a :href="item.value" target="_blank" class="underline">{{ item.value }}</a>
-                                    </p>
+                        </template>
+                        <template v-else-if="section.id == 'languages'">
+                            <div class="space-y-4">
+                                <div v-for="item in castRLanguage(section.items)" :key="item.name" class="text-sm">
+                                    <!-- Languages -->
+                                    <div>
+                                        <p class="font-medium">{{ item.name }} – {{ item.level }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </template>
-                </ResumeSection>
+                        </template>
+                        <template v-else-if="section.id == 'additional'">
+                            <div class="space-y-4">
+                                <div v-for="item in castRAdditionalInfo(section.items)" :key="item.key" class="text-sm">
+                                    <!-- Additional Info -->
+                                    <div v-if="section.id === 'additional'">
+                                        <p>
+                                            <strong>{{ item.key }}:</strong>
+                                            <a :href="item.value" target="_blank" class="underline">{{ item.value }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </ResumeSection>
+                </VisibleAnimation>
             </div>
         </section>
     </AppLayout>

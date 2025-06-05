@@ -19,7 +19,7 @@ const description = computed(() => {
             v-motion
             :initial="{
                 opacity: 0,
-                y: 25,
+                y: 10,
             }"
             :visible="{
                 opacity: 1,

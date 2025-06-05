@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ContactForm from '@/components/Contact/ContactForm.vue';
 import ContactInfo from '@/components/Contact/ContactInfo.vue';
+import VisibleAnimation from '@/components/Shared/VisibleAnimation.vue';
 import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
 import useSeoContact from '@/seo/contact';
@@ -23,12 +24,16 @@ useSeoContact();
         />
         <div class="mx-auto grid max-w-5xl items-start gap-12 md:grid-cols-2">
             <!-- Left Column - Info & Links -->
-            <ContactInfo />
+            <VisibleAnimation>
+                <ContactInfo />
+            </VisibleAnimation>
             <!-- Right Column - Contact Form -->
-            <div class="bg-card rounded-lg border p-6 shadow-md">
-                <h3 class="mb-4 text-xl font-semibold">{{ t('SEND_MESSAGE') }}</h3>
-                <ContactForm to="contact" />
-            </div>
+            <VisibleAnimation>
+                <div class="bg-card rounded-lg border p-6 shadow-md">
+                    <h3 class="mb-4 text-xl font-semibold">{{ t('SEND_MESSAGE') }}</h3>
+                    <ContactForm to="contact" />
+                </div>
+            </VisibleAnimation>
         </div>
     </AppLayout>
 </template>
