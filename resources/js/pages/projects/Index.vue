@@ -3,12 +3,13 @@ import ProjectCard from '@/components/Projects/ProjectCard.vue';
 import Button from '@/components/ui/button/Button.vue';
 import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
+import useSeoProjects from '@/seo/projects';
+import SeoHead from '@/seo/SeoHead.vue';
 import type { SharedData } from '@/types';
 import { Project } from '@/types/custom';
 import { getKey, getValue } from '@/utils/helpers';
 import { usePage } from '@inertiajs/vue3';
-import { computed, ref } from 'vue';
-
+import { computed, onMounted, ref } from 'vue';
 const { projects, categories, projectFilters } = usePage<SharedData & { projects: Project[] }>().props;
 
 const selectedFilter = ref(getKey(projectFilters[0]));
@@ -16,10 +17,23 @@ const filteredProjects = computed(() => {
     return projects.filter((project) => project.filter == selectedFilter.value);
 });
 const { t } = useLocale();
+
+onMounted(() => {
+    useSeoProjects();
+});
+const page = usePage<SharedData>();
+const baseUrl = page.props.ziggy.url;
 </script>
 
 <template>
     <AppLayout>
+        <SeoHead
+            title="Projects - Islam Ahmed | Full Stack Developer"
+            :description="'Explore real-world projects built by Islam Ahmed using Laravel, Vue.js, Livewire, Nuxt.js, and Flutter – all open source and production-ready.'"
+            :keywords="'Laravel, Vue.js, Nuxt.js, Flutter, Full Stack, Web & Mobile Projects'"
+            :url="`${baseUrl}/projects`"
+            :image="`${baseUrl}/assets/seo/images/logo.png`"
+        />
         <section class="bg-background text-foreground px-6 py-16">
             <div class="mx-auto max-w-6xl">
                 <div class="mb-12 text-center">
