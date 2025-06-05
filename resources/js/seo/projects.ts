@@ -38,7 +38,7 @@ export default function useSeoProjects() {
             },
             {
                 property: 'og:url',
-                content: `${baseUrl}/assets/seo/images/logo.png`,
+                content: `${baseUrl}/projects`,
             },
             {
                 property: 'og:image',

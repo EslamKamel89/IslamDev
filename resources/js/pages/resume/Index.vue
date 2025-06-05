@@ -5,6 +5,8 @@ import ResumeSkillGroup from '@/components/Resume/ResumeSkillGroup.vue';
 import ResumeWorkExperience from '@/components/Resume/ResumeWorkExperience.vue';
 import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
+import useSeoCv from '@/seo/contact';
+import SeoHead from '@/seo/SeoHead.vue';
 import { SharedData } from '@/types';
 import type { RAdditionalInfo, RCertification, REducation, RLanguage, RProject, RSkillGroup, RWorkExperience } from '@/types/custom';
 import { ResumeData } from '@/types/custom';
@@ -24,9 +26,18 @@ const { locale: lang } = useLocale();
 const page = usePage<SharedData & { resumeData: ResumeData }>();
 const resume = computed(() => page.props.resumeData);
 const { t } = useLocale();
+const baseUrl = page.props.ziggy.url;
+useSeoCv();
 </script>
 <template>
     <AppLayout>
+        <SeoHead
+            title="CV / Resume - Islam Ahmed | Full Stack Developer"
+            :description="'Download Islam Ahmed’s CV – A Full Stack Developer specializing in Laravel, Vue.js, Nuxt.js, Livewire, and Flutter.'"
+            :keywords="'Islam Ahmed, Eslam Kamel, Laravel Developer, Vue.js Developer, Full Stack Resume, Download CV, Developer Portfolio'"
+            :url="`${baseUrl}/resume`"
+            :image="`${baseUrl}/assets/seo/images/logo.png`"
+        />
         <section class="">
             <!-- Download Button -->
             <div class="mb-8 text-right">

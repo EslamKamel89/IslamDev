@@ -3,6 +3,7 @@ import ProjectCard from '@/components/Projects/ProjectCard.vue';
 import Button from '@/components/ui/button/Button.vue';
 import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
+import useSeoHome from '@/seo/home';
 import useSeoProjects from '@/seo/projects';
 import SeoHead from '@/seo/SeoHead.vue';
 import type { SharedData } from '@/types';
@@ -23,6 +24,7 @@ onMounted(() => {
 });
 const page = usePage<SharedData>();
 const baseUrl = page.props.ziggy.url;
+useSeoHome();
 </script>
 
 <template>
