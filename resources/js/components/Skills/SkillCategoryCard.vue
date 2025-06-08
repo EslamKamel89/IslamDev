@@ -1,5 +1,5 @@
 <template>
-    <VisibleAnimation>
+    <VisibleAnimation :hide-animation="index < 2">
         <div class="mb-8">
             <h3 class="bg-primary/10 mb-4 w-fit rounded-lg px-2 py-1 text-xl font-semibold">{{ title }}</h3>
             <div class="space-y-2">
@@ -18,6 +18,7 @@ import SkillItem from './SkillItem.vue';
 const props = defineProps<{
     title: string;
     skills: Skill[];
+    index: number;
 }>();
 
 function getIcon(skill: Skill) {

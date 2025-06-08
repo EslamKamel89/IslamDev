@@ -20,7 +20,7 @@ function onLoadStart() {
     loading.value = true;
     const el = imgRef.value;
     if (el) {
-        el.style.opacity = '0';
+        el.style.opacity = '0.5';
     }
 }
 function onImageError() {
@@ -39,7 +39,7 @@ watch(
         ref="imgRef"
         :src="src"
         alt="project image"
-        class="mb-4 w-full rounded-lg object-cover opacity-0 transition-all duration-700"
+        class="mb-4 w-full rounded-lg object-cover opacity-50 transition-all duration-700"
         :class="{
             'h-40': !isFullHeight,
             'shadow-primary mt-5 mb-10 border shadow-2xl': isFullHeight,

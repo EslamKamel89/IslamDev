@@ -31,7 +31,13 @@ const baseUrl = page.props.ziggy.url;
 
             <!-- Categories -->
             <div class="space-y-12">
-                <SkillCategoryCard v-for="category in categories" :key="category.id" :title="category.name" :skills="category.skills ?? []" />
+                <SkillCategoryCard
+                    v-for="(category, index) in categories"
+                    :key="category.id"
+                    :title="category.name"
+                    :skills="category.skills ?? []"
+                    :index="index"
+                />
             </div>
         </section>
     </AppLayout>

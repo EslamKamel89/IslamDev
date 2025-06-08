@@ -53,29 +53,27 @@ useSeoCv();
             </div>
 
             <!-- Personal Info -->
-            <VisibleAnimation>
-                <div class="border-border mb-10 border-b pb-6 text-center">
-                    <h1 class="text-3xl font-bold">{{ resume.personal.name }}</h1>
-                    <div class="text-muted-foreground mt-2 flex flex-wrap justify-center gap-6 text-sm">
-                        <a :href="`tel:${resume.personal.phone}`" class="flex items-center gap-1">
-                            {{ resume.personal.phone }}
-                        </a>
-                        <a :href="`mailto:${resume.personal.email}`" class="flex items-center gap-1">
-                            {{ resume.personal.email }}
-                        </a>
-                        <a :href="resume.personal.website" target="_blank" class="flex items-center gap-1">
-                            {{ resume.personal.website }}
-                        </a>
-                        <div v-for="link in resume.personal.links" :key="link.label" class="flex items-center gap-1">
-                            <a :href="link.url" target="_blank">{{ link.label }}</a>
-                        </div>
+            <div class="border-border mb-10 border-b pb-6 text-center">
+                <h1 class="text-3xl font-bold">{{ resume.personal.name }}</h1>
+                <div class="text-muted-foreground mt-2 flex flex-wrap justify-center gap-6 text-sm">
+                    <a :href="`tel:${resume.personal.phone}`" class="flex items-center gap-1">
+                        {{ resume.personal.phone }}
+                    </a>
+                    <a :href="`mailto:${resume.personal.email}`" class="flex items-center gap-1">
+                        {{ resume.personal.email }}
+                    </a>
+                    <a :href="resume.personal.website" target="_blank" class="flex items-center gap-1">
+                        {{ resume.personal.website }}
+                    </a>
+                    <div v-for="link in resume.personal.links" :key="link.label" class="flex items-center gap-1">
+                        <a :href="link.url" target="_blank">{{ link.label }}</a>
                     </div>
                 </div>
-            </VisibleAnimation>
+            </div>
 
             <!-- Sections -->
-            <div v-for="section in resume.sections" :key="section.id" class="mb-10">
-                <VisibleAnimation>
+            <div v-for="(section, index) in resume.sections" :key="section.id" class="mb-10">
+                <VisibleAnimation :hide-animation="index < 2">
                     <ResumeSection :title="section.title[lang]" :id="section.id">
                         <div v-if="section.id === 'summary'" class="space-y-6">
                             <div v-for="(item, index) in castRSummaryDescription(section.items)" :key="index">
