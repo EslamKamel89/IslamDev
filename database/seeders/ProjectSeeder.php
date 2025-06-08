@@ -97,6 +97,11 @@ class ProjectSeeder extends Seeder {
                     "/storage/projects/voltzone_17.png",
                     "/storage/projects/voltzone_18.png",
                     "/storage/projects/voltzone_19.png",
+                    "/storage/projects/voltzone_20.png",
+                    "/storage/projects/voltzone_21.png",
+                    "/storage/projects/voltzone_22.png",
+                    "/storage/projects/voltzone_23.png",
+                    "/storage/projects/voltzone_24.png",
                 ],
                 // 'videos' => ["https://youtube.com/watch?v=... "],
                 'title' => [
