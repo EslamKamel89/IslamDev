@@ -8,6 +8,7 @@ import { computed, defineProps, ref } from 'vue';
 import SkillBadge from '../Shared/SkillBadge.vue';
 import VisibleAnimation from '../Shared/VisibleAnimation.vue';
 import Button from '../ui/button/Button.vue';
+import ProjectImage from './ProjectImage.vue';
 const props = defineProps<{
     project: Project;
 }>();
@@ -46,15 +47,8 @@ const fixFullHeight = ref(false);
             class="group bg-card relative transform overflow-hidden rounded-lg border p-4 pt-16 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
         >
             <div dir="ltr" class="relative" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-                <img
-                    :src="images[selectedImageIndex]"
-                    alt="project image"
-                    class="mb-4 w-full rounded-lg object-cover transition-all duration-700"
-                    :class="{
-                        'h-40': !fixFullHeight,
-                        'shadow-primary mt-5 mb-10 border shadow-2xl': fixFullHeight,
-                    }"
-                />
+                <ProjectImage :src="images[selectedImageIndex]" :is-full-height="fixFullHeight" />
+
                 <!--
             <div class="absolute inset-x-0 inset-y-0 left-0 right-0 w-full">
                 <div class="flex items-center justify-center w-full h-full">
