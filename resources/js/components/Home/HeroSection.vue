@@ -10,9 +10,11 @@ const { t, isRtl } = useLocale();
 </script>
 
 <template>
-    <section class="relative mt-4 flex min-h-screen items-center justify-center px-4 sm:px-8">
+    <section class="relative mt-4 flex min-h-screen items-center justify-center px-4 sm:px-0">
         <!-- Content Container -->
-        <div class="z-10 mx-auto max-w-4xl space-y-8 rounded-3xl border border-white/20 bg-white/10 p-8 text-center shadow-xl backdrop-blur-lg">
+        <div
+            class="z-10 mx-auto max-w-4xl space-y-8 rounded-3xl border border-white/20 bg-white/10 p-0 pt-8 text-center shadow-xl backdrop-blur-lg md:p-8"
+        >
             <!-- Avatar -->
             <div class="flex justify-center">
                 <div class="border-primary h-28 w-28 overflow-hidden rounded-full border-4 shadow-md sm:h-32 sm:w-32">

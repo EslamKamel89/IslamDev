@@ -68,7 +68,7 @@ onDeactivated(() => {
                     </div>
 
                     <blockquote class="text-lg italic">"{{ getLocalization(currentTestimonial.quote, locale) }}"</blockquote>
-                    <div class="text-muted-foreground mt-4 w-full border-t pt-2 text-sm">
+                    <div class="text-muted-foreground mt-4 w-full border-t pt-2 text-xs overflow-ellipsis md:text-sm">
                         <div v-for="(contactDetail, index) in contactDetails" :key="index">
                             <span v-if="contactDetail" class="text-bold">{{ index }}:</span> {{ contactDetail }}
                         </div>
