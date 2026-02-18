@@ -23,8 +23,8 @@ Route::get('/resume', ResumeController::class)->name('resume');
 // Route::get('dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/test', function () {
-    echo (new MessageNotification('Eslam kamel', 'admin@example.com', 'test message', now()))->render();
-});
+// Route::get('/test', function () {
+//     echo (new MessageNotification('Eslam kamel', 'admin@example.com', 'test message', now()))->render();
+// });
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
