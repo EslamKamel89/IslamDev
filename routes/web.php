@@ -11,9 +11,7 @@ use App\Mail\MessageRecieved;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome');
-// })->name('home');
+
 Route::get('/', HomeController::class)->name('home');
 Route::get('/skills', SkillsController::class)->name('skills.index');
 Route::get('/projects', ProjectsController::class)->name('projects.index');

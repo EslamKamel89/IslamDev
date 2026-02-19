@@ -25,8 +25,8 @@ return new class extends Migration {
             $table->enum('filter', FilterEnum::values());
             $table->unsignedInteger('order')->default(0);
             $table->enum('status', ['draft', 'published'])->default('published');
-            $table->json('images')->default(json_encode([]));
-            $table->json('videos')->default(json_encode([]));
+            $table->json('images');
+            $table->json('videos');
             $table->timestamps();
         });
     }
