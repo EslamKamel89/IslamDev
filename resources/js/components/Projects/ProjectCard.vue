@@ -9,129 +9,134 @@ import SkillBadge from '../Shared/SkillBadge.vue';
 import VisibleAnimation from '../Shared/VisibleAnimation.vue';
 import Button from '../ui/button/Button.vue';
 import ProjectImage from './ProjectImage.vue';
+
 const props = defineProps<{
     project: Project;
 }>();
+
 const { locale } = useLocale();
+
 const features = computed(() => {
     return JSON.parse(getLocalization(props.project.features, locale.value)) as string[];
 });
+
 const showFullImage = ref(false);
+
 const images = computed<string[]>(() => {
     return [props.project.thumbnail, ...props.project.images];
 });
+
 const selectedImageIndex = ref(0);
+
 const handleNextImage = () => {
     selectedImageIndex.value++;
     if (selectedImageIndex.value >= images.value.length) {
         selectedImageIndex.value = 0;
     }
 };
+
 const handlePrevImage = () => {
     selectedImageIndex.value--;
     if (selectedImageIndex.value <= 0) {
         selectedImageIndex.value = images.value.length - 1;
     }
 };
-const handleMouseEnter = () => {
-    // showFullImage.value = fixFullHeight.value || true
-};
-const handleMouseLeave = () => {
-    // showFullImage.value = fixFullHeight.value || false;
-};
+
 const fixFullHeight = ref(false);
 </script>
+
 <template>
-    <VisibleAnimation>
+    <VisibleAnimation :hide-animation="true">
         <div
-            class="group bg-card relative transform overflow-hidden rounded-lg border p-4 pt-16 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+            class="group hover:shadow-primary/20 relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl transition-all duration-500 hover:shadow-2xl"
         >
-            <div dir="ltr" class="relative" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+            <!-- Image Section -->
+            <div class="relative mb-6">
                 <ProjectImage :src="images[selectedImageIndex]" :is-full-height="fixFullHeight" />
 
-                <!--
-            <div class="absolute inset-x-0 inset-y-0 left-0 right-0 w-full">
-                <div class="flex items-center justify-center w-full h-full">
-                    <component
-                        :is="fixFullHeight ? Minimize2 : Maximize2"
-                        class="w-12 h-12 p-2 text-white transition-all duration-700 border rounded-full cursor-pointer"
-                        :class="{
-                            'bg-primary shadow-primary scale-105 shadow-lg': fixFullHeight,
-                            'bg-primary/60': !fixFullHeight,
-                        }"
-                        @click="fixFullHeight = !fixFullHeight"
-                    />
-                </div>
-            </div>
-            -->
-                <div class="absolute inset-x-0 inset-y-0">
-                    <div class="flex h-full w-full items-center justify-between">
+                <!-- Bottom Center Glass Navigation -->
+                <div
+                    class="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/20 bg-white/10 px-6 py-2 shadow-lg backdrop-blur-md"
+                >
+                    <StepBack class="h-5 w-5 cursor-pointer text-white/80 transition hover:scale-110 hover:text-white" @click="handlePrevImage" />
+
+                    <div class="flex gap-2">
                         <div
-                            class="bg-primary/10 hover:bg-primary/30 flex h-full cursor-pointer items-center justify-center rounded-s-lg px-1 transition-all duration-700"
-                            @click="handlePrevImage"
-                        >
-                            <StepBack
-                                class="bg-primary/60 hover:bg-primary hover:shadow-primary h-9 w-9 rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg lg:h-12 lg:w-12"
-                            />
-                        </div>
+                            v-for="(img, index) in images"
+                            :key="index"
+                            class="h-2 w-2 rounded-full transition-all duration-300"
+                            :class="{
+                                'scale-125 bg-white': selectedImageIndex === index,
+                                'bg-white/40': selectedImageIndex !== index,
+                            }"
+                        />
+                    </div>
+
+                    <StepForward class="h-5 w-5 cursor-pointer text-white/80 transition hover:scale-110 hover:text-white" @click="handleNextImage" />
+                </div>
+
+                <!-- Prominent Expand / Minimize Button -->
+                <div class="absolute top-4 right-4">
+                    <button
+                        @click="fixFullHeight = !fixFullHeight"
+                        class="group bg-primary shadow-primary/30 hover:shadow-primary/40 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    >
                         <component
                             :is="fixFullHeight ? Minimize2 : Maximize2"
-                            class="cursor-pointer rounded-full border p-2 text-white transition-all duration-700"
-                            :class="{
-                                'bg-primary shadow-primary absolute end-0 top-0 h-9 w-9 scale-105 shadow-lg lg:h-12 lg:w-12': fixFullHeight,
-                                'bg-primary/30 h-16 w-16 lg:h-24 lg:w-24': !fixFullHeight,
-                            }"
-                            @click="fixFullHeight = !fixFullHeight"
+                            class="h-4 w-4 transition-transform duration-300 group-hover:rotate-6"
                         />
-                        <div
-                            class="bg-primary/5 hover:bg-primary/30 flex h-full cursor-pointer items-center justify-center rounded-e-lg px-1 transition-all duration-700"
-                            @click="handleNextImage"
-                        >
-                            <StepForward
-                                class="bg-primary/60 hover:bg-primary hover:shadow-primary h-9 w-9 cursor-pointer rounded-full border p-2 text-white transition-all duration-700 hover:scale-105 hover:shadow-lg lg:h-12 lg:w-12"
-                            />
-                        </div>
-                    </div>
+                        <span>
+                            {{ fixFullHeight ? 'Minimize' : 'Expand' }}
+                        </span>
+                    </button>
                 </div>
             </div>
-            <h3 class="mb-2 text-lg font-bold">{{ getLocalization(project.title, locale) }}</h3>
-            <p class="mb-4 text-gray-800 dark:text-gray-100">{{ getLocalization(project.description, locale) }}</p>
 
-            <ul class="my-4 space-y-2">
-                <li
-                    v-for="feature in features"
-                    :key="feature"
-                    class="text-muted-foreground hover:bg-primary flex w-fit cursor-pointer items-center space-x-2 rounded-lg px-2 py-1 text-sm transition-all duration-700 hover:py-4 hover:!text-white"
-                >
-                    <component :is="getRandomIcon()" class="border-primary h-6 w-6" />
-                    <div>{{ feature }}</div>
+            <!-- Content -->
+            <h3 class="mb-3 text-xl font-semibold text-white">
+                {{ getLocalization(project.title, locale) }}
+            </h3>
+
+            <p class="mb-6 leading-relaxed text-white/70">
+                {{ getLocalization(project.description, locale) }}
+            </p>
+
+            <!-- Features -->
+            <ul class="mb-6 space-y-3">
+                <li v-for="feature in features" :key="feature" class="flex items-center gap-3 text-sm text-white/70 transition hover:text-white">
+                    <component :is="getRandomIcon()" class="text-primary h-4 w-4" />
+                    <span>{{ feature }}</span>
                 </li>
             </ul>
-            <div class="mb-4 flex flex-wrap gap-2">
+
+            <!-- Skills -->
+            <div class="mb-6 flex flex-wrap gap-2">
                 <span v-for="skill in project.skills" :key="skill.id">
                     <SkillBadge :skill="skill" />
                 </span>
             </div>
 
-            <div class="mt-auto flex gap-2">
+            <!-- Actions -->
+            <div class="mt-auto flex flex-wrap gap-3">
                 <Button v-if="project.live_url" variant="outline" size="sm" as-child>
                     <a :href="project.live_url" target="_blank">Live Demo</a>
                 </Button>
+
                 <Button v-if="project.github_url" variant="secondary" size="sm" as-child>
                     <a :href="project.github_url" target="_blank">GitHub</a>
                 </Button>
 
-                <Button v-if="project.playstore_url" variant="secondary" size="sm" as-child class="flex items-center gap-2">
-                    <a :href="project.playstore_url" target="_blank" class="inline-flex items-center gap-2">
-                        <Smartphone class="h-4 w-4"></Smartphone>
-                        <span>Play Store</span>
+                <Button v-if="project.playstore_url" variant="secondary" size="sm" as-child>
+                    <a :href="project.playstore_url" target="_blank" class="flex items-center gap-2">
+                        <Smartphone class="h-4 w-4" />
+                        Play Store
                     </a>
                 </Button>
 
-                <Button v-if="project.applestore_url" variant="secondary" size="sm" as-child class="flex items-center gap-2">
-                    <a :href="project.applestore_url" target="_blank" class="inline-flex items-center gap-2">
-                        <Apple class="h-4 w-4"></Apple>
-                        <span>App Store</span>
+                <Button v-if="project.applestore_url" variant="secondary" size="sm" as-child>
+                    <a :href="project.applestore_url" target="_blank" class="flex items-center gap-2">
+                        <Apple class="h-4 w-4" />
+                        App Store
                     </a>
                 </Button>
             </div>
