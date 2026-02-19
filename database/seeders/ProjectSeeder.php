@@ -13,6 +13,7 @@ class ProjectSeeder extends Seeder {
      * Run the database seeds.
      */
     public function run(): void {
+        $skillMap = \App\Models\Skill::pluck('id', 'name');
 
         $projects = [
             [
@@ -63,7 +64,15 @@ class ProjectSeeder extends Seeder {
                         'يمكن للمستخدمين المسجلين إرسال تعليقات وإضافة ردود على أي مناقشة'
                     ]
                 ],
-                'skills' => [1, 3, 4, 6, 11]
+                'skills' => [
+                    'Laravel',
+                    'Livewire',
+                    'REST APIs',
+                    'PostgreSQL',
+                    'Docker',
+                    'System Design',
+                ]
+
             ],
             [
                 // 'title' => 'VoltZone E-commerce website',
@@ -134,7 +143,16 @@ class ProjectSeeder extends Seeder {
                         'واجهة مرنة وسهلة الاستخدام مع دعم كامل للغات العربية (RTL) والإمكانية'
                     ]
                 ],
-                'skills' => [3, 4, 5, 6, 11]
+                'skills' => [
+                    'Laravel',
+                    'Livewire',
+                    'PHP',
+                    'REST APIs',
+                    'MySQL',
+                    'Docker',
+                    'CI/CD',
+                ],
+
             ],
             [
                 'thumbnail' => '/storage/projects/chatloom_thumbnail.png',
@@ -181,7 +199,15 @@ class ProjectSeeder extends Seeder {
                         'تحديثات الرسائل والأوضاع تتم فورًا دون إعادة تحميل الصفحة'
                     ]
                 ],
-                'skills' => [1, 3, 4, 6, 11]
+                'skills' => [
+                    'Laravel',
+                    'WebSockets',
+                    'Redis',
+                    'Queues',
+                    'System Design',
+                    'REST APIs',
+                ],
+
             ],
             [
                 'thumbnail' => '/storage/projects/socialx_thumbnail.png',
@@ -229,7 +255,15 @@ class ProjectSeeder extends Seeder {
                         'مصدر مفتوح ومُرخص تحت رخصة MIT'
                     ]
                 ],
-                'skills' => [1, 4, 5, 6, 11] // e.g., Laravel, Livewire, Vue (for comparison), TypeScript, GitHub Actions
+                'skills' => [
+                    'Laravel',
+                    'Livewire',
+                    'WebSockets',
+                    'Redis',
+                    'Background Jobs',
+                    'REST APIs',
+                ],
+
             ],
             [
                 'thumbnail' => '/storage/projects/chinashop_thumbnail.png',
@@ -290,7 +324,13 @@ class ProjectSeeder extends Seeder {
                         'مصدر مفتوح ويمكن إعادة الاستخدام'
                     ]
                 ],
-                'skills' => [1, 2, 3, 14] // Example skill IDs: Nuxt.js, Vue, TypeScript, MongoDB, Stripe
+                'skills' => [
+                    'REST APIs',
+                    'MongoDB',
+                    'Docker',
+                    'System Design',
+                ],
+
             ],
             [
                 'thumbnail' => '/storage/projects/homehunt_thumbnail.png',
@@ -342,7 +382,13 @@ class ProjectSeeder extends Seeder {
                         'تصميم مستجيب ومرن باستخدام مكونات TailwindCSS وshadcn-vue'
                     ]
                 ],
-                'skills' => [1, 3, 4, 6, 11]
+                'skills' => [
+                    'Laravel',
+                    'REST APIs',
+                    'PostgreSQL',
+                    'Background Jobs',
+                    'System Design',
+                ],
 
             ],
             [
@@ -406,7 +452,12 @@ class ProjectSeeder extends Seeder {
                         'قسم مقالات إسلامية مصنفة إلى مقالات منفصلة ومسلسلات – قابلة للبحث'
                     ]
                 ],
-                'skills' => [7, 11, 13]
+                'skills' => [
+                    'Flutter',
+                    'Laravel',
+                    'REST APIs',
+                    'PostgreSQL',
+                ],
             ],
             [
                 'thumbnail' => '/storage/projects/cal_thumbnail.png',
@@ -477,7 +528,12 @@ class ProjectSeeder extends Seeder {
                         'صفحة "عن التطبيق" تعرض محتوى HTML من الخلفية – مما يسمح بإدارة التصميم من قبل المسؤولين'
                     ]
                 ],
-                'skills' => [7, 11, 13]
+                'skills' => [
+                    'Flutter',
+                    'REST APIs',
+                    'PostgreSQL',
+                ],
+
             ],
             [
                 'thumbnail' => '/storage/projects/money_thumbnail.png',
@@ -539,7 +595,14 @@ class ProjectSeeder extends Seeder {
                         'متاحة على متجر جوجل بلاي – قادمة إلى متجر أبل قريبًا'
                     ]
                 ],
-                'skills' => [7, 4, 11, 13] // Flutter
+                'skills' => [
+                    'Flutter',
+                    'Laravel',
+                    'REST APIs',
+                    'Redis',
+                    'Background Jobs',
+                    'PostgreSQL',
+                ],
             ],
             [
                 'thumbnail' => '/storage/projects/locum_thumbnail.png',
@@ -600,7 +663,13 @@ class ProjectSeeder extends Seeder {
                         'بني للعمل مع شركة Gaztec حيث أعمل كمطور تطبيقات كاملة'
                     ]
                 ],
-                'skills' => [7,  4, 8, 11, 13] // Example skill IDs: Flutter, Laravel, Vue.js (for web), TypeScript, Authentication
+                'skills' => [
+                    'Flutter',
+                    'Laravel',
+                    'REST APIs',
+                    'PostgreSQL',
+                    'System Design',
+                ],
             ],
 
         ];
@@ -634,7 +703,14 @@ class ProjectSeeder extends Seeder {
                     ]);
                 }
             }
-            $project->skills()->sync($projectData['skills']);
+
+            $skillIds = collect($projectData['skills'])
+                ->map(fn($name) => $skillMap[$name])
+                ->filter()
+                ->values()
+                ->toArray();
+
+            $project->skills()->sync($skillIds);
         }
     }
 }
