@@ -4,7 +4,7 @@ import { Project } from '@/types/custom';
 import { getLocalization } from '@/utils/getLocalization';
 import { getRandomIcon } from '@/utils/randomIcon';
 import { Apple, Maximize2, Minimize2, Smartphone, StepBack, StepForward } from 'lucide-vue-next';
-import { computed, defineProps, ref } from 'vue';
+import { computed, defineProps, ref, watch } from 'vue';
 import SkillBadge from '../Shared/SkillBadge.vue';
 import VisibleAnimation from '../Shared/VisibleAnimation.vue';
 import Button from '../ui/button/Button.vue';
@@ -19,8 +19,6 @@ const { locale } = useLocale();
 const features = computed(() => {
     return JSON.parse(getLocalization(props.project.features, locale.value)) as string[];
 });
-
-const showFullImage = ref(false);
 
 const images = computed<string[]>(() => {
     return [props.project.thumbnail, ...props.project.images];
@@ -37,12 +35,27 @@ const handleNextImage = () => {
 
 const handlePrevImage = () => {
     selectedImageIndex.value--;
-    if (selectedImageIndex.value <= 0) {
+    if (selectedImageIndex.value < 0) {
         selectedImageIndex.value = images.value.length - 1;
     }
 };
 
+const handleSliderInput = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    selectedImageIndex.value = Number(target.value);
+};
+
+const sliderProgress = computed(() => {
+    if (images.value.length <= 1) return 0;
+    return (selectedImageIndex.value / (images.value.length - 1)) * 100;
+});
+
 const fixFullHeight = ref(false);
+
+/* Lock background scroll */
+watch(fixFullHeight, (value) => {
+    document.body.style.overflow = value ? 'hidden' : '';
+});
 </script>
 
 <template>
@@ -52,42 +65,38 @@ const fixFullHeight = ref(false);
         >
             <!-- Image Section -->
             <div class="relative mb-6">
-                <ProjectImage :src="images[selectedImageIndex]" :is-full-height="fixFullHeight" />
+                <ProjectImage :src="images[selectedImageIndex]" :is-full-height="false" />
 
-                <!-- Bottom Center Glass Navigation -->
+                <!-- Bottom Glass Navigation -->
                 <div
-                    class="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/20 bg-white/10 px-6 py-2 shadow-lg backdrop-blur-md"
+                    class="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-full border border-white/20 bg-white/10 px-6 py-3 shadow-lg backdrop-blur-md"
                 >
                     <StepBack class="h-5 w-5 cursor-pointer text-white/80 transition hover:scale-110 hover:text-white" @click="handlePrevImage" />
 
-                    <div class="flex gap-2">
-                        <div
-                            v-for="(img, index) in images"
-                            :key="index"
-                            class="h-2 w-2 rounded-full transition-all duration-300"
-                            :class="{
-                                'scale-125 bg-white': selectedImageIndex === index,
-                                'bg-white/40': selectedImageIndex !== index,
-                            }"
+                    <!-- Slider -->
+                    <div class="w-32 sm:w-40">
+                        <input
+                            type="range"
+                            :min="0"
+                            :max="images.length - 1"
+                            :value="selectedImageIndex"
+                            @input="handleSliderInput"
+                            class="slider w-full cursor-pointer appearance-none"
+                            :style="{ '--progress': sliderProgress + '%' }"
                         />
                     </div>
 
                     <StepForward class="h-5 w-5 cursor-pointer text-white/80 transition hover:scale-110 hover:text-white" @click="handleNextImage" />
                 </div>
 
-                <!-- Prominent Expand / Minimize Button -->
+                <!-- Expand Button -->
                 <div class="absolute top-4 right-4">
                     <button
-                        @click="fixFullHeight = !fixFullHeight"
+                        @click="fixFullHeight = true"
                         class="group bg-primary shadow-primary/30 hover:shadow-primary/40 flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     >
-                        <component
-                            :is="fixFullHeight ? Minimize2 : Maximize2"
-                            class="h-4 w-4 transition-transform duration-300 group-hover:rotate-6"
-                        />
-                        <span>
-                            {{ fixFullHeight ? 'Minimize' : 'Expand' }}
-                        </span>
+                        <Maximize2 class="h-4 w-4 transition-transform duration-300 group-hover:rotate-6" />
+                        <span>Expand</span>
                     </button>
                 </div>
             </div>
@@ -142,4 +151,89 @@ const fixFullHeight = ref(false);
             </div>
         </div>
     </VisibleAnimation>
+
+    <!-- FULL SCREEN MODAL -->
+    <div v-if="fixFullHeight" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+        <!-- Close -->
+        <button
+            @click="fixFullHeight = false"
+            class="absolute top-6 right-6 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/20"
+        >
+            <Minimize2 class="h-4 w-4" />
+            Close
+        </button>
+
+        <!-- Left Arrow -->
+        <button
+            @click="handlePrevImage"
+            class="absolute left-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20"
+        >
+            <StepBack class="h-6 w-6" />
+        </button>
+
+        <!-- Image -->
+        <div class="relative max-h-[85vh] w-[66vw] overflow-y-auto rounded-2xl bg-black/40 shadow-2xl">
+            <img :src="images[selectedImageIndex]" class="w-full object-contain transition duration-500 ease-out" />
+        </div>
+
+        <!-- Right Arrow -->
+        <button
+            @click="handleNextImage"
+            class="absolute right-6 flex h-14 w-14 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20"
+        >
+            <StepForward class="h-6 w-6" />
+        </button>
+
+        <!-- Gradient -->
+        <div class="pointer-events-none absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+
+        <!-- Modal Slider -->
+        <div class="absolute bottom-8 left-1/2 w-[80vw] max-w-md -translate-x-1/2">
+            <input
+                type="range"
+                :min="0"
+                :max="images.length - 1"
+                :value="selectedImageIndex"
+                @input="handleSliderInput"
+                class="slider w-full cursor-pointer appearance-none"
+                :style="{ '--progress': sliderProgress + '%' }"
+            />
+        </div>
+    </div>
 </template>
+
+<style scoped>
+.slider {
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(
+        to right,
+        #f97316 0%,
+        #f97316 var(--progress),
+        rgba(255, 255, 255, 0.3) var(--progress),
+        rgba(255, 255, 255, 0.3) 100%
+    );
+    outline: none;
+}
+
+/* WebKit */
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 9999px;
+    background: #f97316;
+    cursor: pointer;
+    border: none;
+}
+
+/* Firefox */
+.slider::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 9999px;
+    background: #f97316;
+    cursor: pointer;
+    border: none;
+}
+</style>

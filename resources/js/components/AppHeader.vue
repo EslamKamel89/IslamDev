@@ -15,7 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { useLocale } from '@/composables/useLocale';
 import type { BreadcrumbItem, NavItem, SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
-import { AtSign, BookOpenText, ChartArea, Github, Home, Lightbulb, Linkedin, Menu, MessageSquareHeart, Zap } from 'lucide-vue-next';
+import { AtSign, BookOpenText, ChartArea, Github, Home, Lightbulb, Linkedin, Menu, Zap } from 'lucide-vue-next';
 import { computed } from 'vue';
 import LanguageSelector from './Shared/LanguageSelector.vue';
 import ThemeSelector from './Shared/ThemeSelector.vue';
@@ -63,11 +63,11 @@ const mainNavItems: NavItem[] = [
         href: '/contact',
         icon: AtSign,
     },
-    {
-        title: 'BLOG',
-        href: 'https://devtalk.islamdev.com/',
-        icon: MessageSquareHeart,
-    },
+    // {
+    //     title: 'BLOG',
+    //     href: 'https://devtalk.islamdev.com/',
+    //     icon: MessageSquareHeart,
+    // },
 ];
 
 const rightNavItems: NavItem[] = [
