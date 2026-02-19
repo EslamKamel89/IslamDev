@@ -5,28 +5,46 @@ import { usePage } from '@inertiajs/vue3';
 import SkillBadge from '../Shared/SkillBadge.vue';
 
 const categories = usePage<SharedData>().props.categories;
-
 const { t } = useLocale();
 </script>
+
 <template>
-    <section class="bg-background text-foreground px-6 py-16">
-        <div class="mx-auto mb-12 max-w-5xl text-center">
-            <h2 class="mb-4 text-3xl font-bold sm:text-4xl">{{ t('MY_TECH_STACK') }}</h2>
-            <p class="text-muted-foreground mx-auto max-w-2xl text-lg">
+    <section class="from-background via-muted/30 to-background text-foreground relative overflow-hidden bg-gradient-to-b px-6 py-24">
+        <!-- Decorative Glow -->
+        <div class="pointer-events-none absolute inset-0 -z-10 flex items-start justify-center">
+            <div class="bg-primary/10 h-[500px] w-[800px] rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Header -->
+        <div class="mx-auto mb-20 max-w-4xl text-center">
+            <h2 class="mb-6 text-4xl leading-tight font-bold tracking-tight sm:text-5xl">
+                {{ t('MY_TECH_STACK') }}
+            </h2>
+
+            <p class="text-muted-foreground mx-auto max-w-2xl text-lg sm:text-xl">
                 {{ t('TECH_STACK_INTRO') }}
             </p>
         </div>
 
         <!-- Categories -->
-        <div class="space-y-10">
+        <div class="mx-auto max-w-6xl space-y-14">
             <div
                 v-for="(category, index) in categories"
                 :key="category.id"
-                class="animate-fade-in-up w-full"
-                :style="{ animationDelay: `${index * 100}ms` }"
+                class="animate-fade-in-up group border-border/40 bg-background/60 relative rounded-3xl border p-10 shadow-sm backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+                :style="{ animationDelay: `${index * 120}ms` }"
             >
-                <h3 class="mb-4 text-xl font-semibold capitalize">{{ category.name }}</h3>
-                <div class="mx-auto flex w-fit flex-col items-center gap-3 lg:flex-row lg:flex-wrap">
+                <!-- Subtle top gradient line -->
+                <div
+                    class="via-primary/50 absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                ></div>
+
+                <h3 class="mb-10 text-center text-2xl font-semibold tracking-wide capitalize">
+                    {{ category.name }}
+                </h3>
+
+                <!-- Skill Badges -->
+                <div class="flex flex-wrap justify-center gap-4">
                     <SkillBadge v-for="skill in category.skills" :key="skill.name" :skill="skill" />
                 </div>
             </div>
@@ -37,9 +55,8 @@ const { t } = useLocale();
 <style scoped>
 .animate-fade-in-up {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: var(--delay, 0s);
+    transform: translateY(30px);
+    animation: fadeInUp 0.7s ease forwards;
 }
 
 @keyframes fadeInUp {
