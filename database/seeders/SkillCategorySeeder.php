@@ -13,9 +13,9 @@ class SkillCategorySeeder extends Seeder {
             'Laravel Ecosystem',
             'Architecture & Systems',
             'Messaging / Async Systems',
-            'DevOps / Infrastructure',
             'Databases',
             'Cross-Platform / Client Applications',
+            'DevOps / Infrastructure',
         ];
 
         foreach ($categories as $name) {

@@ -8,7 +8,9 @@ import DescriptionTooltip from '../Shared/DescriptionTooltip.vue';
 const props = defineProps<{
     skill: Skill;
 }>();
+
 const { locale } = useLocale();
+
 const description = computed(() => {
     return getLocalization(props.skill.description, locale.value);
 });
@@ -16,20 +18,29 @@ const description = computed(() => {
 
 <template>
     <DescriptionTooltip :description="description">
-        <div class="group hover:bg-accent flex items-center gap-3 rounded-lg p-2 transition-colors">
-            <!-- Emoji or Icon -->
-            <div class="text-xl">
-                <span v-if="true">{{ skill.emoji }}</span>
-                <i v-else :data-icon="skill.icon" class="inline-block align-middle text-xl"></i>
+        <div class="group hover:bg-accent/40 flex items-center gap-4 rounded-lg px-3 py-3 transition-all duration-300">
+            <!-- Emoji -->
+            <div
+                class="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl text-xl transition-transform duration-300 group-hover:scale-110"
+            >
+                {{ skill.emoji }}
             </div>
 
-            <!-- Skill Name and Progress -->
+            <!-- Skill Content -->
             <div class="min-w-0 flex-1">
-                <p class="truncate text-sm font-medium">{{ skill.name }}</p>
-                <div class="bg-muted mt-1 h-1.5 w-full rounded-full">
-                    <div class="bg-primary h-1.5 rounded-full transition-all group-hover:h-2.5" :style="{ width: skill.proficiency + '%' }"></div>
+                <div class="flex items-center justify-between">
+                    <p class="truncate text-sm font-medium">
+                        {{ skill.name }}
+                    </p>
+                    <span class="text-muted-foreground text-xs font-medium"> {{ skill.proficiency }}% </span>
                 </div>
-                <p class="text-muted-foreground mt-1 text-right text-xs">{{ skill.proficiency }}%</p>
+
+                <div class="bg-muted mt-2 h-1.5 w-full overflow-hidden rounded-full">
+                    <div
+                        class="bg-primary h-1.5 rounded-full transition-all duration-500 group-hover:h-2"
+                        :style="{ width: skill.proficiency + '%' }"
+                    ></div>
+                </div>
             </div>
         </div>
     </DescriptionTooltip>
