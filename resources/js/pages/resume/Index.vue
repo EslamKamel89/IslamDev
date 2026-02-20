@@ -33,12 +33,13 @@ useSeoCv();
 <template>
     <AppLayout>
         <SeoHead
-            title="CV / Resume - Islam Ahmed | Full Stack Developer"
-            :description="'Download Islam Ahmed’s CV – A Full Stack Developer specializing in Laravel, Vue.js, Nuxt.js, Livewire, and Flutter.'"
-            :keywords="'Islam Ahmed, Eslam Kamel, Laravel Developer, Vue.js Developer, Full Stack Resume, Download CV, Developer Portfolio'"
+            title="CV-Resume - Backend Engineer | FastAPI, Django & Laravel"
+            :description="'Explore backend-focused production projects built with FastAPI, Django, and Laravel — emphasizing scalable APIs, background processing systems, and modern backend architecture.'"
+            :keywords="'FastAPI, Django, Laravel, Backend Engineer, API Development, System Design, Background Jobs, Python Backend'"
             :url="`${baseUrl}/resume`"
             :image="`${baseUrl}/assets/seo/images/logo.png`"
         />
+
         <section class="">
             <!-- Download Button -->
             <div class="mb-8 text-right">

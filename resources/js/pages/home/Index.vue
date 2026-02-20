@@ -16,12 +16,13 @@ const baseUrl = page.props.ziggy.url;
 <template>
     <AppLayout>
         <SeoHead
-            title="Islam Ahmed | Full Stack Developer Portfolio"
-            :description="'Portfolio of Islam Ahmed – Full Stack Developer specializing in Laravel, Vue.js, Livewire, Nuxt.js, and Flutter. Explore projects, skills, and contact me.'"
-            :keywords="'Islam Ahmed, Eslam Kamel, Laravel Developer, Vue.js Developer, Full Stack Developer, Web Development, Mobile App Development, Flutter Projects'"
+            title="Islam Ahmed - Backend Engineer | FastAPI, Django & Laravel"
+            :description="'Explore backend-focused production projects built with FastAPI, Django, and Laravel — emphasizing scalable APIs, background processing systems, and modern backend architecture.'"
+            :keywords="'FastAPI, Django, Laravel, Backend Engineer, API Development, System Design, Background Jobs, Python Backend'"
             :url="`${baseUrl}/`"
             :image="`${baseUrl}/assets/seo/images/logo.png`"
         />
+
         <VisibleAnimation>
             <HeroSection />
         </VisibleAnimation>

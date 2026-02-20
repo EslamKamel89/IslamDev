@@ -16,12 +16,13 @@ useSeoContact();
 <template>
     <AppLayout class="">
         <SeoHead
-            title="Contact Me - Islam Ahmed | Full Stack Developer"
-            :description="'Get in touch with Islam Ahmed – Full Stack Developer specializing in Laravel, Vue.js, Livewire, Nuxt.js, and Flutter.'"
-            :keywords="'Contact Islam Ahmed, Hire Laravel Developer, Vue.js Contact Form, Full Stack Developer Email, Islam Ahmed LinkedIn, Freelance Laravel Dev'"
+            title="Contact Me - Backend Engineer | FastAPI, Django & Laravel"
+            :description="'Explore backend-focused production projects built with FastAPI, Django, and Laravel — emphasizing scalable APIs, background processing systems, and modern backend architecture.'"
+            :keywords="'FastAPI, Django, Laravel, Backend Engineer, API Development, System Design, Background Jobs, Python Backend'"
             :url="`${baseUrl}/contact`"
             :image="`${baseUrl}/assets/seo/images/logo.png`"
         />
+
         <div class="mx-auto grid max-w-5xl items-start gap-12 md:grid-cols-2">
             <!-- Left Column - Info & Links -->
             <VisibleAnimation>
