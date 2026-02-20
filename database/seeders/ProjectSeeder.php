@@ -14,8 +14,446 @@ class ProjectSeeder extends Seeder {
      */
     public function run(): void {
         $skillMap = \App\Models\Skill::pluck('id', 'name');
+        /*
 
+1 djangoMart
+2 DjangoStream
+3 fastapi_Realtime_chat
+4 FastTask
+5 Friendora
+6 Shoply
+7 StackedThoughts
+8 VoltZone
+9 AMPM Locum
+10 Dalalat Al-Qur’an
+11 HomeHunt
+12 ChinaShop
+13 DevTalk
+14 MoneyMaker
+15 ChatLoom
+16 SocialX
+17 Islamic Calendar
+
+         */
         $projects = [
+            [
+                'thumbnail' => '/storage/projects/djangomart_thumbnail.png',
+                'live_url' => null,
+                'github_url' => 'https://github.com/EslamKamel89/djangomart',
+                'is_featured' => true,
+                'filter' => FilterEnum::OTHER->value,
+                'order' => 1,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/djangomart_01.png",
+                    "/storage/projects/djangomart_02.png",
+                    "/storage/projects/djangomart_03.png",
+                    "/storage/projects/djangomart_04.png",
+                    "/storage/projects/djangomart_05.png",
+                    "/storage/projects/djangomart_06.png",
+                    "/storage/projects/djangomart_07.png",
+                    "/storage/projects/djangomart_08.png",
+                    "/storage/projects/djangomart_09.png",
+                ],
+                'title' => [
+                    'en' => 'DjangoMart – Event-Safe Stripe Payment Engine Built with Django',
+                    'ar' => 'DjangoMart – محرك مدفوعات آمن قائم على الأحداث باستخدام Django وStripe'
+                ],
+                'description' => [
+                    'en' => 'A production-grade eCommerce backend built with Django 5 and Stripe Checkout, engineered around distributed system principles. Designed to handle retries, webhook storms, race conditions, and asynchronous payment flows safely using idempotency, transactional locking, and explicit state machines.',
+                    'ar' => 'نواة تجارة إلكترونية احترافية مبنية باستخدام Django 5 وStripe Checkout، مصممة وفق مبادئ الأنظمة الموزعة. تدير إعادة المحاولات، ازدواجية الأحداث، تعارض العمليات، وتدفقات الدفع غير المتزامنة بأمان عبر idempotency، أقفال معاملات قاعدة البيانات، ونمذجة حالات واضحة.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Stripe Checkout integration using webhook-driven payment truth',
+                        'Event-level idempotency enforced via unique Stripe event IDs',
+                        'Transactional row-level locking using select_for_update()',
+                        'Explicit Order state machine (pending → paid / failed)',
+                        'Webhook signature verification and replay protection',
+                        'Full Stripe event audit trail with raw payload persistence',
+                        'Concurrency-safe order mutations under multi-worker environments',
+                        'White-label backend architecture ready for any frontend integration'
+                    ],
+                    'ar' => [
+                        'دمج Stripe Checkout مع اعتماد الويب هوكس كمصدر الحقيقة الوحيد',
+                        'تطبيق idempotency على مستوى الحدث عبر معرفات Stripe الفريدة',
+                        'أقفال صفوف على مستوى قاعدة البيانات باستخدام select_for_update()',
+                        'نظام حالات واضح للطلبات (pending → paid / failed)',
+                        'تحقق من توقيع الويب هوك مع حماية من إعادة الإرسال',
+                        'تخزين كامل لأحداث Stripe لأغراض التتبع والتدقيق',
+                        'تحديثات آمنة للطلبات في بيئات متعددة العمليات',
+                        'معمارية خلفية White-label جاهزة للربط مع أي واجهة أمامية'
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'Django',
+                    'PostgreSQL',
+                    'REST APIs',
+                    'System Design',
+                    'Clean Architecture',
+                    'Domain-Driven Design',
+                ],
+            ],
+            [
+                'thumbnail' => '/storage/projects/djangostream_thumbnail.png',
+                'live_url' => null,
+                'github_url' => 'https://github.com/EslamKamel89/django-stream',
+                'is_featured' => true,
+                'filter' => \App\FilterEnum::OTHER->value,
+                'order' => 2,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/djangostream_01.png",
+                    "/storage/projects/djangostream_02.png",
+                    "/storage/projects/djangostream_03.png",
+                ],
+                'title' => [
+                    'en' => 'DjangoStream – Full-Stack Real-Time Chat Application with Django, HTMX & Redis',
+                    'ar' => 'DjangoStream – تطبيق دردشة زمني حقيقي Full-Stack باستخدام Django وHTMX وRedis'
+                ],
+                'description' => [
+                    'en' => 'A full-stack real-time chat application built with Django 6, Django Channels, HTMX, and Alpine.js. Architected for scalable WebSocket communication using Redis as a channel layer, with support for public and private chat rooms, presence tracking, and secure authentication.',
+                    'ar' => 'تطبيق دردشة زمني حقيقي مبني باستخدام Django 6 وDjango Channels وHTMX وAlpine.js. تم تصميمه لدعم الاتصال عبر WebSockets بشكل قابل للتوسع باستخدام Redis كطبقة قناة، مع دعم الغرف العامة والخاصة، وتتبع المستخدمين المتصلين، ومصادقة آمنة.'
+                ],
+                'features' => [
+                    'en' => [
+                        'ASGI-first architecture using Django 6 and Daphne for real-time support',
+                        'WebSocket communication powered by Django Channels with Redis channel layer',
+                        'Public and private chat rooms with membership-based access control',
+                        'Real-time message broadcasting with server-side validation via ModelForms',
+                        'Online presence tracking using Many-to-Many relations and live synchronization',
+                        'Hybrid rendering approach using Django Templates, HTMX, and Alpine.js',
+                        'Secure authentication with django-allauth (email-based login system)',
+                        'Optimized queries using select_related and custom model managers',
+                        'Modular project structure separating core, users, and real-time chat domains',
+                        'SQLite for development and PostgreSQL-ready schema for production scalability'
+                    ],
+                    'ar' => [
+                        'بنية تعتمد على ASGI باستخدام Django 6 وDaphne لدعم الزمن الحقيقي',
+                        'اتصال WebSocket عبر Django Channels مع استخدام Redis كـ channel layer',
+                        'غرف دردشة عامة وخاصة مع نظام صلاحيات قائم على العضوية',
+                        'بث الرسائل بشكل فوري مع تحقق خادمي عبر ModelForms',
+                        'تتبع المستخدمين المتصلين لحظيًا باستخدام علاقات Many-to-Many',
+                        'نمط عرض هجين باستخدام Django Templates وHTMX وAlpine.js',
+                        'نظام مصادقة آمن عبر django-allauth يعتمد على البريد الإلكتروني',
+                        'تحسين الاستعلامات باستخدام select_related ومدير نماذج مخصص',
+                        'هيكل مشروع مقسم إلى نطاقات واضحة (core / users / real-time chat)',
+                        'استخدام SQLite أثناء التطوير مع جاهزية PostgreSQL لدعم التوسع'
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'Django',
+                    'Redis',
+                    'WebSockets',
+                    'REST APIs',
+                    'System Design',
+                    'PostgreSQL',
+                    'SQLite',
+                    'Clean Architecture',
+                ],
+            ],
+            [
+                'thumbnail' => '/storage/projects/friendora_thumbnail.png',
+                'live_url' => null,
+                'github_url' => 'https://github.com/EslamKamel89/friendora',
+                'is_featured' => true,
+                'filter' => FilterEnum::OTHER->value,
+                'order' => 5,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/friendora_01.png"
+                ],
+                'title' => [
+                    'en' => 'Friendora – Backend-Focused Social API System Built with Django & Scalable Architecture',
+                    'ar' => 'فريندورا – نظام واجهات اجتماعي موجه للخلفية مبني باستخدام Django وهندسة قابلة للتوسع'
+                ],
+                'description' => [
+                    'en' => 'Friendora is a backend-focused social platform API built with Django and Django REST Framework. Designed with scalable architecture principles, it implements authentication, content publishing, moderation workflows, interaction throttling, caching strategies, and Redis-powered real-time capabilities. The system emphasizes clean domain separation, production practices, and performance-aware design.',
+                    'ar' => 'فريندورا هو نظام واجهات اجتماعي موجه للخلفية مبني باستخدام Django و Django REST Framework. تم تصميمه وفق مبادئ هندسة قابلة للتوسع، ويشمل المصادقة، نشر المحتوى، أنظمة الإشراف، التحكم في معدلات التفاعل، استراتيجيات التخزين المؤقت، ودعم الميزات الزمنية الحقيقية باستخدام Redis. يركز النظام على فصل المجالات البرمجية بوضوح، وممارسات الإنتاج الاحترافية، وتصميم يراعي الأداء.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Custom user model with JWT authentication using SimpleJWT',
+                        'Follow system with database-level constraints and anti-self-follow protection',
+                        'Post publishing engine with slug generation, tagging system, filtering, search, ordering, and pagination',
+                        'Like system with throttling and unique constraints to prevent duplicate interactions',
+                        'Moderation workflow with report lifecycle (pending, reviewed, action taken)',
+                        'Cached moderation summary endpoint using Django cache framework for performance optimization',
+                        'Redis-backed Django Channels integration with WebSocket support for user-scoped notifications',
+                        'Rate limiting via DRF throttling to mitigate abuse (like/follow endpoints)',
+                        'Image upload validation with size and MIME type enforcement',
+                        'Object-level permissions and role-based restrictions for secure content management',
+                        'SQLite for development with production-ready PostgreSQL architecture',
+                        'Comprehensive automated API test coverage across authentication, permissions, posts, likes, follows, reports, filtering, search, and pagination'
+                    ],
+                    'ar' => [
+                        'نموذج مستخدم مخصص مع مصادقة JWT باستخدام SimpleJWT',
+                        'نظام متابعة مع قيود على مستوى قاعدة البيانات ومنع متابعة النفس',
+                        'محرك نشر منشورات مع توليد Slug تلقائي، نظام وسوم، فلترة، بحث، ترتيب، وتقسيم صفحات',
+                        'نظام إعجابات مع تحديد معدل الطلبات ومنع التكرار عبر قيود فريدة',
+                        'نظام إشراف متكامل مع دورة حياة البلاغات (قيد الانتظار، تمت المراجعة، تم اتخاذ إجراء)',
+                        'نقطة نهاية لملخص البلاغات تستخدم التخزين المؤقت لتحسين الأداء',
+                        'تكامل Django Channels مع Redis لدعم WebSockets وإشعارات مخصصة لكل مستخدم',
+                        'تحديد معدل الطلبات عبر DRF Throttling للحد من إساءة الاستخدام',
+                        'التحقق من صحة رفع الصور من حيث الحجم ونوع الملف',
+                        'صلاحيات على مستوى الكائنات مع قيود قائمة على الأدوار لضمان أمان المحتوى',
+                        'استخدام SQLite أثناء التطوير مع تصميم جاهز للإنتاج باستخدام PostgreSQL',
+                        'تغطية اختبارات آلية شاملة لواجهات البرمجة تشمل المصادقة، الصلاحيات، المنشورات، الإعجابات، المتابعات، البلاغات، الفلترة، البحث، وتقسيم الصفحات'
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'Django',
+                    'REST APIs',
+                    'Redis',
+                    'PostgreSQL',
+                    'SQLite',
+                    'System Design',
+                    'Clean Architecture',
+                    'Domain-Driven Design',
+                    'Background Jobs',
+                    'WebSockets',
+                ],
+            ],
+            [
+                'thumbnail' => '/storage/projects/stackedthoughts_thumbnail.png',
+                'live_url' => null,
+                'github_url' => 'https://github.com/EslamKamel89/stacked_thoughts',
+                'is_featured' => true,
+                'filter' => FilterEnum::OTHER->value,
+                'order' => 7,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/stackedthoughts_01.png",
+                    "/storage/projects/stackedthoughts_02.png",
+                ],
+                'title' => [
+                    'en' => 'StackedThoughts – A Scalable Django Blog Engine Focused on Data Integrity & Query Optimization',
+                    'ar' => 'ستاكيد ثوتس – محرك مدونة مبني على Django مع تركيز على سلامة البيانات وتحسين الاستعلامات'
+                ],
+                'description' => [
+                    'en' => 'A backend-focused Django blog engine built as a system design case study. Emphasizes clean domain modeling, query optimization, data integrity constraints, and scalable database strategy (SQLite for development, PostgreSQL-ready for production). Designed to demonstrate strong backend fundamentals rather than UI complexity.',
+                    'ar' => 'محرك مدونة مبني باستخدام Django كدراسة حالة هندسية للأنظمة الخلفية. يركز على تصميم النماذج بشكل نظيف، تحسين الاستعلامات، ضمان سلامة البيانات عبر القيود، واستراتيجية قاعدة بيانات قابلة للتوسع (SQLite للتطوير وجاهز لـ PostgreSQL للإنتاج). الهدف إبراز قوة البنية الخلفية أكثر من تعقيد الواجهة.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Clean domain modeling with Author, Post, Tag, and Comment entities using relational integrity constraints',
+                        'Custom slug auto-generation logic with collision handling to ensure uniqueness under concurrent conditions',
+                        'Query optimization using select_related and prefetch_related to reduce N+1 queries',
+                        'Abstract BaseModel providing consistent timestamp management across entities',
+                        'Session-based “Read Later” feature demonstrating stateful request handling',
+                        'Admin panel customization with searchable fields, list filters, and many-to-many management',
+                        'Structured app-level separation inside Django project for modular scalability',
+                        'Database strategy designed for SQLite in development and PostgreSQL in scalable production environments'
+                    ],
+                    'ar' => [
+                        'تصميم نماذج نظيف يضم الكيانات Author وPost وTag وComment مع قيود لضمان سلامة البيانات',
+                        'منطق مخصص لإنشاء Slug تلقائيًا مع معالجة التعارض لضمان التفرد',
+                        'تحسين الاستعلامات باستخدام select_related وprefetch_related لتقليل مشكلة N+1',
+                        'نموذج BaseModel مجرد لإدارة الطوابع الزمنية بشكل موحد عبر الكيانات',
+                        'ميزة “القراءة لاحقًا” عبر الجلسة لإظهار إدارة الحالة على مستوى الطلب',
+                        'تخصيص لوحة الإدارة مع البحث والفلاتر وإدارة العلاقات Many-to-Many',
+                        'فصل منظم للتطبيق داخل مشروع Django لدعم التوسع المستقبلي',
+                        'استراتيجية قاعدة بيانات تعتمد SQLite أثناء التطوير وجاهزة للترقية إلى PostgreSQL للإنتاج'
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'Django',
+                    'System Design',
+                    'Clean Architecture',
+                    'REST APIs',
+                    'PostgreSQL',
+                    'SQLite',
+                ],
+            ],
+            [
+                'thumbnail' => '/storage/projects/fasttask_thumbnail.png',
+                'live_url' => null,
+                'github_url' => 'https://github.com/EslamKamel89/FastTask',
+                'is_featured' => true,
+                'filter' => FilterEnum::OTHER->value,
+                'order' => 4,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/fasttask_01.png",
+                ],
+                'title' => [
+                    'en' => 'FastTask – Clean Architecture Task Management API with JWT Auth & RBAC',
+                    'ar' => 'فاست تاسك – نظام إدارة مهام مبني على هندسة نظيفة مع JWT وصلاحيات أدوار'
+                ],
+                'description' => [
+                    'en' => 'A backend-focused task management system built with FastAPI, demonstrating clean architectural layering, JWT authentication, and role-based access control. Designed as a scalable foundation for multi-user systems with structured routing, modular services, and database abstraction.',
+                    'ar' => 'نظام إدارة مهام موجه للواجهة الخلفية مبني باستخدام FastAPI، يعرض تطبيقًا عمليًا لهندسة نظيفة، ومصادقة JWT، ونظام صلاحيات قائم على الأدوار. صُمم كأساس قابل للتوسع لأنظمة متعددة المستخدمين مع فصل واضح للطبقات وتنظيم معياري للراوترات.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Modular layered architecture separating routing, security, models, and database configuration',
+                        'JWT-based authentication using OAuth2PasswordBearer and secure token expiration',
+                        'Role-Based Access Control (RBAC) with admin-restricted endpoints',
+                        'Secure password hashing with bcrypt and token validation using python-jose',
+                        'Ownership-enforced CRUD operations for multi-user task isolation',
+                        'Database abstraction supporting SQLite for development and PostgreSQL for production',
+                        'Alembic-powered schema migrations with version control',
+                        'Comprehensive Pytest test suite with dependency overrides and isolated test database',
+                        'Health check endpoint for service monitoring readiness',
+                        'Structured for horizontal scalability and stateless API expansion'
+                    ],
+                    'ar' => [
+                        'هيكل معماري معياري يفصل بين الراوترات، الأمان، النماذج، وإعدادات قاعدة البيانات',
+                        'مصادقة تعتمد على JWT باستخدام OAuth2PasswordBearer مع إدارة انتهاء صلاحية التوكن',
+                        'نظام صلاحيات قائم على الأدوار مع نقاط نهاية مخصصة للمشرفين فقط',
+                        'تشفير كلمات المرور باستخدام bcrypt والتحقق من التوكن عبر python-jose',
+                        'عمليات CRUD مرتبطة بمالك البيانات لضمان عزل المستخدمين',
+                        'دعم SQLite أثناء التطوير وPostgreSQL في بيئات الإنتاج عبر طبقة تجريد قاعدة البيانات',
+                        'إدارة مخطط قاعدة البيانات باستخدام Alembic مع نظام إصدارات',
+                        'اختبارات متكاملة باستخدام Pytest مع تجاوز التبعيات وقاعدة بيانات معزولة للاختبار',
+                        'نقطة فحص جاهزية الخدمة (Health Check)',
+                        'مصمم لدعم التوسع الأفقي وبناء واجهات API عديمة الحالة'
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'FastAPI',
+                    'REST APIs',
+                    'PostgreSQL',
+                    'SQLite',
+                    'System Design',
+                    'Clean Architecture',
+                    'Domain-Driven Design',
+                    'Pytest',
+                    'Microservices',
+                ],
+            ],
+            [
+                'thumbnail' => '/storage/projects/shoply_thumbnail.png',
+                'github_url' => 'https://github.com/EslamKamel89/shoply',
+                'is_featured' => true,
+                'filter' => FilterEnum::OTHER->value,
+                'order' => 6,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/shoply_01.png",
+                    "/storage/projects/shoply_02.png",
+                ],
+                'title' => [
+                    'en' => 'Shoply – Scalable E-Commerce API Built with FastAPI, PostgreSQL & Celery',
+                    'ar' => 'Shoply – واجهة برمجية قابلة للتوسع للتجارة الإلكترونية مبنية على FastAPI وPostgreSQL وCelery'
+                ],
+                'description' => [
+                    'en' => 'A scalable, production-oriented E-Commerce API built with FastAPI using an async-first architecture and modular monolith design. Implements JWT authentication with rotating refresh tokens, PostgreSQL for production, SQLite for development/testing, and Celery with Redis for distributed background processing. Designed to demonstrate clean architecture, domain separation, and backend scalability patterns.',
+                    'ar' => 'واجهة برمجية قابلة للتوسع للتجارة الإلكترونية مبنية باستخدام FastAPI بهيكلية تعتمد على التنفيذ غير المتزامن وتصميم Modular Monolith. تعتمد على JWT مع تدوير Refresh Tokens، وتستخدم PostgreSQL في بيئة الإنتاج وSQLite في التطوير والاختبارات، بالإضافة إلى Celery مع Redis لمعالجة المهام الخلفية الموزعة. صُممت لإظهار مفاهيم Clean Architecture وفصل النطاقات وقابلية التوسع في أنظمة الخلفية.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Async-first FastAPI architecture using SQLAlchemy Async ORM',
+                        'Modular monolith design with clear domain separation (Auth, Products, Orders)',
+                        'JWT authentication with access tokens + rotating refresh tokens stored in DB',
+                        'Argon2 password hashing and role-based authorization (admin/user)',
+                        'Product management with filtering, pagination, sorting, and category relations',
+                        'Order system with transactional integrity and relational consistency',
+                        'CSV product import processed via Celery workers with retry & backoff strategy',
+                        'Redis-powered distributed task queue for scalable background processing',
+                        'Alembic migrations for version-controlled schema evolution',
+                        'SQLite for development/testing and PostgreSQL as production database',
+                        'Comprehensive Pytest suite with async test client, fixtures, and in-memory database'
+                    ],
+                    'ar' => [
+                        'هيكلية FastAPI غير متزامنة بالكامل باستخدام SQLAlchemy Async ORM',
+                        'تصميم Modular Monolith مع فصل واضح للنطاقات (المصادقة، المنتجات، الطلبات)',
+                        'مصادقة JWT مع Access Tokens وRefresh Tokens بتدوير تلقائي وتخزين في قاعدة البيانات',
+                        'تشفير كلمات المرور باستخدام Argon2 مع نظام صلاحيات قائم على الأدوار',
+                        'إدارة المنتجات مع الفلترة، التصفح، الفرز، وربط الفئات',
+                        'نظام طلبات يحافظ على التكامل العلاقي وسلامة العمليات داخل المعاملات',
+                        'استيراد المنتجات من CSV عبر Celery مع آلية إعادة المحاولة التدريجية',
+                        'استخدام Redis كوسيط مهام لمعالجة خلفية قابلة للتوسع',
+                        'إدارة إصدارات قاعدة البيانات باستخدام Alembic',
+                        'استخدام SQLite في التطوير وPostgreSQL في بيئة الإنتاج',
+                        'حزمة اختبارات شاملة باستخدام Pytest مع عميل غير متزامن وقاعدة بيانات داخل الذاكرة'
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'FastAPI',
+                    'Django', // optional cross-ecosystem awareness if desired, remove if strict
+                    'Pytest',
+                    'REST APIs',
+                    'PostgreSQL',
+                    'SQLite',
+                    'Redis',
+                    'Celery',
+                    'System Design',
+                    'Clean Architecture',
+                    'Domain-Driven Design',
+                    'Microservices',
+                    'Docker'
+                ],
+            ],
+            [
+                'thumbnail' => '/storage/projects/fastapi_chat_thumbnail.png',
+                'live_url' => null,
+                'github_url' => 'https://github.com/EslamKamel89/fastapi_realtime_chat',
+                'is_featured' => true,
+                'filter' => FilterEnum::OTHER->value,
+                'order' => 3,
+                'status' => 'published',
+                'images' => [
+                    "/storage/projects/fastapi_chat_01.png",
+                ],
+                'title' => [
+                    'en' => 'FastAPI Realtime Chat – Real-Time Messaging Backend System with WebSockets & Redis Pub/Sub',
+                    'ar' => 'نظام مراسلة لحظي باستخدام FastAPI و WebSockets و Redis Pub/Sub'
+                ],
+                'description' => [
+                    'en' => 'A scalable real-time messaging backend system built with FastAPI, Async SQLAlchemy, and Redis Pub/Sub. Designed using a layered architecture with dependency injection, lifespan-managed services, and non-blocking async I/O. Messages are persisted to the database and broadcast across distributed WebSocket connections via Redis, enabling horizontal scalability.',
+                    'ar' => 'نظام مراسلة لحظي قابل للتوسع مبني باستخدام FastAPI و Async SQLAlchemy و Redis Pub/Sub. تم تصميمه بهيكل طبقات واضح مع Dependency Injection وإدارة خدمات عبر Lifespan ودعم كامل للبرمجة غير المتزامنة. يتم حفظ الرسائل في قاعدة البيانات ثم بثها عبر Redis إلى جميع اتصالات WebSocket لدعم التوسع الأفقي.'
+                ],
+                'features' => [
+                    'en' => [
+                        'Fully async architecture using FastAPI, Async SQLAlchemy, and redis.asyncio',
+                        'WebSocket endpoint with dependency-injected authentication layer',
+                        'Redis Pub/Sub infrastructure for horizontal real-time message broadcasting',
+                        'Message persistence using SQLAlchemy ORM with repository abstraction',
+                        'Lifespan-managed services (database engine, Redis client, background listeners)',
+                        'Active WebSocket registry supporting multiple connections per user',
+                        'Layered modular structure separating domain, infrastructure, and routing',
+                        'SQLite for development and PostgreSQL-ready configuration for production environments',
+                        'Health check endpoint for service monitoring',
+                    ],
+                    'ar' => [
+                        'هيكل غير متزامن بالكامل باستخدام FastAPI و Async SQLAlchemy و redis.asyncio',
+                        'نقطة اتصال WebSocket مع نظام مصادقة عبر Dependency Injection',
+                        'استخدام Redis Pub/Sub لبث الرسائل بشكل لحظي وقابل للتوسع الأفقي',
+                        'حفظ الرسائل في قاعدة البيانات عبر SQLAlchemy مع طبقة Repository',
+                        'إدارة الخدمات عبر Lifespan مثل محرك قاعدة البيانات وعميل Redis ومستمع الخلفية',
+                        'سجل نشط لاتصالات WebSocket يدعم أكثر من اتصال لكل مستخدم',
+                        'هيكل طبقات واضح يفصل بين المجال والبنية التحتية وطبقة التوجيه',
+                        'استخدام SQLite أثناء التطوير مع جاهزية PostgreSQL للإنتاج',
+                        'نقطة فحص صحة النظام (Health Check) لمراقبة الخدمة',
+                    ]
+                ],
+                'skills' => [
+                    'Python',
+                    'FastAPI',
+                    'Django', // included per instruction scope alignment
+                    'Pytest',
+                    'System Design',
+                    'Clean Architecture',
+                    'Domain-Driven Design',
+                    'REST APIs',
+                    'Microservices',
+                    'Celery',
+                    'Redis',
+                    'WebSockets',
+                    'Background Jobs',
+                    'Queues',
+                    'PostgreSQL',
+                    'SQLite',
+                    'Docker',
+                ],
+            ],
             [
                 'thumbnail' => '/storage/projects/devtalk_thumbnail.png',
                 'live_url' => 'https://devtalk.islamdev.com/',
@@ -24,7 +462,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '15-04-2025',
                 'is_featured' => true,
                 'filter' => FilterEnum::VILT->value,
-                'order' => 1,
+                'order' => 13,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/devtalk_01.png",
@@ -84,7 +522,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2024-06-15',
                 'is_featured' => true,
                 'filter' => FilterEnum::LIVEWIRE->value,
-                'order' => 2,
+                'order' => 8,
                 'status' => 'draft',
                 'images' => [
                     "/storage/projects/voltzone_01.png",
@@ -162,7 +600,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2025-03-31',
                 'is_featured' => true,
                 'filter' => FilterEnum::VILT->value,
-                'order' => 3,
+                'order' => 15,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/chatloom_01.png",
@@ -217,7 +655,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2025-02-28',
                 'is_featured' => true,
                 'filter' => FilterEnum::LIVEWIRE->value,
-                'order' => 4,
+                'order' => 16,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/socialx_01.png",
@@ -273,7 +711,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2024-06-15',
                 'is_featured' => true,
                 'filter' => FilterEnum::NUXT->value,
-                'order' => 5,
+                'order' => 12,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/chinashop_01.png",
@@ -340,7 +778,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2024-09-15',
                 'is_featured' => true,
                 'filter' => FilterEnum::VILT->value,
-                'order' => 6,
+                'order' => 11,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/homehunt_01.png",
@@ -399,7 +837,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2024-08-01',
                 'is_featured' => true,
                 'filter' => FilterEnum::FLUTTER->value,
-                'order' => 7,
+                'order' => 10,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/quran_01.png",
@@ -467,7 +905,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2025-04-15',
                 'is_featured' => true,
                 'filter' => FilterEnum::FLUTTER->value,
-                'order' => 8,
+                'order' => 17,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/cal_1.png",
@@ -545,7 +983,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2025-03-31',
                 'is_featured' => true,
                 'filter' => FilterEnum::FLUTTER->value,
-                'order' => 9,
+                'order' => 14,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/money_01.png",
@@ -612,7 +1050,7 @@ class ProjectSeeder extends Seeder {
                 // 'end_date' => '2024-06-15',
                 'is_featured' => true,
                 'filter' => FilterEnum::FLUTTER->value,
-                'order' => 7,
+                'order' => 9,
                 'status' => 'published',
                 'images' => [
                     "/storage/projects/locum_01.png",

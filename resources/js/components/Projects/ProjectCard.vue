@@ -102,17 +102,21 @@ watch(fixFullHeight, (value) => {
             </div>
 
             <!-- Content -->
-            <h3 class="mb-3 text-xl font-semibold text-white">
+            <h3 class="mb-3 text-xl font-semibold dark:text-white">
                 {{ getLocalization(project.title, locale) }}
             </h3>
 
-            <p class="mb-6 leading-relaxed text-white/70">
+            <p class="mb-6 leading-relaxed dark:text-white/70">
                 {{ getLocalization(project.description, locale) }}
             </p>
 
             <!-- Features -->
             <ul class="mb-6 space-y-3">
-                <li v-for="feature in features" :key="feature" class="flex items-center gap-3 text-sm text-white/70 transition hover:text-white">
+                <li
+                    v-for="feature in features"
+                    :key="feature"
+                    class="flex items-center gap-3 text-sm transition dark:text-white/70 dark:hover:text-white"
+                >
                     <component :is="getRandomIcon()" class="text-primary h-4 w-4" />
                     <span>{{ feature }}</span>
                 </li>

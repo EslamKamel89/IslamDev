@@ -56,11 +56,11 @@ watch(fixFullHeight, (value) => {
         --></div>
 
         <!-- Content -->
-        <h3 class="mb-3 text-xl font-semibold text-white">
+        <h3 class="mb-3 text-xl font-semibold dark:text-white">
             {{ getLocalization(project.title, locale) }}
         </h3>
 
-        <p class="mb-6 leading-relaxed text-white/70">
+        <p class="mb-6 leading-relaxed dark:text-white/70">
             {{ getLocalization(project.description, locale) }}
         </p>
 

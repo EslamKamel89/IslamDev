@@ -1,35 +1,90 @@
 <script setup lang="ts">
-import ResumeProjectCard from '@/components/Resume/ResumeProjectCard.vue';
-import ResumeSection from '@/components/Resume/ResumeSection.vue';
-import ResumeSkillGroup from '@/components/Resume/ResumeSkillGroup.vue';
-import ResumeWorkExperience from '@/components/Resume/ResumeWorkExperience.vue';
-import VisibleAnimation from '@/components/Shared/VisibleAnimation.vue';
-import { useLocale } from '@/composables/useLocale';
 import AppLayout from '@/layouts/AppLayout.vue';
-import useSeoCv from '@/seo/contact';
-import SeoHead from '@/seo/SeoHead.vue';
 import { SharedData } from '@/types';
-import type { RAdditionalInfo, RCertification, REducation, RLanguage, RProject, RSkillGroup, RWorkExperience } from '@/types/custom';
-import { ResumeData } from '@/types/custom';
 import { usePage } from '@inertiajs/vue3';
 import { FileHeart } from 'lucide-vue-next';
-import { computed } from 'vue';
-const castRSummaryDescription = (value: any) => value as { description: Record<string, string> }[];
-const castRWorkExperience = (value: any) => value as RWorkExperience[];
-const castREducation = (value: any) => value as REducation[];
-const castRSkillGroup = (value: any) => value as RSkillGroup[];
-const castRProject = (value: any) => value as RProject[];
-const castRCertification = (value: any) => value as RCertification[];
-const castRLanguage = (value: any) => value as RLanguage[];
-const castRAdditionalInfo = (value: any) => value as RAdditionalInfo[];
-const { locale: lang } = useLocale();
 
-const page = usePage<SharedData & { resumeData: ResumeData }>();
-const resume = computed(() => page.props.resumeData);
-const { t } = useLocale();
+const experiences = [
+    {
+        company: 'Gaztec',
+        location: 'Dubai, UAE (Remote)',
+        role: 'Senior Backend Engineer',
+        period: 'Feb 2024 – Present',
+        stack: 'Django, FastAPI, Laravel, Redis, PostgreSQL, Docker, AWS',
+        highlights: [
+            'Designed high-performance backend systems with modular domain separation.',
+            'Built scalable REST APIs and real-time WebSocket layers.',
+            'Implemented Redis caching strategies and secure token-based authentication.',
+            'Contributed to scalability-focused architectural decisions.',
+        ],
+    },
+    {
+        company: 'CodeCraft Solutions',
+        location: 'Cairo, Egypt',
+        role: 'Backend Engineer',
+        period: 'Nov 2022 – Feb 2024',
+        stack: 'Laravel, PostgreSQL, MySQL, Docker',
+        highlights: [
+            'Designed API-driven backend systems for SPA frontends.',
+            'Integrated secure payment gateways with transactional safeguards.',
+            'Implemented async workflows and background processing patterns.',
+            'Optimized relational modeling and query performance.',
+        ],
+    },
+    {
+        company: 'TechNova',
+        location: 'Cairo, Egypt',
+        role: 'Backend Engineer',
+        period: 'Oct 2020 – Nov 2022',
+        stack: 'Laravel, Redis, PostgreSQL',
+        highlights: [
+            'Developed multi-tenant systems with RBAC and permission isolation.',
+            'Optimized queries to prevent N+1 issues.',
+            'Built structured backend APIs consumed by mobile and web clients.',
+            'Implemented Redis-based caching and notifications.',
+        ],
+    },
+    {
+        company: 'Lamba',
+        location: 'Mansoura, Egypt',
+        role: 'Backend Engineer',
+        period: 'May 2018 – Oct 2020',
+        stack: 'Laravel, JWT, MySQL, PostgreSQL',
+        highlights: [
+            'Built secure e-commerce backends with JWT authentication.',
+            'Designed admin analytics systems powered by structured APIs.',
+            'Applied database constraints and transaction management.',
+            'Wrote automated backend tests.',
+        ],
+    },
+];
+
+const skillSections = [
+    {
+        title: 'Backend',
+        items: ['Python', 'Django', 'FastAPI', 'DRF', 'SQLAlchemy', 'Laravel', 'PHP'],
+    },
+    {
+        title: 'Architecture & Systems',
+        items: ['REST APIs', 'WebSockets', 'ASGI', 'Clean Architecture', 'DDD', 'RBAC', 'Idempotency', 'Concurrency Control', 'Async I/O'],
+    },
+    {
+        title: 'Databases',
+        items: ['PostgreSQL', 'SQLite', 'MySQL', 'MongoDB'],
+    },
+    {
+        title: 'Caching & Messaging',
+        items: ['Redis', 'Celery', 'Pub/Sub', 'Queues', 'Background Jobs'],
+    },
+    {
+        title: 'Security',
+        items: ['JWT', 'OAuth2', 'SimpleJWT', 'Sanctum', 'bcrypt', 'Argon2'],
+    },
+];
+const page = usePage<SharedData>();
 const baseUrl = page.props.ziggy.url;
-useSeoCv();
 </script>
+
 <template>
     <AppLayout>
         <SeoHead
@@ -39,107 +94,137 @@ useSeoCv();
             :url="`${baseUrl}/resume`"
             :image="`${baseUrl}/assets/seo/images/logo.png`"
         />
-
-        <section class="">
-            <!-- Download Button -->
-            <div class="mb-8 text-right">
-                <a
-                    href="/assets/files/cv.pdf"
-                    target="_blank"
-                    class="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-lg px-4 py-2 transition-colors"
-                >
-                    <FileHeart />
-                    <span>{{ t('DOWNLOAD_RESUME') }}</span>
-                </a>
+        <div
+            dir="ltr"
+            class="relative min-h-screen overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-800 transition-colors duration-500 dark:from-gray-950/10 dark:via-gray-900/10 dark:to-black/10 dark:text-gray-200"
+        >
+            <!-- Subtle Background Glow -->
+            <div class="pointer-events-none absolute inset-0">
+                <div class="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-indigo-500/10 blur-3xl dark:bg-indigo-500/20"></div>
+                <div class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl dark:bg-purple-500/20"></div>
             </div>
 
-            <!-- Personal Info -->
-            <div class="border-border mb-10 border-b pb-6 text-center">
-                <h1 class="text-3xl font-bold">{{ resume.personal.name }}</h1>
-                <div class="text-muted-foreground mt-2 flex flex-wrap justify-center gap-6 text-sm">
-                    <a :href="`tel:${resume.personal.phone}`" class="flex items-center gap-1">
-                        {{ resume.personal.phone }}
-                    </a>
-                    <a :href="`mailto:${resume.personal.email}`" class="flex items-center gap-1">
-                        {{ resume.personal.email }}
-                    </a>
-                    <a :href="resume.personal.website" target="_blank" class="flex items-center gap-1">
-                        {{ resume.personal.website }}
-                    </a>
-                    <div v-for="link in resume.personal.links" :key="link.label" class="flex items-center gap-1">
-                        <a :href="link.url" target="_blank">{{ link.label }}</a>
+            <div class="relative mx-auto max-w-6xl px-6 py-20">
+                <!-- HEADER -->
+                <div class="mb-20 text-center">
+                    <h1 class="text-5xl font-extrabold tracking-tight">Eslam Kamel</h1>
+
+                    <p class="mt-4 text-xl font-medium text-indigo-600 dark:text-indigo-400">Senior Backend Engineer</p>
+
+                    <p class="mt-2 text-gray-500 dark:text-gray-400">Django · FastAPI · Laravel</p>
+
+                    <div class="mt-6 flex justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+                        <span>📍 Egypt</span>
+                        <span>✉️ eslamkamelforex@gmail.com</span>
+                        <span>🔗 github.com/EslamKamel89</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Sections -->
-            <div v-for="(section, index) in resume.sections" :key="section.id" class="mb-10">
-                <VisibleAnimation :hide-animation="index < 2">
-                    <ResumeSection :title="section.title[lang]" :id="section.id">
-                        <div v-if="section.id === 'summary'" class="space-y-6">
-                            <div v-for="(item, index) in castRSummaryDescription(section.items)" :key="index">
-                                <div>{{ item.description[lang] }}</div>
+                <!-- DOWNLOAD BUTTON -->
+                <div class="mb-16 flex justify-center">
+                    <a
+                        href="/assets/files/cv.pdf"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-indigo-500/20 transition-all hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-indigo-500/40"
+                    >
+                        <FileHeart class="h-4 w-4" />
+                        Download Resume
+                    </a>
+                </div>
+
+                <!-- SUMMARY -->
+                <section class="mb-20">
+                    <div
+                        class="rounded-3xl border border-gray-200/70 bg-white/70 p-10 shadow-xl backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/60"
+                    >
+                        <h2 class="mb-6 text-2xl font-semibold">Professional Summary</h2>
+
+                        <p class="leading-relaxed text-gray-600 dark:text-gray-400">
+                            Senior Backend Engineer with 10+ years of backend experience, including 2 years building scalable Python systems using
+                            Django and FastAPI. Strong background in Laravel production systems with a deliberate transition toward modern Python
+                            backend architectures. Experienced in REST APIs, real-time systems, distributed messaging, authentication flows,
+                            concurrency control, and designing reliable backend systems for scale.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- SKILLS -->
+                <section class="mb-24">
+                    <h2 class="mb-10 text-center text-3xl font-bold">Core Technical Skills</h2>
+
+                    <div class="grid gap-8 md:grid-cols-2">
+                        <div
+                            v-for="section in skillSections"
+                            :key="section.title"
+                            class="group rounded-3xl border border-gray-200 bg-white p-8 shadow-md transition-all hover:-translate-y-1 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900"
+                        >
+                            <h3 class="mb-6 text-lg font-semibold text-indigo-600 dark:text-indigo-400">
+                                {{ section.title }}
+                            </h3>
+
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    v-for="item in section.items"
+                                    :key="item"
+                                    class="rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-indigo-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-indigo-900/40"
+                                >
+                                    {{ item }}
+                                </span>
                             </div>
                         </div>
-                        <div v-if="section.id === 'experience'" class="space-y-6">
-                            <ResumeWorkExperience v-for="item in castRWorkExperience(section.items)" :key="item.company" :item="item" :lang="lang" />
-                        </div>
-                        <div v-else-if="section.id === 'skills'" class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                            <ResumeSkillGroup v-for="item in castRSkillGroup(section.items)" :key="item.category" :item="item" :lang="lang" />
-                        </div>
-                        <div v-else-if="section.id === 'projects'" class="grid grid-cols-1 gap-6">
-                            <ResumeProjectCard v-for="item in castRProject(section.items)" :key="item.title.en" :item="item" :lang="lang" />
-                        </div>
-                        <template v-else-if="section.id == 'education'">
-                            <div class="space-y-4">
-                                <div v-for="item in castREducation(section.items)" :key="item.degree" class="text-sm">
-                                    <!-- Education -->
+                    </div>
+                </section>
+
+                <!-- EXPERIENCE TIMELINE -->
+                <section>
+                    <h2 class="mb-16 text-center text-3xl font-bold">Professional Experience</h2>
+
+                    <div class="relative space-y-16 border-l border-gray-300 pl-8 dark:border-gray-700">
+                        <div v-for="job in experiences" :key="job.company" class="relative">
+                            <!-- Timeline Dot -->
+                            <div
+                                class="absolute top-2 -left-[13px] h-6 w-6 rounded-full border-4 border-white bg-indigo-600 dark:border-gray-950"
+                            ></div>
+
+                            <div
+                                class="rounded-3xl border border-gray-200 bg-white p-8 shadow-md transition-all hover:shadow-xl dark:border-gray-800 dark:bg-gray-900"
+                            >
+                                <div class="flex flex-col md:flex-row md:items-start md:justify-between">
                                     <div>
-                                        <p class="font-medium">{{ item.institution }}</p>
-                                        <p class="text-muted-foreground">{{ item.degree }}</p>
-                                        <p class="mt-1">{{ item.dates.start }} – {{ item.dates.end || 'Present' }}</p>
-                                        <p class="mt-2" v-if="item.description">{{ item.description[lang] }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                        <template v-else-if="section.id == 'certifications'">
-                            <div class="space-y-4">
-                                <div v-for="item in castRCertification(section.items)" :key="item.title?.en" class="text-sm">
-                                    <!-- Certifications -->
-                                    <div>
-                                        <p class="font-medium">{{ item.title[lang] }}</p>
-                                        <p class="text-muted-foreground">Issued by {{ item.issuer }} • {{ item.issueDate }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                        <template v-else-if="section.id == 'languages'">
-                            <div class="space-y-4">
-                                <div v-for="item in castRLanguage(section.items)" :key="item.name" class="text-sm">
-                                    <!-- Languages -->
-                                    <div>
-                                        <p class="font-medium">{{ item.name }} – {{ item.level }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                        <template v-else-if="section.id == 'additional'">
-                            <div class="space-y-4">
-                                <div v-for="item in castRAdditionalInfo(section.items)" :key="item.key" class="text-sm">
-                                    <!-- Additional Info -->
-                                    <div v-if="section.id === 'additional'">
-                                        <p>
-                                            <strong>{{ item.key }}:</strong>
-                                            <a :href="item.value" target="_blank" class="underline">{{ item.value }}</a>
+                                        <h3 class="text-xl font-semibold">{{ job.role }} — {{ job.company }}</h3>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                                            {{ job.location }}
                                         </p>
                                     </div>
+
+                                    <span class="mt-2 text-sm font-medium text-indigo-600 md:mt-0 dark:text-indigo-400">
+                                        {{ job.period }}
+                                    </span>
                                 </div>
+
+                                <p class="mt-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                                    {{ job.stack }}
+                                </p>
+
+                                <ul class="mt-6 space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                                    <li v-for="point in job.highlights" :key="point" class="flex items-start">
+                                        <span class="mt-1 mr-3 h-2 w-2 rounded-full bg-indigo-500"></span>
+                                        <span>{{ point }}</span>
+                                    </li>
+                                </ul>
                             </div>
-                        </template>
-                    </ResumeSection>
-                </VisibleAnimation>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EDUCATION -->
+                <section class="mt-24">
+                    <div class="rounded-3xl border border-gray-200 bg-white p-10 shadow-xl dark:border-gray-800 dark:bg-gray-900">
+                        <h2 class="mb-4 text-2xl font-semibold">Education</h2>
+                        <p class="text-gray-600 dark:text-gray-400">B.Sc. in Electrical Engineering — Mansoura University (2014)</p>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     </AppLayout>
 </template>

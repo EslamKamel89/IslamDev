@@ -7,6 +7,7 @@ enum FilterEnum: string {
     case VILT = 'VILT';
     case NUXT = 'NUXT';
     case FLUTTER = 'FLUTTER';
+    case OTHER = 'OTHER';
     public static function labels() {
         return collect(self::cases())->map(function ($case) {
             return $case->label();
@@ -17,6 +18,7 @@ enum FilterEnum: string {
         if ($this == FilterEnum::VILT) return "VILT";
         if ($this == FilterEnum::NUXT) return "Nuxt js";
         if ($this == FilterEnum::FLUTTER) return "Flutter";
+        if ($this == FilterEnum::OTHER) return "Other";
     }
     public static function values() {
         return array_column(self::cases(), 'value');
